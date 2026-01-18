@@ -11,32 +11,50 @@ const HeroSection = ({ isDark }: HeroSectionProps) => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Images */}
       <div className="absolute inset-0">
-        <img
-          src={heroDay}
-          alt="Jolshiri Lakeview Residence - Day View"
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+        {/* Day Background */}
+        <div
+          className={`absolute inset-0 transition-opacity duration-700 ${
             isDark ? "opacity-0" : "opacity-100"
           }`}
-        />
-        <img
-          src={heroNight}
-          alt="Jolshiri Lakeview Residence - Night View"
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+        >
+          {/* Sky gradient background for day - matches the render sky */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#5ba3d9] via-[#7ec8e3] to-[#8ed1e8]" />
+          {/* Building image - centered and scaled to show full building */}
+          <img
+            src={heroDay}
+            alt="Jolshiri Lakeview Residence - Day View"
+            className="absolute inset-0 w-full h-full object-contain object-center"
+          />
+        </div>
+        
+        {/* Night Background */}
+        <div
+          className={`absolute inset-0 transition-opacity duration-700 ${
             isDark ? "opacity-100" : "opacity-0"
           }`}
-        />
-        {/* Overlay */}
-        <div className="hero-overlay absolute inset-0" />
+        >
+          {/* Evening gradient background for night - matches twilight sky */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#6b7c8f] via-[#a8b5c4] to-[#c9a892]" />
+          {/* Building image */}
+          <img
+            src={heroNight}
+            alt="Jolshiri Lakeview Residence - Night View"
+            className="absolute inset-0 w-full h-full object-contain object-center"
+          />
+        </div>
+        
+        {/* Overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container-wide text-center text-white">
+      <div className="relative z-10 container-wide text-center text-white pt-20">
         <div
           key={isDark ? "night" : "day"}
           className="animate-fade-up"
         >
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 border border-white/30 rounded-full backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 border border-white/30 rounded-full backdrop-blur-sm bg-black/20">
             <span className="w-2 h-2 bg-gold rounded-full animate-pulse" />
             <span className="text-sm tracking-wider uppercase">
               Lakeview Project
@@ -44,14 +62,14 @@ const HeroSection = ({ isDark }: HeroSectionProps) => {
           </div>
 
           {/* Headline */}
-          <h1 className="heading-hero max-w-4xl mx-auto mb-6">
+          <h1 className="heading-hero max-w-4xl mx-auto mb-6 drop-shadow-lg">
             {isDark
               ? "An Address Framed by Light, Space, and Water"
               : "Open to the City. Open to the Lake."}
           </h1>
 
           {/* Subline */}
-          <p className="body-large text-white/80 max-w-2xl mx-auto mb-10">
+          <p className="body-large text-white/90 max-w-2xl mx-auto mb-10 drop-shadow-md">
             {isDark
               ? "Street-facing openness in front. Tranquil lake views behind. Designed for privacy, security, and long-term value."
               : "A thoughtfully designed residential project with open street frontage and uninterrupted lake views at the back."}
