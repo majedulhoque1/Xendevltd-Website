@@ -12,6 +12,11 @@ import {
   Waves,
 } from "lucide-react";
 
+// Import project images
+import projectLakeside from "@/assets/project-lakeside.jpg";
+import projectRoadsideFront from "@/assets/project-roadside-front.jpg";
+import projectRoadsidePerspective from "@/assets/project-roadside-perspective.png";
+
 const tabs = [
   { id: "location", label: "Location", icon: MapPin },
   { id: "about", label: "About", icon: Info },
@@ -50,102 +55,186 @@ const floorPlans = [
 
 const FeaturedProject = () => {
   const [activeTab, setActiveTab] = useState("location");
+  const [selectedImage, setSelectedImage] = useState(0);
+
+  const projectImages = [
+    { src: projectLakeside, label: "Lakeside View" },
+    { src: projectRoadsideFront, label: "Street Front" },
+    { src: projectRoadsidePerspective, label: "Perspective View" },
+  ];
 
   const renderTabContent = () => {
     switch (activeTab) {
       case "location":
         return (
           <div className="animate-fade-in">
-            <h3 className="heading-subsection mb-4">
-              Prime Location in Jolshiri Abashon
-            </h3>
-            <p className="body-large mb-6">
-              Located within Jolshiri Abashon, this project enjoys a rare dual
-              advantage — open street access at the front and uninterrupted lake
-              views at the back.
-            </p>
-            <ul className="space-y-3 mb-8">
-              <li className="flex items-center gap-3 body-regular">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                Open frontage ensures light, visibility, and easy access
-              </li>
-              <li className="flex items-center gap-3 body-regular">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                Lake-facing rear creates privacy, calm, and long-term value
-              </li>
-              <li className="flex items-center gap-3 body-regular">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                Positioned within a carefully planned residential zone
-              </li>
-            </ul>
-            <div className="flex flex-wrap gap-4">
-              <a href="#contact" className="btn-primary">
-                Schedule a Site Visit
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </a>
-              <a href="#contact" className="btn-secondary">
-                Get Location Details
-              </a>
+            <div className="grid lg:grid-cols-2 gap-8">
+              {/* Image Gallery */}
+              <div className="space-y-4">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-lg">
+                  <img
+                    src={projectImages[selectedImage].src}
+                    alt={projectImages[selectedImage].label}
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                  <div className="absolute bottom-4 left-4 right-4 flex gap-2">
+                    {projectImages.map((img, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setSelectedImage(index)}
+                        className={`flex-1 h-1 rounded-full transition-all ${
+                          selectedImage === index
+                            ? "bg-primary"
+                            : "bg-background/50 hover:bg-background/70"
+                        }`}
+                        aria-label={`View ${img.label}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+                <div className="grid grid-cols-3 gap-2">
+                  {projectImages.map((img, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setSelectedImage(index)}
+                      className={`aspect-square overflow-hidden rounded-md border-2 transition-all ${
+                        selectedImage === index
+                          ? "border-primary"
+                          : "border-transparent opacity-70 hover:opacity-100"
+                      }`}
+                    >
+                      <img
+                        src={img.src}
+                        alt={img.label}
+                        className="w-full h-full object-cover"
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Content */}
+              <div>
+                <h3 className="heading-subsection mb-4">
+                  Prime Location in Jolshiri Abashon
+                </h3>
+                <p className="body-large mb-6">
+                  Located within Jolshiri Abashon, this project enjoys a rare dual
+                  advantage — open street access at the front and uninterrupted lake
+                  views at the back.
+                </p>
+                <ul className="space-y-3 mb-8">
+                  <li className="flex items-center gap-3 body-regular">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    Open frontage ensures light, visibility, and easy access
+                  </li>
+                  <li className="flex items-center gap-3 body-regular">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    Lake-facing rear creates privacy, calm, and long-term value
+                  </li>
+                  <li className="flex items-center gap-3 body-regular">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    Positioned within a carefully planned residential zone
+                  </li>
+                </ul>
+                <div className="flex flex-wrap gap-4">
+                  <a href="#contact" className="btn-primary">
+                    Schedule a Site Visit
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </a>
+                  <a href="#contact" className="btn-secondary">
+                    Get Location Details
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         );
       case "about":
         return (
           <div className="animate-fade-in">
-            <h3 className="heading-subsection mb-4">
-              Designed for Modern Living
-            </h3>
-            <p className="body-large mb-6">
-              This project reflects Xen's commitment to livable layouts, natural
-              ventilation, and practical elegance. Designed around openness and
-              balance, the project takes full advantage of its street-facing
-              front and lake-facing rear.
-            </p>
-            <p className="body-regular text-muted-foreground mb-8">
-              Natural light, ventilation, and views shape everyday living —
-              creating homes that feel spacious, calm, and connected to their
-              surroundings.
-            </p>
-            <a href="#contact" className="btn-primary">
-              <Download className="mr-2 w-4 h-4" />
-              Download Project Brochure
-            </a>
+            <div className="grid lg:grid-cols-2 gap-8">
+              {/* Image */}
+              <div className="aspect-[4/5] overflow-hidden rounded-lg">
+                <img
+                  src={projectRoadsidePerspective}
+                  alt="Jolshiri Residence - Perspective View"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Content */}
+              <div>
+                <h3 className="heading-subsection mb-4">
+                  Designed for Modern Living
+                </h3>
+                <p className="body-large mb-6">
+                  This project reflects Xen's commitment to livable layouts, natural
+                  ventilation, and practical elegance. Designed around openness and
+                  balance, the project takes full advantage of its street-facing
+                  front and lake-facing rear.
+                </p>
+                <p className="body-regular text-muted-foreground mb-8">
+                  Natural light, ventilation, and views shape everyday living —
+                  creating homes that feel spacious, calm, and connected to their
+                  surroundings.
+                </p>
+                <a href="#contact" className="btn-primary">
+                  <Download className="mr-2 w-4 h-4" />
+                  Download Project Brochure
+                </a>
+              </div>
+            </div>
           </div>
         );
       case "features":
         return (
           <div className="animate-fade-in">
-            <h3 className="heading-subsection mb-6">Key Characteristics</h3>
-            <div className="grid sm:grid-cols-2 gap-6 mb-8">
-              {features.map((feature, index) => (
-                <div
-                  key={index}
-                  className="flex items-start gap-4 p-4 bg-secondary/50 rounded-lg"
-                >
-                  <feature.icon className="w-6 h-6 text-primary flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold mb-1">{feature.title}</h4>
-                    <p className="text-sm text-muted-foreground">
-                      {feature.description}
-                    </p>
-                  </div>
+            <div className="grid lg:grid-cols-2 gap-8">
+              {/* Image */}
+              <div className="aspect-[4/5] overflow-hidden rounded-lg">
+                <img
+                  src={projectLakeside}
+                  alt="Jolshiri Residence - Lakeside View"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Content */}
+              <div>
+                <h3 className="heading-subsection mb-6">Key Characteristics</h3>
+                <div className="grid gap-4 mb-8">
+                  {features.map((feature, index) => (
+                    <div
+                      key={index}
+                      className="flex items-start gap-4 p-4 bg-secondary/50 rounded-lg"
+                    >
+                      <feature.icon className="w-6 h-6 text-primary flex-shrink-0" />
+                      <div>
+                        <h4 className="font-semibold mb-1">{feature.title}</h4>
+                        <p className="text-sm text-muted-foreground">
+                          {feature.description}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
+                <ul className="space-y-2 mb-8 text-muted-foreground">
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    Long-term value driven by permanent lake view
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    Reduced rear congestion due to open water body
+                  </li>
+                </ul>
+                <a href="#contact" className="btn-primary">
+                  Request Full Specifications
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </a>
+              </div>
             </div>
-            <ul className="space-y-2 mb-8 text-muted-foreground">
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                Long-term value driven by permanent lake view
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                Reduced rear congestion due to open water body
-              </li>
-            </ul>
-            <a href="#contact" className="btn-primary">
-              Request Full Specifications
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </a>
           </div>
         );
       case "floorplans":
@@ -226,7 +315,7 @@ const FeaturedProject = () => {
           </div>
 
           {/* Tab Content */}
-          <div className="min-h-[400px]">{renderTabContent()}</div>
+          <div className="min-h-[500px]">{renderTabContent()}</div>
         </div>
       </div>
     </section>
