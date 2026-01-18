@@ -1,4 +1,5 @@
 import { ArrowRight, Waves } from "lucide-react";
+import projectLakeside from "@/assets/project-lakeside.jpg";
 
 const projects = [
   {
@@ -8,6 +9,7 @@ const projects = [
     location: "Jolshiri Abashon, Dhaka",
     badge: "Lakeview Project",
     featured: true,
+    image: projectLakeside,
   },
   {
     id: 2,
@@ -16,6 +18,7 @@ const projects = [
     location: "Uttara, Dhaka",
     badge: null,
     featured: false,
+    image: null,
   },
   {
     id: 3,
@@ -24,6 +27,7 @@ const projects = [
     location: "Bashundhara R/A, Dhaka",
     badge: null,
     featured: false,
+    image: null,
   },
 ];
 
@@ -50,12 +54,20 @@ const ProjectsOverview = () => {
                 project.featured ? "ring-2 ring-primary" : ""
               }`}
             >
-              {/* Image Placeholder */}
+              {/* Image */}
               <div
-                className={`relative h-56 bg-gradient-to-br from-secondary to-muted ${
-                  project.featured ? "" : "opacity-80"
-                }`}
+                className={`relative h-56 overflow-hidden ${
+                  project.image ? "" : "bg-gradient-to-br from-secondary to-muted"
+                } ${project.featured ? "" : "opacity-80"}`}
               >
+                {project.image && (
+                  <img
+                    src={project.image}
+                    alt={project.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                )}
+                
                 {/* Status Badge */}
                 <div className="absolute top-4 left-4">
                   <span

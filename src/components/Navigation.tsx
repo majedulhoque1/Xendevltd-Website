@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
+import xenLogo from "@/assets/xen-logo.png";
 
 interface NavigationProps {
   isDark: boolean;
@@ -31,11 +32,13 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
       <div className="container-wide">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="/" className="flex items-center">
-            <span className="text-2xl font-serif font-semibold tracking-tight">
-              Xen
-            </span>
-            <span className="ml-1 text-sm text-muted-foreground hidden sm:inline">
+          <a href="/" className="flex items-center gap-2">
+            <img 
+              src={xenLogo} 
+              alt="Xen Developments" 
+              className="h-10 w-auto"
+            />
+            <span className="text-sm text-muted-foreground hidden sm:inline">
               Developments
             </span>
           </a>
