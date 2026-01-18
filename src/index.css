@@ -1,96 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Light Mode - Warm, Architectural */
+    --background: 40 33% 98%;
+    --foreground: 30 10% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 40 30% 97%;
+    --card-foreground: 30 10% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 40 33% 98%;
+    --popover-foreground: 30 10% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Bronze/Gold Accent */
+    --primary: 32 60% 40%;
+    --primary-foreground: 40 33% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 35 20% 92%;
+    --secondary-foreground: 30 10% 20%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 35 15% 90%;
+    --muted-foreground: 30 10% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 32 50% 45%;
+    --accent-foreground: 40 33% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 35 20% 88%;
+    --input: 35 20% 88%;
+    --ring: 32 60% 40%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* Custom tokens */
+    --hero-overlay: 30 10% 10%;
+    --gold: 38 70% 50%;
+    --gold-muted: 35 40% 75%;
+    --cream: 40 33% 96%;
+    --charcoal: 30 10% 15%;
+    --warm-gray: 30 5% 60%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar */
+    --sidebar-background: 40 30% 97%;
+    --sidebar-foreground: 30 10% 25%;
+    --sidebar-primary: 32 60% 40%;
+    --sidebar-primary-foreground: 40 33% 98%;
+    --sidebar-accent: 35 20% 92%;
+    --sidebar-accent-foreground: 30 10% 20%;
+    --sidebar-border: 35 20% 88%;
+    --sidebar-ring: 32 60% 40%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Dark Mode - Elegant Night */
+    --background: 220 20% 8%;
+    --foreground: 40 20% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 18% 12%;
+    --card-foreground: 40 20% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 220 20% 10%;
+    --popover-foreground: 40 20% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 38 70% 55%;
+    --primary-foreground: 220 20% 8%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 40 20% 90%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 220 12% 20%;
+    --muted-foreground: 40 10% 60%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 38 60% 50%;
+    --accent-foreground: 220 20% 8%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 220 12% 22%;
+    --input: 220 12% 22%;
+    --ring: 38 70% 55%;
+
+    --hero-overlay: 220 30% 5%;
+    --gold: 38 75% 55%;
+    --gold-muted: 38 30% 40%;
+    --cream: 40 15% 90%;
+    --charcoal: 220 20% 8%;
+    --warm-gray: 40 8% 55%;
+
+    --sidebar-background: 220 18% 10%;
+    --sidebar-foreground: 40 20% 90%;
+    --sidebar-primary: 38 70% 55%;
+    --sidebar-primary-foreground: 220 20% 8%;
+    --sidebar-accent: 220 15% 18%;
+    --sidebar-accent-foreground: 40 20% 90%;
+    --sidebar-border: 220 12% 22%;
+    --sidebar-ring: 38 70% 55%;
   }
 }
 
@@ -100,6 +111,159 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .heading-hero {
+    @apply text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium tracking-tight leading-tight;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .heading-section {
+    @apply text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .heading-subsection {
+    @apply text-2xl md:text-3xl font-medium tracking-tight;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .body-large {
+    @apply text-lg md:text-xl leading-relaxed text-muted-foreground;
+  }
+
+  .body-regular {
+    @apply text-base leading-relaxed;
+  }
+
+  .label-caps {
+    @apply text-xs uppercase tracking-[0.2em] font-medium text-muted-foreground;
+  }
+
+  /* Premium button styles */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-medium tracking-wide transition-all duration-300 hover:opacity-90;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-8 py-4 border border-current font-medium tracking-wide transition-all duration-300 hover:bg-foreground hover:text-background;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-6 py-3 font-medium tracking-wide transition-all duration-300 hover:opacity-70;
+  }
+
+  /* Card styles */
+  .card-premium {
+    @apply bg-card border border-border/50 shadow-sm transition-all duration-300 hover:shadow-md;
+  }
+
+  /* Tab styles */
+  .tab-vertical {
+    @apply relative px-6 py-4 text-left transition-all duration-300 border-l-2 border-transparent;
+  }
+
+  .tab-vertical.active {
+    @apply border-l-primary bg-secondary/50 text-foreground;
+  }
+
+  .tab-vertical:not(.active) {
+    @apply text-muted-foreground hover:text-foreground hover:bg-secondary/30;
+  }
+
+  /* Section spacing */
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-36;
+  }
+
+  .container-narrow {
+    @apply max-w-5xl mx-auto px-6;
+  }
+
+  .container-wide {
+    @apply max-w-7xl mx-auto px-6;
+  }
+
+  /* Animations */
+  .fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .slide-in-left {
+    animation: slideInLeft 0.5s ease-out forwards;
+  }
+
+  /* Hero overlay */
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      hsl(var(--hero-overlay) / 0.4) 0%,
+      hsl(var(--hero-overlay) / 0.6) 50%,
+      hsl(var(--hero-overlay) / 0.8) 100%
+    );
+  }
+
+  /* Gold accent line */
+  .accent-line {
+    @apply w-16 h-0.5 bg-primary;
+  }
+
+  /* Form input premium style */
+  .input-premium {
+    @apply w-full px-4 py-4 bg-transparent border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all duration-300;
+  }
+
+  /* Badge styles */
+  .badge-lakeview {
+    @apply inline-flex items-center px-3 py-1 text-xs uppercase tracking-wider bg-primary/10 text-primary border border-primary/20;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
