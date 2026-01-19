@@ -88,7 +88,7 @@ const HeroSection = ({ isDark }: HeroSectionProps) => {
           <img
             src={heroDay}
             alt="Jolshiri Lakeview Residence - Day View"
-            className="absolute inset-0 w-full h-full object-cover object-center"
+            className="absolute inset-0 w-full h-full object-contain object-bottom"
           />
         </motion.div>
 
@@ -103,7 +103,7 @@ const HeroSection = ({ isDark }: HeroSectionProps) => {
           <img
             src={heroNight}
             alt="Jolshiri Lakeview Residence - Night View"
-            className="absolute inset-0 w-full h-full object-cover object-center"
+            className="absolute inset-0 w-full h-full object-contain object-bottom"
           />
         </motion.div>
 
@@ -123,7 +123,7 @@ const HeroSection = ({ isDark }: HeroSectionProps) => {
           <img
             src={heroDay}
             alt="Jolshiri Lakeview Residence - Day View"
-            className="absolute inset-0 w-full h-full object-cover object-bottom"
+            className="absolute inset-0 w-full h-full object-contain object-bottom"
           />
         </div>
 
@@ -137,7 +137,7 @@ const HeroSection = ({ isDark }: HeroSectionProps) => {
           <img
             src={heroNight}
             alt="Jolshiri Lakeview Residence - Night View"
-            className="absolute inset-0 w-full h-full object-cover object-bottom"
+            className="absolute inset-0 w-full h-full object-contain object-bottom"
           />
         </div>
 
