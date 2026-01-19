@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import heroDay from "@/assets/hero-day.jpg";
 import heroNight from "@/assets/hero-night.jpg";
 import ThemeToggle from "./ThemeToggle";
+import xenLogo from "@/assets/xen-logo.png";
 
 interface HeroSectionProps {
   isDark: boolean;
@@ -17,41 +18,57 @@ const HeroSection = ({ isDark, onThemeToggle }: HeroSectionProps) => {
   ];
 
   return (
-    <section className="relative min-h-screen flex flex-col lg:flex-row">
-      {/* Left Panel - Text Content */}
+    <section className="relative min-h-screen flex flex-col">
+      {/* Full-Width Horizontal Navigation Bar */}
       <motion.div
-        initial={{ opacity: 0, x: -30 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-        className="w-full lg:w-[45%] bg-background flex flex-col relative z-10"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="hidden lg:flex items-center justify-between px-8 md:px-12 lg:px-16 py-5 bg-background border-b border-border relative z-20"
       >
-        {/* Horizontal Navigation - Top of Left Panel */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="hidden lg:flex items-center justify-between px-8 md:px-12 lg:px-16 py-6 border-b border-border"
-        >
-          <nav className="flex items-center gap-8">
-            {navItems.map((item, index) => (
-              <motion.a
-                key={item.label}
-                href={item.href}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                className="text-sm font-medium tracking-wide text-muted-foreground hover:text-primary transition-colors"
-              >
-                {item.label}
-              </motion.a>
-            ))}
-          </nav>
+        {/* Logo */}
+        <a href="/" className="flex items-center group">
+          <img
+            src={xenLogo}
+            alt="Xen Developments"
+            className="h-12 w-auto transition-all duration-300 group-hover:scale-105"
+          />
+        </a>
 
+        {/* Center Nav Links */}
+        <nav className="flex items-center gap-10">
+          {navItems.map((item, index) => (
+            <motion.a
+              key={item.label}
+              href={item.href}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
+              className="text-sm font-medium tracking-wide text-muted-foreground hover:text-primary transition-colors"
+            >
+              {item.label}
+            </motion.a>
+          ))}
+        </nav>
+
+        {/* Right Side - Theme Toggle & CTA */}
+        <div className="flex items-center gap-6">
           <ThemeToggle isDark={isDark} onToggle={onThemeToggle} />
-        </motion.div>
+          <a href="#contact" className="btn-sm">
+            Schedule Visit
+          </a>
+        </div>
+      </motion.div>
 
-        {/* Text Content */}
-        <div className="flex-1 flex items-center px-8 md:px-12 lg:px-16 py-16 lg:py-0">
+      {/* Split Content Area */}
+      <div className="flex-1 flex flex-col lg:flex-row">
+        {/* Left Panel - Text Content */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="w-full lg:w-[45%] bg-background flex items-center px-8 md:px-12 lg:px-16 py-16 lg:py-0 relative z-10"
+        >
           <div className="max-w-lg">
             {/* Badge */}
             <motion.div
@@ -107,43 +124,43 @@ const HeroSection = ({ isDark, onThemeToggle }: HeroSectionProps) => {
               </a>
             </motion.div>
           </div>
+        </motion.div>
+
+        {/* Right Panel - Building Image */}
+        <div className="hidden lg:block flex-1 relative overflow-hidden">
+          {/* Day Background */}
+          <motion.div
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: isDark ? 0 : 1, scale: 1 }}
+            transition={{ duration: 0.7 }}
+            className="absolute inset-0"
+          >
+            <div className="absolute inset-0 bg-gradient-to-b from-[#5ba3d9] via-[#7ec8e3] to-[#8ed1e8]" />
+            <img
+              src={heroDay}
+              alt="Jolshiri Lakeview Residence - Day View"
+              className="absolute inset-0 w-full h-full object-cover object-center"
+            />
+          </motion.div>
+
+          {/* Night Background */}
+          <motion.div
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: isDark ? 1 : 0, scale: 1 }}
+            transition={{ duration: 0.7 }}
+            className="absolute inset-0"
+          >
+            <div className="absolute inset-0 bg-gradient-to-b from-[#4a5568] via-[#718096] to-[#a0aec0]" />
+            <img
+              src={heroNight}
+              alt="Jolshiri Lakeview Residence - Night View"
+              className="absolute inset-0 w-full h-full object-cover object-center"
+            />
+          </motion.div>
+
+          {/* Subtle gradient overlay for depth */}
+          <div className="absolute inset-0 bg-gradient-to-r from-background/20 to-transparent pointer-events-none" />
         </div>
-      </motion.div>
-
-      {/* Right Panel - Building Image */}
-      <div className="hidden lg:block flex-1 relative overflow-hidden">
-        {/* Day Background */}
-        <motion.div
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: isDark ? 0 : 1, scale: 1 }}
-          transition={{ duration: 0.7 }}
-          className="absolute inset-0"
-        >
-          <div className="absolute inset-0 bg-gradient-to-b from-[#5ba3d9] via-[#7ec8e3] to-[#8ed1e8]" />
-          <img
-            src={heroDay}
-            alt="Jolshiri Lakeview Residence - Day View"
-            className="absolute inset-0 w-full h-full object-cover object-center"
-          />
-        </motion.div>
-
-        {/* Night Background */}
-        <motion.div
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: isDark ? 1 : 0, scale: 1 }}
-          transition={{ duration: 0.7 }}
-          className="absolute inset-0"
-        >
-          <div className="absolute inset-0 bg-gradient-to-b from-[#4a5568] via-[#718096] to-[#a0aec0]" />
-          <img
-            src={heroNight}
-            alt="Jolshiri Lakeview Residence - Night View"
-            className="absolute inset-0 w-full h-full object-cover object-center"
-          />
-        </motion.div>
-
-        {/* Subtle gradient overlay for depth */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background/20 to-transparent pointer-events-none" />
       </div>
 
       {/* Mobile Image - Shows below text on smaller screens */}
