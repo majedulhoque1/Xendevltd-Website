@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import xenLogo from "@/assets/xen-logo.png";
 
@@ -11,7 +11,6 @@ interface NavigationProps {
 const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isProjectsOpen, setIsProjectsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,14 +20,7 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Determine text colors based on scroll and theme state
-  const textColorClass = isScrolled 
-    ? "text-foreground/80 hover:text-primary" 
-    : "text-white/90 hover:text-white";
-
-  const logoFilterClass = isScrolled 
-    ? "" 
-    : "brightness-0 invert";
+  const logoFilterClass = isScrolled ? "" : "";
 
   return (
     <nav
@@ -42,68 +34,24 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
         <div className="flex items-center justify-between h-14">
           {/* Logo */}
           <a href="/" className="flex items-center gap-3 group">
-            <img 
-              src={xenLogo} 
-              alt="Xen Developments" 
+            <img
+              src={xenLogo}
+              alt="Xen Developments"
               className={`h-12 w-auto transition-all duration-300 group-hover:scale-105 ${logoFilterClass}`}
             />
           </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-10">
-            {/* Projects Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setIsProjectsOpen(true)}
-              onMouseLeave={() => setIsProjectsOpen(false)}
-            >
-              <button className={`flex items-center gap-1.5 text-sm font-medium transition-colors ${textColorClass}`}>
-                Projects
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isProjectsOpen ? 'rotate-180' : ''}`} />
-              </button>
-              {isProjectsOpen && (
-                <div className="absolute top-full left-0 mt-3 w-44 bg-background border border-border rounded-sm shadow-lg animate-fade-in overflow-hidden">
-                  <a
-                    href="#featured"
-                    className="block px-4 py-2.5 text-sm text-foreground hover:bg-secondary transition-colors"
-                  >
-                    On-going
-                  </a>
-                  <a
-                    href="#projects"
-                    className="block px-4 py-2.5 text-sm text-foreground hover:bg-secondary transition-colors"
-                  >
-                    Up-coming
-                  </a>
-                  <a
-                    href="#projects"
-                    className="block px-4 py-2.5 text-sm text-foreground hover:bg-secondary transition-colors"
-                  >
-                    Completed
-                  </a>
-                </div>
-              )}
-            </div>
-
-            <a
-              href="#trust"
-              className={`text-sm font-medium transition-colors ${textColorClass}`}
-            >
-              About
+          {/* Desktop - Minimal Navigation (main nav is in hero middle section) */}
+          <div className="hidden lg:flex items-center gap-6">
+            {/* Only show theme toggle and CTA when scrolled (hero has its own toggle) */}
+            {isScrolled && (
+              <>
+                <ThemeToggle isDark={isDark} onToggle={onThemeToggle} />
+              </>
+            )}
+            <a href="#contact" className="btn-sm">
+              Schedule Visit
             </a>
-            <a
-              href="#contact"
-              className={`text-sm font-medium transition-colors ${textColorClass}`}
-            >
-              Contact
-            </a>
-
-            <div className={`flex items-center gap-4 ml-4 pl-4 border-l ${isScrolled ? 'border-border/50' : 'border-white/20'}`}>
-              <ThemeToggle isDark={isDark} onToggle={onThemeToggle} />
-              <a href="#contact" className="btn-sm">
-                Schedule Visit
-              </a>
-            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -111,7 +59,7 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
             <ThemeToggle isDark={isDark} onToggle={onThemeToggle} />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`p-2 ${isScrolled ? 'text-foreground' : 'text-white'}`}
+              className="p-2 text-foreground"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (

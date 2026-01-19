@@ -27,7 +27,7 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground transition-colors duration-500">
       <Navigation isDark={isDark} onThemeToggle={handleThemeToggle} />
       <main>
-        <HeroSection isDark={isDark} />
+        <HeroSection isDark={isDark} onThemeToggle={handleThemeToggle} />
         <TrustSection />
         <FeaturedProject />
         <ProjectsOverview />
