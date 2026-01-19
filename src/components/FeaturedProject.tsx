@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   MapPin,
   Info,
@@ -63,20 +64,43 @@ const FeaturedProject = () => {
     { src: projectRoadsidePerspective, label: "Perspective View" },
   ];
 
+  const tabContentVariants = {
+    hidden: { opacity: 0, x: 20 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] as const } },
+    exit: { opacity: 0, x: -20, transition: { duration: 0.2 } },
+  };
+
   const renderTabContent = () => {
     switch (activeTab) {
       case "location":
         return (
-          <div className="animate-fade-in">
+          <motion.div
+            key="location"
+            variants={tabContentVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
             <div className="grid lg:grid-cols-2 gap-8">
               {/* Image Gallery */}
               <div className="space-y-4">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-lg">
-                  <img
-                    src={projectImages[selectedImage].src}
-                    alt={projectImages[selectedImage].label}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                  />
+                <motion.div
+                  className="relative aspect-[4/5] overflow-hidden rounded-lg"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={selectedImage}
+                      src={projectImages[selectedImage].src}
+                      alt={projectImages[selectedImage].label}
+                      className="w-full h-full object-cover"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </AnimatePresence>
                   <div className="absolute bottom-4 left-4 right-4 flex gap-2">
                     {projectImages.map((img, index) => (
                       <button
@@ -91,12 +115,14 @@ const FeaturedProject = () => {
                       />
                     ))}
                   </div>
-                </div>
+                </motion.div>
                 <div className="grid grid-cols-3 gap-2">
                   {projectImages.map((img, index) => (
-                    <button
+                    <motion.button
                       key={index}
                       onClick={() => setSelectedImage(index)}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                       className={`aspect-square overflow-hidden rounded-md border-2 transition-all ${
                         selectedImage === index
                           ? "border-primary"
@@ -108,7 +134,7 @@ const FeaturedProject = () => {
                         alt={img.label}
                         className="w-full h-full object-cover"
                       />
-                    </button>
+                    </motion.button>
                   ))}
                 </div>
               </div>
@@ -124,18 +150,22 @@ const FeaturedProject = () => {
                   views at the back.
                 </p>
                 <ul className="space-y-3 mb-8">
-                  <li className="flex items-center gap-3 body-regular">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    Open frontage ensures light, visibility, and easy access
-                  </li>
-                  <li className="flex items-center gap-3 body-regular">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    Lake-facing rear creates privacy, calm, and long-term value
-                  </li>
-                  <li className="flex items-center gap-3 body-regular">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    Positioned within a carefully planned residential zone
-                  </li>
+                  {[
+                    "Open frontage ensures light, visibility, and easy access",
+                    "Lake-facing rear creates privacy, calm, and long-term value",
+                    "Positioned within a carefully planned residential zone",
+                  ].map((item, index) => (
+                    <motion.li
+                      key={index}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.2 + index * 0.1 }}
+                      className="flex items-center gap-3 body-regular"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                      {item}
+                    </motion.li>
+                  ))}
                 </ul>
                 <div className="flex flex-wrap gap-4">
                   <a href="#contact" className="btn-primary">
@@ -148,20 +178,30 @@ const FeaturedProject = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         );
       case "about":
         return (
-          <div className="animate-fade-in">
+          <motion.div
+            key="about"
+            variants={tabContentVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
             <div className="grid lg:grid-cols-2 gap-8">
               {/* Image */}
-              <div className="aspect-[4/5] overflow-hidden rounded-lg">
+              <motion.div
+                className="aspect-[4/5] overflow-hidden rounded-lg"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              >
                 <img
                   src={projectRoadsidePerspective}
                   alt="Jolshiri Residence - Perspective View"
                   className="w-full h-full object-cover"
                 />
-              </div>
+              </motion.div>
 
               {/* Content */}
               <div>
@@ -185,28 +225,42 @@ const FeaturedProject = () => {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
         );
       case "features":
         return (
-          <div className="animate-fade-in">
+          <motion.div
+            key="features"
+            variants={tabContentVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
             <div className="grid lg:grid-cols-2 gap-8">
               {/* Image */}
-              <div className="aspect-[4/5] overflow-hidden rounded-lg">
+              <motion.div
+                className="aspect-[4/5] overflow-hidden rounded-lg"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              >
                 <img
                   src={projectLakeside}
                   alt="Jolshiri Residence - Lakeside View"
                   className="w-full h-full object-cover"
                 />
-              </div>
+              </motion.div>
 
               {/* Content */}
               <div>
                 <h3 className="heading-subsection mb-6">Key Characteristics</h3>
                 <div className="grid gap-4 mb-8">
                   {features.map((feature, index) => (
-                    <div
+                    <motion.div
                       key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.1 + index * 0.1 }}
+                      whileHover={{ x: 5 }}
                       className="flex items-start gap-4 p-4 bg-secondary/50 rounded-lg"
                     >
                       <feature.icon className="w-6 h-6 text-primary flex-shrink-0" />
@@ -216,7 +270,7 @@ const FeaturedProject = () => {
                           {feature.description}
                         </p>
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
                 <ul className="space-y-2 mb-8 text-muted-foreground">
@@ -235,11 +289,17 @@ const FeaturedProject = () => {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
         );
       case "floorplans":
         return (
-          <div className="animate-fade-in">
+          <motion.div
+            key="floorplans"
+            variants={tabContentVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
             <h3 className="heading-subsection mb-4">Floor Plans</h3>
             <p className="text-muted-foreground mb-6">
               Select layouts designed to maximize lake-facing views and natural
@@ -247,8 +307,12 @@ const FeaturedProject = () => {
             </p>
             <div className="space-y-4 mb-8">
               {floorPlans.map((plan, index) => (
-                <div
+                <motion.div
                   key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + index * 0.1 }}
+                  whileHover={{ scale: 1.02, x: 10 }}
                   className="flex items-center justify-between p-6 border border-border rounded-lg hover:border-primary transition-colors cursor-pointer group"
                 >
                   <div className="flex items-center gap-6">
@@ -263,7 +327,7 @@ const FeaturedProject = () => {
                     </div>
                   </div>
                   <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                </div>
+                </motion.div>
               ))}
             </div>
             <div className="flex flex-wrap gap-4">
@@ -275,7 +339,7 @@ const FeaturedProject = () => {
                 Book a Private Visit
               </a>
             </div>
-          </div>
+          </motion.div>
         );
       default:
         return null;
@@ -286,36 +350,64 @@ const FeaturedProject = () => {
     <section id="featured" className="section-padding">
       <div className="container-wide">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
           <span className="label-caps mb-4 block">Featured Project</span>
           <h2 className="heading-section mb-4">Jolshiri Lakeview Residence</h2>
           <div className="accent-line mx-auto mb-6" />
-          <div className="badge-lakeview">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="badge-lakeview"
+          >
             <Waves className="w-3 h-3 mr-2" />
             Lakeview Project • On-going
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Tab Layout */}
         <div className="grid lg:grid-cols-[280px_1fr] gap-8 lg:gap-12">
           {/* Vertical Tabs */}
-          <div className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0">
-            {tabs.map((tab) => (
-              <button
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0"
+          >
+            {tabs.map((tab, index) => (
+              <motion.button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                whileHover={{ x: 5 }}
+                whileTap={{ scale: 0.98 }}
                 className={`tab-vertical flex items-center gap-3 whitespace-nowrap ${
                   activeTab === tab.id ? "active" : ""
                 }`}
               >
                 <tab.icon className="w-5 h-5" />
                 {tab.label}
-              </button>
+              </motion.button>
             ))}
-          </div>
+          </motion.div>
 
           {/* Tab Content */}
-          <div className="min-h-[500px]">{renderTabContent()}</div>
+          <div className="min-h-[500px]">
+            <AnimatePresence mode="wait">
+              {renderTabContent()}
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import heroDay from "@/assets/hero-day.jpg";
 import heroNight from "@/assets/hero-night.jpg";
 
@@ -49,34 +50,56 @@ const HeroSection = ({ isDark }: HeroSectionProps) => {
 
       {/* Content */}
       <div className="relative z-10 container-wide text-center text-white pt-20">
-        <div
+        <motion.div
           key={isDark ? "night" : "day"}
-          className="animate-fade-up"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 border border-white/30 rounded-full backdrop-blur-sm bg-black/20">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="inline-flex items-center gap-2 px-4 py-2 mb-8 border border-white/30 rounded-full backdrop-blur-sm bg-black/20"
+          >
             <span className="w-2 h-2 bg-gold rounded-full animate-pulse" />
             <span className="text-sm tracking-wider uppercase">
               Lakeview Project
             </span>
-          </div>
+          </motion.div>
 
           {/* Headline */}
-          <h1 className="heading-hero max-w-4xl mx-auto mb-6 drop-shadow-lg">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="heading-hero max-w-4xl mx-auto mb-6 drop-shadow-lg"
+          >
             {isDark
               ? "An Address Framed by Light, Space, and Water"
               : "Open to the City. Open to the Lake."}
-          </h1>
+          </motion.h1>
 
           {/* Subline */}
-          <p className="body-large text-white/90 max-w-2xl mx-auto mb-10 drop-shadow-md">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="body-large text-white/90 max-w-2xl mx-auto mb-10 drop-shadow-md"
+          >
             {isDark
               ? "Street-facing openness in front. Tranquil lake views behind. Designed for privacy, security, and long-term value."
               : "A thoughtfully designed residential project with open street frontage and uninterrupted lake views at the back."}
-          </p>
+          </motion.p>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
             <a
               href="#contact"
               className="btn-primary group"
@@ -90,13 +113,22 @@ const HeroSection = ({ isDark }: HeroSectionProps) => {
             >
               {isDark ? "Download Brochure" : "View Floor Plans"}
             </a>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
-          <div className="w-px h-16 bg-gradient-to-b from-white/50 to-transparent" />
-        </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        >
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="w-px h-16 bg-gradient-to-b from-white/50 to-transparent"
+          />
+        </motion.div>
       </div>
     </section>
   );

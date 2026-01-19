@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Send, Phone, Download, Shield } from "lucide-react";
 
 const interestOptions = [
@@ -28,7 +29,12 @@ const LeadCapture = () => {
       <div className="container-narrow">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left Content */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
             <span className="label-caps mb-4 block">Get In Touch</span>
             <h2 className="heading-section mb-6">Interested in This Project?</h2>
             <div className="accent-line mb-8" />
@@ -40,8 +46,13 @@ const LeadCapture = () => {
 
             {/* Quick Actions */}
             <div className="space-y-4">
-              <a
+              <motion.a
                 href="tel:+8801700000000"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                whileHover={{ x: 5, transition: { duration: 0.2 } }}
                 className="flex items-center gap-4 p-4 bg-secondary/50 rounded-lg hover:bg-secondary transition-colors"
               >
                 <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
@@ -53,10 +64,15 @@ const LeadCapture = () => {
                     +880 1700 000 000
                   </p>
                 </div>
-              </a>
+              </motion.a>
 
-              <a
+              <motion.a
                 href="#"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                whileHover={{ x: 5, transition: { duration: 0.2 } }}
                 className="flex items-center gap-4 p-4 bg-secondary/50 rounded-lg hover:bg-secondary transition-colors"
               >
                 <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
@@ -68,14 +84,25 @@ const LeadCapture = () => {
                     Get complete project details
                   </p>
                 </div>
-              </a>
+              </motion.a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Content - Form */}
-          <div className="card-premium p-8 lg:p-10">
+          <motion.div
+            initial={{ opacity: 0, x: 40, scale: 0.95 }}
+            whileInView={{ opacity: 1, x: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="card-premium p-8 lg:p-10"
+          >
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.1 }}
+              >
                 <label
                   htmlFor="name"
                   className="block text-sm font-medium mb-2"
@@ -93,9 +120,14 @@ const LeadCapture = () => {
                   className="input-premium"
                   placeholder="Enter your full name"
                 />
-              </div>
+              </motion.div>
 
-              <div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+              >
                 <label
                   htmlFor="phone"
                   className="block text-sm font-medium mb-2"
@@ -113,9 +145,14 @@ const LeadCapture = () => {
                   className="input-premium"
                   placeholder="+880 1XXX XXX XXX"
                 />
-              </div>
+              </motion.div>
 
-              <div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.3 }}
+              >
                 <label
                   htmlFor="interest"
                   className="block text-sm font-medium mb-2"
@@ -138,20 +175,35 @@ const LeadCapture = () => {
                     </option>
                   ))}
                 </select>
-              </div>
+              </motion.div>
 
-              <button type="submit" className="btn-primary w-full">
+              <motion.button
+                type="submit"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.4 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="btn-primary w-full"
+              >
                 Request a Call Back
                 <Send className="ml-2 w-4 h-4" />
-              </button>
+              </motion.button>
 
               {/* Trust Note */}
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.5 }}
+                className="flex items-center gap-2 text-sm text-muted-foreground"
+              >
                 <Shield className="w-4 h-4" />
                 <span>We respond within 24 hours. No spam.</span>
-              </div>
+              </motion.div>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import { ArrowRight, Waves } from "lucide-react";
+import { motion } from "framer-motion";
 import projectLakeside from "@/assets/project-lakeside.jpg";
 
 const projects = [
@@ -36,20 +37,31 @@ const ProjectsOverview = () => {
     <section id="projects" className="section-padding bg-secondary/30">
       <div className="container-wide">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
           <span className="label-caps mb-4 block">Our Portfolio</span>
           <h2 className="heading-section mb-4">Our Developments</h2>
           <div className="accent-line mx-auto mb-6" />
           <p className="body-large max-w-2xl mx-auto">
             Homes built with care, clarity, and long-term vision.
           </p>
-        </div>
+        </motion.div>
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
-            <div
+          {projects.map((project, index) => (
+            <motion.div
               key={project.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.15 }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
               className={`card-premium overflow-hidden group ${
                 project.featured ? "ring-2 ring-primary" : ""
               }`}
@@ -61,10 +73,12 @@ const ProjectsOverview = () => {
                 } ${project.featured ? "" : "opacity-80"}`}
               >
                 {project.image && (
-                  <img
+                  <motion.img
                     src={project.image}
                     alt={project.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
                   />
                 )}
                 
@@ -116,16 +130,22 @@ const ProjectsOverview = () => {
                   <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover/link:translate-x-1" />
                 </a>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* View All CTA */}
-        <div className="text-center mt-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="text-center mt-12"
+        >
           <a href="#contact" className="btn-secondary">
             View All Projects
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
