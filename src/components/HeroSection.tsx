@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import heroDay from "@/assets/hero-day.jpg";
 import heroNight from "@/assets/hero-night.jpg";
 
@@ -9,8 +10,16 @@ interface HeroSectionProps {
 }
 
 const HeroSection = ({ isDark }: HeroSectionProps) => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"]
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+
   return (
-    <section className="relative min-h-screen flex flex-col lg:flex-row">
+    <section ref={sectionRef} className="relative min-h-screen flex flex-col lg:flex-row">
       {/* Left Panel - Text Content */}
       <motion.div
         initial={{ opacity: 0, x: -30 }}
@@ -82,7 +91,8 @@ const HeroSection = ({ isDark }: HeroSectionProps) => {
           initial={{ opacity: 0, scale: 1.05 }}
           animate={{ opacity: isDark ? 0 : 1, scale: 1 }}
           transition={{ duration: 0.7 }}
-          className="absolute inset-0"
+          style={{ y }}
+          className="absolute inset-0 h-[120%]"
         >
           <div className="absolute inset-0 bg-gradient-to-b from-[#5ba3d9] via-[#7ec8e3] to-[#8ed1e8]" />
           <img
@@ -97,7 +107,8 @@ const HeroSection = ({ isDark }: HeroSectionProps) => {
           initial={{ opacity: 0, scale: 1.05 }}
           animate={{ opacity: isDark ? 1 : 0, scale: 1 }}
           transition={{ duration: 0.7 }}
-          className="absolute inset-0"
+          style={{ y }}
+          className="absolute inset-0 h-[120%]"
         >
           <div className="absolute inset-0 bg-gradient-to-b from-[#4a5568] via-[#718096] to-[#a0aec0]" />
           <img
