@@ -25,7 +25,7 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
           ? "bg-background/98 backdrop-blur-lg border-b border-border/50 shadow-sm py-2"
-          : "bg-background/80 backdrop-blur-sm py-4"
+          : "bg-transparent py-4"
       }`}
     >
       <div className="container-wide">
