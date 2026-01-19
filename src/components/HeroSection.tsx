@@ -20,8 +20,46 @@ const HeroSection = ({ isDark }: HeroSectionProps) => {
 
   return (
     <section ref={sectionRef} className="relative min-h-screen">
-      <div className="max-w-7xl mx-auto px-6 h-full min-h-screen flex flex-col lg:flex-row">
-        {/* Left Panel - Text Content */}
+      {/* Right Panel - Building Image (positioned absolutely to extend to viewport edge) */}
+      <div className="hidden lg:block absolute top-0 right-0 bottom-0 w-1/2 overflow-hidden">
+        {/* Day Background */}
+        <motion.div
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: isDark ? 0 : 1, scale: 1 }}
+          transition={{ duration: 0.7 }}
+          style={{ y }}
+          className="absolute inset-0 h-[120%]"
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-[#5ba3d9] via-[#7ec8e3] to-[#8ed1e8]" />
+          <img
+            src={heroDay}
+            alt="Jolshiri Lakeview Residence - Day View"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+          />
+        </motion.div>
+
+        {/* Night Background */}
+        <motion.div
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: isDark ? 1 : 0, scale: 1 }}
+          transition={{ duration: 0.7 }}
+          style={{ y }}
+          className="absolute inset-0 h-[120%]"
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-[#4a5568] via-[#718096] to-[#a0aec0]" />
+          <img
+            src={heroNight}
+            alt="Jolshiri Lakeview Residence - Night View"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+          />
+        </motion.div>
+
+        {/* Subtle gradient overlay for depth */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background/20 to-transparent pointer-events-none" />
+      </div>
+
+      {/* Left Panel - Text Content (within container) */}
+      <div className="max-w-7xl mx-auto px-6 h-full min-h-screen flex">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
@@ -84,44 +122,6 @@ const HeroSection = ({ isDark }: HeroSectionProps) => {
             </motion.div>
           </div>
         </motion.div>
-
-        {/* Right Panel - Building Image */}
-        <div className="hidden lg:block w-1/2 relative overflow-hidden">
-          {/* Day Background */}
-          <motion.div
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: isDark ? 0 : 1, scale: 1 }}
-            transition={{ duration: 0.7 }}
-            style={{ y }}
-            className="absolute inset-0 h-[120%]"
-          >
-            <div className="absolute inset-0 bg-gradient-to-b from-[#5ba3d9] via-[#7ec8e3] to-[#8ed1e8]" />
-            <img
-              src={heroDay}
-              alt="Jolshiri Lakeview Residence - Day View"
-              className="absolute inset-0 w-full h-full object-cover object-center"
-            />
-          </motion.div>
-
-          {/* Night Background */}
-          <motion.div
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: isDark ? 1 : 0, scale: 1 }}
-            transition={{ duration: 0.7 }}
-            style={{ y }}
-            className="absolute inset-0 h-[120%]"
-          >
-            <div className="absolute inset-0 bg-gradient-to-b from-[#4a5568] via-[#718096] to-[#a0aec0]" />
-            <img
-              src={heroNight}
-              alt="Jolshiri Lakeview Residence - Night View"
-              className="absolute inset-0 w-full h-full object-cover object-center"
-            />
-          </motion.div>
-
-          {/* Subtle gradient overlay for depth */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background/20 to-transparent pointer-events-none" />
-        </div>
       </div>
 
       {/* Mobile Image - Shows below text on smaller screens */}
