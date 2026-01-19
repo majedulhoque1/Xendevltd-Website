@@ -35,7 +35,9 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
             <img
               src={xenLogo}
               alt="Xen Developments"
-              className="h-12 w-auto transition-all duration-300 group-hover:scale-105"
+              className={`h-12 w-auto transition-all duration-300 group-hover:scale-105 ${
+                isDark ? "brightness-0 invert" : ""
+              }`}
             />
           </a>
 
