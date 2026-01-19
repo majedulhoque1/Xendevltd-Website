@@ -111,11 +111,11 @@ const HeroSection = ({ isDark }: HeroSectionProps) => {
             style={{ y }}
             className="absolute inset-0 h-[120%]"
           >
-            <div className="absolute inset-0 bg-gradient-to-b from-[#1a1f2e] via-[#2d3748] to-[#1a1f2e]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#4a5568] via-[#718096] to-[#a0aec0]" />
             <img
               src={heroNight}
               alt="Jolshiri Lakeview Residence - Night View"
-              className="absolute inset-0 w-full h-full object-contain object-center"
+              className="absolute inset-0 w-full h-full object-cover object-center"
             />
           </motion.div>
 
