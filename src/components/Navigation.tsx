@@ -20,14 +20,12 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const logoFilterClass = isScrolled ? "" : "";
-
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
           ? "bg-background/98 backdrop-blur-lg border-b border-border/50 shadow-sm py-2"
-          : "bg-transparent py-4"
+          : "bg-background/80 backdrop-blur-sm py-4"
       }`}
     >
       <div className="container-wide">
@@ -37,21 +35,37 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
             <img
               src={xenLogo}
               alt="Xen Developments"
-              className={`h-12 w-auto transition-all duration-300 group-hover:scale-105 ${logoFilterClass}`}
+              className="h-12 w-auto transition-all duration-300 group-hover:scale-105"
             />
           </a>
 
-          {/* Desktop - Minimal Navigation (main nav is in hero middle section) */}
-          <div className="hidden lg:flex items-center gap-6">
-            {/* Only show theme toggle and CTA when scrolled (hero has its own toggle) */}
-            {isScrolled && (
-              <>
-                <ThemeToggle isDark={isDark} onToggle={onThemeToggle} />
-              </>
-            )}
-            <a href="#contact" className="btn-sm">
-              Schedule Visit
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-10">
+            <a
+              href="#projects"
+              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+            >
+              Projects
             </a>
+            <a
+              href="#trust"
+              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+            >
+              About
+            </a>
+            <a
+              href="#contact"
+              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+            >
+              Contact
+            </a>
+
+            <div className="flex items-center gap-4 ml-4 pl-4 border-l border-border/50">
+              <ThemeToggle isDark={isDark} onToggle={onThemeToggle} />
+              <a href="#contact" className="btn-sm">
+                Schedule Visit
+              </a>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -77,7 +91,7 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
         <div className="lg:hidden bg-background border-t border-border animate-fade-in">
           <div className="container-wide py-6 space-y-4">
             <a
-              href="#featured"
+              href="#projects"
               className="block py-2 text-lg font-medium"
               onClick={() => setIsMobileMenuOpen(false)}
             >
