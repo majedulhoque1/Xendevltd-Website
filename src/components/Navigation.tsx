@@ -25,53 +25,50 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-background/95 backdrop-blur-md border-b border-border shadow-sm"
-          : "bg-transparent"
+          ? "bg-background/98 backdrop-blur-lg border-b border-border/50 shadow-sm py-2"
+          : "bg-transparent py-4"
       }`}
     >
       <div className="container-wide">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2">
+          <a href="/" className="flex items-center gap-3 group">
             <img 
               src={xenLogo} 
               alt="Xen Developments" 
-              className="h-10 w-auto"
+              className="h-14 w-auto transition-transform duration-300 group-hover:scale-105"
             />
-            <span className="text-sm text-muted-foreground hidden sm:inline">
-              Developments
-            </span>
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-10">
             {/* Projects Dropdown */}
             <div
               className="relative"
               onMouseEnter={() => setIsProjectsOpen(true)}
               onMouseLeave={() => setIsProjectsOpen(false)}
             >
-              <button className="flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary">
+              <button className="flex items-center gap-1.5 text-sm font-medium text-foreground/80 transition-colors hover:text-primary">
                 Projects
-                <ChevronDown className="w-4 h-4" />
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isProjectsOpen ? 'rotate-180' : ''}`} />
               </button>
               {isProjectsOpen && (
-                <div className="absolute top-full left-0 mt-2 w-48 bg-background border border-border rounded-md shadow-lg animate-fade-in">
+                <div className="absolute top-full left-0 mt-3 w-44 bg-background border border-border rounded-sm shadow-lg animate-fade-in overflow-hidden">
                   <a
                     href="#featured"
-                    className="block px-4 py-3 text-sm hover:bg-secondary transition-colors"
+                    className="block px-4 py-2.5 text-sm hover:bg-secondary transition-colors"
                   >
                     On-going
                   </a>
                   <a
                     href="#projects"
-                    className="block px-4 py-3 text-sm hover:bg-secondary transition-colors"
+                    className="block px-4 py-2.5 text-sm hover:bg-secondary transition-colors"
                   >
                     Up-coming
                   </a>
                   <a
                     href="#projects"
-                    className="block px-4 py-3 text-sm hover:bg-secondary transition-colors"
+                    className="block px-4 py-2.5 text-sm hover:bg-secondary transition-colors"
                   >
                     Completed
                   </a>
@@ -81,22 +78,23 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
 
             <a
               href="#trust"
-              className="text-sm font-medium transition-colors hover:text-primary"
+              className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
             >
               About
             </a>
             <a
               href="#contact"
-              className="text-sm font-medium transition-colors hover:text-primary"
+              className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
             >
               Contact
             </a>
 
-            <ThemeToggle isDark={isDark} onToggle={onThemeToggle} />
-
-            <a href="#contact" className="btn-primary text-sm">
-              Schedule a Site Visit
-            </a>
+            <div className="flex items-center gap-4 ml-4 pl-4 border-l border-border/50">
+              <ThemeToggle isDark={isDark} onToggle={onThemeToggle} />
+              <a href="#contact" className="btn-sm">
+                Schedule Visit
+              </a>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}

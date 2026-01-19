@@ -24,13 +24,12 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <a href="/" className="inline-flex items-center gap-3 mb-6">
+            <a href="/" className="inline-block mb-6">
               <img 
                 src={xenLogo} 
                 alt="Xen Developments" 
-                className="h-12 w-auto brightness-0 invert"
+                className="h-14 w-auto brightness-0 invert"
               />
-              <span className="text-sm opacity-70">Developments Ltd</span>
             </a>
             <p className="text-background/70 max-w-md mb-6">
               Creating premium residential spaces in Dhaka with a focus on
@@ -98,17 +97,17 @@ const Footer = () => {
             <p className="text-background/70">
               Ready to find your dream home?
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-3">
               <a
                 href="#contact"
-                className="inline-flex items-center px-6 py-3 bg-background text-foreground font-medium transition-opacity hover:opacity-90"
+                className="inline-flex items-center justify-center h-12 px-7 text-sm bg-background text-foreground font-medium transition-opacity hover:opacity-90"
               >
                 Schedule a Site Visit
                 <ArrowRight className="ml-2 w-4 h-4" />
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center px-6 py-3 border border-background/30 font-medium transition-colors hover:bg-background/10"
+                className="inline-flex items-center justify-center h-12 px-7 text-sm border border-background/30 font-medium transition-colors hover:bg-background/10"
               >
                 Download Brochure
               </a>
