@@ -98,7 +98,7 @@ const HeroSection = ({ isDark }: HeroSectionProps) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3"
           >
             <a
               href="#contact"
@@ -109,7 +109,7 @@ const HeroSection = ({ isDark }: HeroSectionProps) => {
             </a>
             <a
               href="#featured"
-              className="btn-secondary text-white border-white hover:bg-white hover:text-charcoal"
+              className="btn-secondary text-white border-white/60 hover:bg-white hover:text-foreground hover:border-white"
             >
               {isDark ? "Download Brochure" : "View Floor Plans"}
             </a>
