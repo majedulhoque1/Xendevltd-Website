@@ -39,8 +39,8 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
             />
           </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-10">
+          {/* Desktop Navigation - Centered Links */}
+          <div className="hidden lg:flex items-center justify-center absolute left-1/2 -translate-x-1/2 gap-16">
             <a
               href="#projects"
               className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
@@ -59,13 +59,14 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
             >
               Contact
             </a>
+          </div>
 
-            <div className="flex items-center gap-4 ml-4 pl-4 border-l border-border/50">
-              <ThemeToggle isDark={isDark} onToggle={onThemeToggle} />
-              <a href="#contact" className="btn-sm">
-                Schedule Visit
-              </a>
-            </div>
+          {/* Right Side - Theme Toggle & CTA */}
+          <div className="hidden lg:flex items-center gap-4">
+            <ThemeToggle isDark={isDark} onToggle={onThemeToggle} />
+            <a href="#contact" className="btn-sm">
+              Schedule Visit
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
