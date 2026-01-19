@@ -44,21 +44,21 @@ const HeroSection = ({ isDark }: HeroSectionProps) => {
         <div className="absolute inset-x-0 top-0 h-72 bg-gradient-to-b from-black/40 via-black/20 to-transparent" />
       </div>
 
-      {/* Content - Positioned at top */}
-      <div className="relative z-10 container-wide pt-32 md:pt-36">
+      {/* Content - Positioned over water area */}
+      <div className="relative z-10 flex-1 flex flex-col justify-end container-wide pb-32 md:pb-40">
         <motion.div
           key={isDark ? "night" : "day"}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="max-w-xl"
+          className="text-center max-w-2xl mx-auto"
         >
           {/* Badge */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 mb-6 border border-white/25 rounded-full backdrop-blur-sm bg-black/15"
+            className="inline-flex items-center gap-2 px-3 py-1.5 mb-4 border border-white/25 rounded-full backdrop-blur-sm bg-black/15"
           >
             <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
             <span className="text-xs tracking-widest uppercase text-white/90">
@@ -71,7 +71,7 @@ const HeroSection = ({ isDark }: HeroSectionProps) => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-tight text-white drop-shadow-md mb-4"
+            className="text-2xl md:text-3xl lg:text-4xl font-medium tracking-tight leading-tight text-white drop-shadow-lg mb-3"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             {isDark
@@ -84,19 +84,19 @@ const HeroSection = ({ isDark }: HeroSectionProps) => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            className="text-base md:text-lg text-white/85 max-w-md mb-8 leading-relaxed"
+            className="text-sm md:text-base text-white/90 max-w-lg mx-auto mb-6 leading-relaxed drop-shadow-md"
           >
             {isDark
               ? "Designed for privacy, security, and long-term value."
               : "A thoughtfully designed residential project with uninterrupted lake views."}
           </motion.p>
 
-          {/* CTAs */}
+          {/* CTAs - Side by side */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
-            className="flex flex-wrap items-center gap-3"
+            className="flex items-center justify-center gap-3"
           >
             <a
               href="#contact"
