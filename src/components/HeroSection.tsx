@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import heroDay from "@/assets/hero-day.jpg";
 import heroNight from "@/assets/hero-night.jpg";
+import xenLogo from "@/assets/xen-logo.png";
 
 interface HeroSectionProps {
   isDark: boolean;
@@ -16,53 +17,66 @@ const HeroSection = ({ isDark }: HeroSectionProps) => {
         initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="w-full lg:w-[45%] bg-background flex items-center px-8 md:px-12 lg:px-16 py-24 lg:py-0 relative z-10"
+        className="w-full lg:w-[45%] bg-background flex flex-col px-8 md:px-12 lg:px-16 py-24 lg:py-12 relative z-10"
       >
-        <div className="max-w-lg">
+        {/* Logo at top */}
+        <motion.a
+          href="/"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mb-auto"
+        >
+          <img
+            src={xenLogo}
+            alt="Xen Developments"
+            className="h-14 w-auto"
+          />
+        </motion.a>
+
+        {/* Content Row - Badge, Text, CTAs in one line */}
+        <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10 my-auto">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 mb-6 border border-border rounded-full bg-secondary/50"
+            className="inline-flex items-center gap-2 px-3 py-1.5 border border-border rounded-full bg-secondary/50 shrink-0"
           >
             <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
-            <span className="text-xs tracking-widest uppercase text-muted-foreground">
+            <span className="text-xs tracking-widest uppercase text-muted-foreground whitespace-nowrap">
               Lakeview Project
             </span>
           </motion.div>
 
-          {/* Headline */}
-          <motion.h1
+          {/* Text Content */}
+          <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-tight text-foreground mb-4"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            className="flex-1"
           >
-            {isDark
-              ? "An Address Framed by Light, Space, and Water"
-              : "Open to the City. Open to the Lake."}
-          </motion.h1>
-
-          {/* Subline */}
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="text-base md:text-lg text-muted-foreground max-w-md mb-8 leading-relaxed"
-          >
-            {isDark
-              ? "Designed for privacy, security, and long-term value."
-              : "A thoughtfully designed residential project with uninterrupted lake views."}
-          </motion.p>
+            <h1
+              className="text-2xl md:text-3xl lg:text-4xl font-medium tracking-tight leading-tight text-foreground mb-2"
+              style={{ fontFamily: "'Playfair Display', serif" }}
+            >
+              {isDark
+                ? "An Address Framed by Light, Space, and Water"
+                : "Open to the City. Open to the Lake."}
+            </h1>
+            <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+              {isDark
+                ? "Designed for privacy, security, and long-term value."
+                : "A thoughtfully designed residential project with uninterrupted lake views."}
+            </p>
+          </motion.div>
 
           {/* CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
-            className="flex flex-wrap items-center gap-3"
+            className="flex items-center gap-3 shrink-0"
           >
             <a href="#contact" className="btn-primary group">
               {isDark ? "Book a Visit" : "Schedule Visit"}
@@ -73,6 +87,9 @@ const HeroSection = ({ isDark }: HeroSectionProps) => {
             </a>
           </motion.div>
         </div>
+
+        {/* Spacer for balance */}
+        <div className="mt-auto" />
       </motion.div>
 
       {/* Right Panel - Building Image */}
