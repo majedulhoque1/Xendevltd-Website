@@ -19,8 +19,8 @@ const HeroSection = ({ isDark }: HeroSectionProps) => {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen">
-      <div className="max-w-7xl mx-auto px-6 h-full min-h-screen flex flex-col lg:flex-row">
+    <section ref={sectionRef} className="relative min-h-screen pt-20">
+      <div className="max-w-7xl mx-auto px-6 h-full min-h-[calc(100vh-5rem)] flex flex-col lg:flex-row">
         {/* Left Panel - Text Content */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
