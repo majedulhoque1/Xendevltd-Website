@@ -44,14 +44,14 @@ const HeroSection = ({ isDark }: HeroSectionProps) => {
         <div className="absolute inset-x-0 top-0 h-72 bg-gradient-to-b from-black/40 via-black/20 to-transparent" />
       </div>
 
-      {/* Content - Positioned at top */}
-      <div className="relative z-10 container-wide pt-32 md:pt-36">
+      {/* Content - Positioned at top-left with space for building */}
+      <div className="relative z-10 container-wide pt-28 md:pt-32 lg:pt-40">
         <motion.div
           key={isDark ? "night" : "day"}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="max-w-xl"
+          className="max-w-lg"
         >
           {/* Badge */}
           <motion.div
