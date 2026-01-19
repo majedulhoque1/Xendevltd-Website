@@ -16,7 +16,7 @@ const HeroSection = ({ isDark }: HeroSectionProps) => {
         initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="w-full lg:w-[45%] bg-background flex items-center px-8 md:px-12 lg:px-16 py-24 lg:py-0 relative z-10"
+        className="w-full lg:w-1/2 bg-background flex items-center px-8 md:px-12 lg:px-16 py-24 lg:py-0 relative z-10"
       >
         <div className="max-w-lg">
           {/* Badge */}
@@ -76,7 +76,7 @@ const HeroSection = ({ isDark }: HeroSectionProps) => {
       </motion.div>
 
       {/* Right Panel - Building Image */}
-      <div className="hidden lg:block flex-1 relative overflow-hidden">
+      <div className="hidden lg:block w-1/2 relative overflow-hidden">
         {/* Day Background */}
         <motion.div
           initial={{ opacity: 0, scale: 1.05 }}
