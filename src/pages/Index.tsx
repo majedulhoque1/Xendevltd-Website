@@ -6,6 +6,7 @@ import FeaturedProject from "@/components/FeaturedProject";
 import ProjectsOverview from "@/components/ProjectsOverview";
 import LeadCapture from "@/components/LeadCapture";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Index = () => {
   const [isDark, setIsDark] = useState(false);
@@ -34,6 +35,7 @@ const Index = () => {
         <LeadCapture />
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };
