@@ -1,9 +1,10 @@
 import { ArrowLeft, Waves, MapPin, Calendar, Home, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link, useParams, Navigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useTheme } from "@/contexts/ThemeContext";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { useState, useEffect } from "react";
 import projectLakeside from "@/assets/project-lakeside.jpg";
 
 const projects = [
@@ -56,7 +57,7 @@ const projects = [
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
-  const [isDark, setIsDark] = useState(false);
+  const { isDark, toggleTheme } = useTheme();
 
   const project = projects.find((p) => p.slug === slug);
 
@@ -64,25 +65,13 @@ const ProjectDetail = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDark]);
-
-  const handleThemeToggle = () => {
-    setIsDark(!isDark);
-  };
-
   if (!project) {
     return <Navigate to="/projects" replace />;
   }
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-500">
-      <Navigation isDark={isDark} onThemeToggle={handleThemeToggle} />
+      <Navigation isDark={isDark} onThemeToggle={toggleTheme} />
 
       <main className="pt-20">
         {/* Breadcrumb */}

@@ -1,28 +1,17 @@
 import { ArrowLeft, Building2, Users, Award, Target, Heart, Shield } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useTheme } from "@/contexts/ThemeContext";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 const About = () => {
-  const [isDark, setIsDark] = useState(false);
+  const { isDark, toggleTheme } = useTheme();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDark]);
-
-  const handleThemeToggle = () => {
-    setIsDark(!isDark);
-  };
 
   const values = [
     {
@@ -56,7 +45,7 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-500">
-      <Navigation isDark={isDark} onThemeToggle={handleThemeToggle} />
+      <Navigation isDark={isDark} onThemeToggle={toggleTheme} />
 
       <main className="pt-20">
         {/* Header */}

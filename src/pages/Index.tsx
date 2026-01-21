@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useTheme } from "@/contexts/ThemeContext";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import TrustSection from "@/components/TrustSection";
@@ -10,7 +11,7 @@ import Footer from "@/components/Footer";
 import ChatBotButton from "@/components/WhatsAppButton";
 
 const Index = () => {
-  const [isDark, setIsDark] = useState(false);
+  const { isDark, toggleTheme } = useTheme();
   const location = useLocation();
 
   // Handle hash navigation (scroll to section)
@@ -25,24 +26,11 @@ const Index = () => {
     }
   }, [location]);
 
-  useEffect(() => {
-    // Apply theme class to document
-    if (isDark) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDark]);
-
-  const handleThemeToggle = () => {
-    setIsDark(!isDark);
-  };
-
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-500">
-      <Navigation isDark={isDark} onThemeToggle={handleThemeToggle} />
+      <Navigation isDark={isDark} onThemeToggle={toggleTheme} />
       <main>
-        <HeroSection isDark={isDark} onThemeToggle={handleThemeToggle} />
+        <HeroSection isDark={isDark} onThemeToggle={toggleTheme} />
         <TrustSection />
         <FeaturedProject />
         <ProjectsOverview />
