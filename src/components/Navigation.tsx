@@ -36,9 +36,9 @@ const Navigation = ({
             <Link to="/about" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
               About
             </Link>
-            <a href="#contact" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
+            <Link to="/#contact" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
               Contact
-            </a>
+            </Link>
           </div>
 
           {/* Right Side - Theme Toggle & CTA */}
@@ -66,12 +66,12 @@ const Navigation = ({
             <Link to="/about" className="block py-2 text-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>
               About
             </Link>
-            <a href="#contact" className="block py-2 text-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>
+            <Link to="/#contact" className="block py-2 text-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>
               Contact
-            </a>
-            <a href="#contact" className="btn-primary text-center w-full mt-4" onClick={() => setIsMobileMenuOpen(false)}>
+            </Link>
+            <Link to="/#contact" className="btn-primary text-center w-full mt-4" onClick={() => setIsMobileMenuOpen(false)}>
               Schedule a Site Visit
-            </a>
+            </Link>
           </div>
         </div>}
     </nav>;
