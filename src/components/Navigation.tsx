@@ -33,9 +33,9 @@ const Navigation = ({
             <Link to="/projects" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
               Projects
             </Link>
-            <a href="#trust" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
+            <Link to="/about" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
               About
-            </a>
+            </Link>
             <a href="#contact" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
               Contact
             </a>
@@ -63,9 +63,9 @@ const Navigation = ({
             <Link to="/projects" className="block py-2 text-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>
               Projects
             </Link>
-            <a href="#trust" className="block py-2 text-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>
+            <Link to="/about" className="block py-2 text-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>
               About
-            </a>
+            </Link>
             <a href="#contact" className="block py-2 text-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>
               Contact
             </a>
