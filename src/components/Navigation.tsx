@@ -43,7 +43,7 @@ const Navigation = ({
           {/* Right Side - Theme Toggle & CTA */}
           <div className="hidden lg:flex items-center gap-4">
             <ThemeToggle isDark={isDark} onToggle={onThemeToggle} />
-            <a href="#contact" className="btn-sm">Call Now: 01717-19-27-30</a>
+            <a href="tel:+8801717192730" className="btn-sm">Call Now: 01717-19-27-30</a>
           </div>
 
           {/* Mobile Menu Button */}
