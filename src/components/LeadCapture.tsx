@@ -23,9 +23,10 @@ const LeadCapture = () => {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            ...formData,
-            timestamp: new Date().toISOString(),
-            source: "contact-form",
+            name: formData.name,
+            phone: formData.phone,
+            message: formData.message,
+            source: "contact_form",
           }),
         }
       );
