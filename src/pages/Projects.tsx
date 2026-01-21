@@ -46,6 +46,11 @@ const Projects = () => {
   const [isDark, setIsDark] = useState(false);
   const [filter, setFilter] = useState<string>("all");
 
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     if (isDark) {
       document.documentElement.classList.add("dark");
@@ -73,57 +78,55 @@ const Projects = () => {
     <div className="min-h-screen bg-background text-foreground transition-colors duration-500">
       <Navigation isDark={isDark} onThemeToggle={handleThemeToggle} />
       
-      <main className="pt-24">
-        {/* Hero Section */}
-        <section className="section-padding bg-secondary/30">
+      <main className="pt-20">
+        {/* Compact Header with Filters */}
+        <section className="py-6 bg-secondary/30">
           <div className="container-wide">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-12"
-            >
-              <Link 
-                to="/" 
-                className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors mb-6"
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4 }}
+                className="flex items-center gap-4"
               >
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Back to Home
-              </Link>
-              <h1 className="heading-display mb-4">Our Projects</h1>
-              <div className="accent-line mx-auto mb-6" />
-              <p className="body-large max-w-2xl mx-auto">
-                Discover our portfolio of residential developments, each crafted with care, 
-                clarity, and a long-term vision for quality living.
-              </p>
-            </motion.div>
-
-            {/* Filter Tabs */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex flex-wrap justify-center gap-3 mb-12"
-            >
-              {statusFilters.map((status) => (
-                <button
-                  key={status.value}
-                  onClick={() => setFilter(status.value)}
-                  className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                    filter === status.value
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
-                  }`}
+                <Link 
+                  to="/" 
+                  className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  {status.label}
-                </button>
-              ))}
-            </motion.div>
+                  <ArrowLeft className="w-4 h-4 mr-1" />
+                  Home
+                </Link>
+                <div className="h-4 w-px bg-border" />
+                <h1 className="text-2xl md:text-3xl font-serif font-medium">Our Projects</h1>
+              </motion.div>
+
+              {/* Filter Tabs */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: 0.1 }}
+                className="flex flex-wrap gap-2"
+              >
+                {statusFilters.map((status) => (
+                  <button
+                    key={status.value}
+                    onClick={() => setFilter(status.value)}
+                    className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                      filter === status.value
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                    }`}
+                  >
+                    {status.label}
+                  </button>
+                ))}
+              </motion.div>
+            </div>
           </div>
         </section>
 
         {/* Projects Grid */}
-        <section className="section-padding">
+        <section className="py-8 md:py-12">
           <div className="container-wide">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredProjects.map((project, index) => (
