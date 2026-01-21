@@ -2,8 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, Phone, Download, Shield, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-
-const WEBHOOK_URL = "https://n8n.srv915514.hstgr.cloud/webhook/6688d2c9-ea4a-4870-a08b-cd71175643d7";
+import { leadSchema } from "@/lib/validation";
 
 const LeadCapture = () => {
   const [formData, setFormData] = useState({
@@ -16,37 +15,54 @@ const LeadCapture = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate form data
+    const validation = leadSchema.safeParse({
+      full_name: formData.name,
+      phone: formData.phone,
+      message: formData.message,
+    });
+
+    if (!validation.success) {
+      alert(validation.error.errors[0].message);
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
       // Save to Supabase leads table
       const { error: dbError } = await supabase.from("leads").insert({
-        full_name: formData.name,
-        phone: formData.phone,
-        message: formData.message,
+        full_name: validation.data.full_name,
+        phone: validation.data.phone,
+        message: validation.data.message || null,
         source: "contact_form",
       });
 
       if (dbError) {
-        console.error("Database error:", dbError);
+        if (import.meta.env.DEV) {
+          console.error("Database error:", dbError);
+        }
+        alert("Failed to submit. Please try again later.");
+        return;
       }
 
-      // Also send to n8n webhook
-      await fetch(WEBHOOK_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.name,
-          phone: formData.phone,
-          message: formData.message,
+      // Send to n8n webhook via edge function proxy
+      await supabase.functions.invoke("webhook-proxy", {
+        body: {
+          name: validation.data.full_name,
+          phone: validation.data.phone,
+          message: validation.data.message,
           source: "contact_form",
-        }),
+        },
       });
 
       alert("Thank you! We will contact you within 24 hours.");
       setFormData({ name: "", phone: "", message: "" });
     } catch (error) {
-      console.error("Form submission error:", error);
+      if (import.meta.env.DEV) {
+        console.error("Form submission error:", error);
+      }
       alert("Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
