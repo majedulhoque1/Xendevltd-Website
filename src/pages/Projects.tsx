@@ -266,7 +266,7 @@ const Projects = () => {
                 Schedule a site visit or get in touch with our team to learn more about our developments.
               </p>
               <a href="/#contact" className="btn-primary">
-                Schedule a Site Visit
+                Get in Touch
               </a>
             </motion.div>
           </div>
