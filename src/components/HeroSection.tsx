@@ -81,7 +81,7 @@ const HeroSection = ({
           }} className="text-2xl md:text-3xl font-medium tracking-tight leading-tight text-foreground mb-3" style={{
             fontFamily: "'Playfair Display', serif"
           }}>
-              {isDark ? "An Address Framed by Light, Space, and Water" : "Open to the City. Open to the Lake."}
+              {isDark ? "An Address Framed by Light, Space, and Water" : "Experience Lakeside Serenity"}
             </motion.h1>
 
             {/* Subline */}
@@ -163,7 +163,7 @@ const HeroSection = ({
           }} className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-tight text-foreground mb-4" style={{
             fontFamily: "'Playfair Display', serif"
           }}>
-              {isDark ? "An Address Framed by Light, Space, and Water" : "Open to the City. Open to the Lake."}
+              {isDark ? "An Address Framed by Light, Space, and Water" : "Experience Lakeside Serenity"}
             </motion.h1>
 
             {/* Subline */}
