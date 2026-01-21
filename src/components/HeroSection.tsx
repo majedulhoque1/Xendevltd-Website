@@ -133,7 +133,7 @@ const HeroSection = ({
       }} transition={{
         duration: 0.7,
         ease: "easeOut"
-      }} className="w-1/2 bg-background flex items-center relative z-10">
+      }} className="w-1/2 bg-background relative z-10 flex-col flex items-start justify-center">
           <div className="max-w-lg">
             {/* Badge */}
             <motion.div initial={{
@@ -147,7 +147,7 @@ const HeroSection = ({
             delay: 0.2
           }} className="inline-flex items-center gap-2 px-3 py-1.5 mb-6 border border-border rounded-full bg-secondary/50">
               <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
-              <span className="text-xs tracking-widest uppercase text-muted-foreground">LAKEVIEW TASMEE</span>
+              <span className="text-xs tracking-widest uppercase text-muted-foreground">XEN LAKEVIEW TASMEE</span>
             </motion.div>
 
             {/* Headline */}
@@ -191,13 +191,11 @@ const HeroSection = ({
             duration: 0.7,
             delay: 0.5
           }} className="flex flex-wrap items-center gap-3">
-              <a href="#contact" className="btn-primary group text-sm text-secondary-foreground">
-                {isDark ? "Book a Visit" : "Schedule Visit"}
+              <a href="#featured" className="btn-primary group">
+                Project Details
                 <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
               </a>
-              <a href="#featured" className="btn-secondary">
-                {isDark ? "Brochure" : "Floor Plans"}
-              </a>
+              <a href="#contact" className="btn-secondary">Schedule a Site Visit</a>
             </motion.div>
           </div>
         </motion.div>
