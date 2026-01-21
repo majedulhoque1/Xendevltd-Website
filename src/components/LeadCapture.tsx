@@ -2,18 +2,12 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, Phone, Download, Shield, Loader2 } from "lucide-react";
 
-const interestOptions = [
-  { value: "site-visit", label: "Schedule a Site Visit" },
-  { value: "brochure", label: "Download Brochure" },
-  { value: "callback", label: "Request a Call Back" },
-  { value: "floor-plans", label: "Get Floor Plans" },
-];
 
 const LeadCapture = () => {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    interest: "",
+    message: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -36,7 +30,7 @@ const LeadCapture = () => {
         }
       );
       alert("Thank you! We will contact you within 24 hours.");
-      setFormData({ name: "", phone: "", interest: "" });
+      setFormData({ name: "", phone: "", message: "" });
     } catch (error) {
       console.error("Form submission error:", error);
       alert("Something went wrong. Please try again.");
@@ -175,27 +169,22 @@ const LeadCapture = () => {
                 transition={{ duration: 0.4, delay: 0.3 }}
               >
                 <label
-                  htmlFor="interest"
+                  htmlFor="message"
                   className="block text-sm font-medium mb-2"
                 >
-                  I'm Interested In
+                  Your Message
                 </label>
-                <select
-                  id="interest"
-                  value={formData.interest}
+                <textarea
+                  id="message"
+                  value={formData.message}
                   onChange={(e) =>
-                    setFormData({ ...formData, interest: e.target.value })
+                    setFormData({ ...formData, message: e.target.value })
                   }
                   required
-                  className="input-premium appearance-none cursor-pointer"
-                >
-                  <option value="">Select an option</option>
-                  {interestOptions.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
+                  rows={4}
+                  className="input-premium resize-none"
+                  placeholder="How can we help you?"
+                />
               </motion.div>
 
               <motion.button
