@@ -1,5 +1,6 @@
 import { ArrowRight, Waves } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import projectLakeside from "@/assets/project-lakeside.jpg";
 
 const projects = [
@@ -142,9 +143,9 @@ const ProjectsOverview = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-center mt-12"
         >
-          <a href="#contact" className="btn-secondary">
+          <Link to="/projects" className="btn-secondary">
             View All Projects
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

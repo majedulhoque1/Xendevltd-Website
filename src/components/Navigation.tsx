@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
 import xenLogo from "@/assets/xen-logo.png";
 interface NavigationProps {
@@ -29,9 +30,9 @@ const Navigation = ({
 
           {/* Desktop Navigation - Centered Links */}
           <div className="hidden lg:flex items-center justify-center absolute left-1/2 -translate-x-1/2 gap-16">
-            <a href="#projects" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
+            <Link to="/projects" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
               Projects
-            </a>
+            </Link>
             <a href="#trust" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
               About
             </a>
@@ -59,9 +60,9 @@ const Navigation = ({
       {/* Mobile Menu */}
       {isMobileMenuOpen && <div className="lg:hidden bg-background border-t border-border animate-fade-in">
           <div className="container-wide py-6 space-y-4">
-            <a href="#projects" className="block py-2 text-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>
+            <Link to="/projects" className="block py-2 text-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>
               Projects
-            </a>
+            </Link>
             <a href="#trust" className="block py-2 text-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>
               About
             </a>
