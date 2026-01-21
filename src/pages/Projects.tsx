@@ -9,6 +9,7 @@ import projectLakeside from "@/assets/project-lakeside.jpg";
 const projects = [
   {
     id: 1,
+    slug: "jolshiri-lakeview-residence",
     name: "Jolshiri Lakeview Residence",
     status: "On-going",
     location: "Jolshiri Abashon, Dhaka",
@@ -20,6 +21,7 @@ const projects = [
   },
   {
     id: 2,
+    slug: "uttara-heights",
     name: "Uttara Heights",
     status: "Up-coming",
     location: "Uttara, Dhaka",
@@ -31,6 +33,7 @@ const projects = [
   },
   {
     id: 3,
+    slug: "bashundhara-residence",
     name: "Bashundhara Residence",
     status: "Completed",
     location: "Bashundhara R/A, Dhaka",
@@ -133,107 +136,107 @@ const Projects = () => {
           <div className="container-wide">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredProjects.map((project, index) => (
-                <motion.div
+                <Link
                   key={project.id}
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                  className="card-premium overflow-hidden group"
+                  to={`/projects/${project.slug}`}
+                  className="block"
                 >
-                  {/* Image */}
-                  <div
-                    className={`relative h-64 overflow-hidden ${
-                      project.image ? "" : "bg-gradient-to-br from-secondary to-muted"
-                    }`}
+                  <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                    className="card-premium overflow-hidden group cursor-pointer h-full"
                   >
-                    {project.image ? (
-                      <motion.img
-                        src={project.image}
-                        alt={project.name}
-                        className="w-full h-full object-cover"
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ duration: 0.6 }}
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <span className="text-muted-foreground text-sm">Image Coming Soon</span>
+                    {/* Image */}
+                    <div
+                      className={`relative h-64 overflow-hidden ${
+                        project.image ? "" : "bg-gradient-to-br from-secondary to-muted"
+                      }`}
+                    >
+                      {project.image ? (
+                        <motion.img
+                          src={project.image}
+                          alt={project.name}
+                          className="w-full h-full object-cover"
+                          whileHover={{ scale: 1.1 }}
+                          transition={{ duration: 0.6 }}
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center">
+                          <span className="text-muted-foreground text-sm">Image Coming Soon</span>
+                        </div>
+                      )}
+                      
+                      {/* Status Badge */}
+                      <div className="absolute top-4 left-4">
+                        <span
+                          className={`inline-flex items-center px-3 py-1 text-xs uppercase tracking-wider rounded-full ${
+                            project.status === "On-going"
+                              ? "bg-primary text-primary-foreground"
+                              : project.status === "Up-coming"
+                              ? "bg-gold text-charcoal"
+                              : "bg-secondary text-secondary-foreground"
+                          }`}
+                        >
+                          {project.status}
+                        </span>
                       </div>
-                    )}
-                    
-                    {/* Status Badge */}
-                    <div className="absolute top-4 left-4">
-                      <span
-                        className={`inline-flex items-center px-3 py-1 text-xs uppercase tracking-wider rounded-full ${
-                          project.status === "On-going"
-                            ? "bg-primary text-primary-foreground"
-                            : project.status === "Up-coming"
-                            ? "bg-gold text-charcoal"
-                            : "bg-secondary text-secondary-foreground"
-                        }`}
-                      >
-                        {project.status}
+
+                      {/* Special Badge */}
+                      {project.badge && (
+                        <div className="absolute top-4 right-4">
+                          <span className="inline-flex items-center px-3 py-1 text-xs bg-background/90 backdrop-blur-sm rounded-full">
+                            <Waves className="w-3 h-3 mr-1 text-primary" />
+                            {project.badge}
+                          </span>
+                        </div>
+                      )}
+
+                      {/* Hover Overlay */}
+                      <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-300" />
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-6">
+                      <h3 className="text-xl font-serif font-medium mb-2">
+                        {project.name}
+                      </h3>
+                      
+                      <div className="flex items-center text-sm text-muted-foreground mb-3">
+                        <MapPin className="w-4 h-4 mr-1" />
+                        {project.location}
+                      </div>
+
+                      <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
+                        {project.description}
+                      </p>
+
+                      {/* Features */}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.features.slice(0, 3).map((feature, idx) => (
+                          <span
+                            key={idx}
+                            className="px-2 py-1 text-xs bg-secondary rounded-full text-secondary-foreground"
+                          >
+                            {feature}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Expected Completion */}
+                      <div className="flex items-center text-sm text-muted-foreground mb-4">
+                        <Calendar className="w-4 h-4 mr-1" />
+                        {project.status === "Completed" ? "Completed" : `Expected: ${project.expectedCompletion}`}
+                      </div>
+
+                      <span className="inline-flex items-center text-sm font-medium text-primary group/link">
+                        View Details
+                        <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
                       </span>
                     </div>
-
-                    {/* Special Badge */}
-                    {project.badge && (
-                      <div className="absolute top-4 right-4">
-                        <span className="inline-flex items-center px-3 py-1 text-xs bg-background/90 backdrop-blur-sm rounded-full">
-                          <Waves className="w-3 h-3 mr-1 text-primary" />
-                          {project.badge}
-                        </span>
-                      </div>
-                    )}
-
-                    {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-300" />
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6">
-                    <h3 className="text-xl font-serif font-medium mb-2">
-                      {project.name}
-                    </h3>
-                    
-                    <div className="flex items-center text-sm text-muted-foreground mb-3">
-                      <MapPin className="w-4 h-4 mr-1" />
-                      {project.location}
-                    </div>
-
-                    <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
-                      {project.description}
-                    </p>
-
-                    {/* Features */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.features.slice(0, 3).map((feature, idx) => (
-                        <span
-                          key={idx}
-                          className="px-2 py-1 text-xs bg-secondary rounded-full text-secondary-foreground"
-                        >
-                          {feature}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Expected Completion */}
-                    <div className="flex items-center text-sm text-muted-foreground mb-4">
-                      <Calendar className="w-4 h-4 mr-1" />
-                      {project.status === "Completed" ? "Completed" : `Expected: ${project.expectedCompletion}`}
-                    </div>
-
-                    <Link
-                      to={project.id === 1 ? "/#featured" : "/#contact"}
-                      className="inline-flex items-center text-sm font-medium text-primary group/link"
-                    >
-                      {project.status === "Up-coming"
-                        ? "Register Interest"
-                        : "View Details"}
-                      <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover/link:translate-x-1" />
-                    </Link>
-                  </div>
-                </motion.div>
+                  </motion.div>
+                </Link>
               ))}
             </div>
 

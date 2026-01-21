@@ -6,6 +6,7 @@ import projectLakeside from "@/assets/project-lakeside.jpg";
 const projects = [
   {
     id: 1,
+    slug: "jolshiri-lakeview-residence",
     name: "Jolshiri Lakeview Residence",
     status: "On-going",
     location: "Jolshiri Abashon, Dhaka",
@@ -15,6 +16,7 @@ const projects = [
   },
   {
     id: 2,
+    slug: "uttara-heights",
     name: "Uttara Heights",
     status: "Up-coming",
     location: "Uttara, Dhaka",
@@ -24,6 +26,7 @@ const projects = [
   },
   {
     id: 3,
+    slug: "bashundhara-residence",
     name: "Bashundhara Residence",
     status: "Completed",
     location: "Bashundhara R/A, Dhaka",
@@ -122,12 +125,10 @@ const ProjectsOverview = () => {
                 </p>
 
                 <Link
-                  to={`/projects?filter=${project.status.toLowerCase().replace("-", "")}`}
+                  to={`/projects/${project.slug}`}
                   className="inline-flex items-center text-sm font-medium text-primary group/link"
                 >
-                  {project.status === "Up-coming"
-                    ? "Register Interest"
-                    : "View Project"}
+                  View Details
                   <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover/link:translate-x-1" />
                 </Link>
               </div>
