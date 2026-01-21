@@ -191,11 +191,11 @@ const HeroSection = ({
             duration: 0.7,
             delay: 0.5
           }} className="flex flex-wrap items-center gap-3">
-              <a href="#contact" className="btn-primary group">Project Details{isDark ? "Book a Visit" : "Schedule Visit"}
+              <a href="#featured" className="btn-primary group">
+                Project Details
                 <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
               </a>
-              <a className="btn-secondary" href="#contact">Schedule a Site Visit{isDark ? "Brochure" : "Floor Plans"}
-              </a>
+              <a href="#featured" className="btn-secondary">Schedule a Site Visit</a>
             </motion.div>
           </div>
         </motion.div>
