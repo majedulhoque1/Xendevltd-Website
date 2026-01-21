@@ -15,7 +15,7 @@ const ThemeToggle = ({ isDark, onToggle }: ThemeToggleProps) => {
     >
       <Sun
         className={`w-4 h-4 transition-all duration-300 ${
-          isDark ? "text-muted-foreground" : "text-primary"
+          isDark ? "text-muted-foreground" : "text-primary drop-shadow-[0_0_6px_hsl(var(--primary))]"
         }`}
       />
       <div className="relative w-10 h-5 bg-secondary rounded-full">
@@ -27,7 +27,7 @@ const ThemeToggle = ({ isDark, onToggle }: ThemeToggleProps) => {
       </div>
       <Moon
         className={`w-4 h-4 transition-all duration-300 ${
-          isDark ? "text-white" : "text-muted-foreground"
+          isDark ? "text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]" : "text-muted-foreground"
         }`}
       />
     </button>
