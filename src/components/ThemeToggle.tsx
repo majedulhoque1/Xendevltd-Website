@@ -27,7 +27,7 @@ const ThemeToggle = ({ isDark, onToggle }: ThemeToggleProps) => {
       </div>
       <Moon
         className={`w-4 h-4 transition-all duration-300 ${
-          isDark ? "text-primary" : "text-muted-foreground"
+          isDark ? "text-white" : "text-muted-foreground"
         }`}
       />
     </button>
