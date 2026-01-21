@@ -45,10 +45,11 @@ const ChatBotButton = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          message: userMessage.content,
-          timestamp: userMessage.timestamp.toISOString(),
-        }),
+      body: JSON.stringify({
+        message: userMessage.content,
+        source: "chatbot",
+        timestamp: userMessage.timestamp.toISOString(),
+      }),
       });
 
       if (response.ok) {
