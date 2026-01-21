@@ -121,15 +121,15 @@ const ProjectsOverview = () => {
                   {project.location}
                 </p>
 
-                <a
-                  href={project.featured ? "#featured" : "#contact"}
+                <Link
+                  to={`/projects?filter=${project.status.toLowerCase().replace("-", "")}`}
                   className="inline-flex items-center text-sm font-medium text-primary group/link"
                 >
                   {project.status === "Up-coming"
                     ? "Register Interest"
                     : "View Project"}
                   <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover/link:translate-x-1" />
-                </a>
+                </Link>
               </div>
             </motion.div>
           ))}

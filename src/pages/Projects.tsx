@@ -1,6 +1,6 @@
 import { ArrowLeft, Waves, MapPin, Calendar, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useState, useEffect } from "react";
@@ -43,8 +43,11 @@ const projects = [
 ];
 
 const Projects = () => {
+  const [searchParams] = useSearchParams();
+  const initialFilter = searchParams.get("filter") || "all";
+  
   const [isDark, setIsDark] = useState(false);
-  const [filter, setFilter] = useState<string>("all");
+  const [filter, setFilter] = useState<string>(initialFilter);
 
   // Scroll to top on mount
   useEffect(() => {
