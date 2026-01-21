@@ -14,7 +14,96 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      chat_logs: {
+        Row: {
+          bot_response: string | null
+          created_at: string
+          id: string
+          source: string
+          user_message: string
+        }
+        Insert: {
+          bot_response?: string | null
+          created_at?: string
+          id?: string
+          source?: string
+          user_message: string
+        }
+        Update: {
+          bot_response?: string | null
+          created_at?: string
+          id?: string
+          source?: string
+          user_message?: string
+        }
+        Relationships: []
+      }
+      leads: {
+        Row: {
+          created_at: string
+          email: string | null
+          full_name: string
+          id: string
+          message: string | null
+          phone: string
+          source: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          full_name: string
+          id?: string
+          message?: string | null
+          phone: string
+          source?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          full_name?: string
+          id?: string
+          message?: string | null
+          phone?: string
+          source?: string
+        }
+        Relationships: []
+      }
+      projects: {
+        Row: {
+          activity_status: string
+          created_at: string
+          description: string | null
+          featured: boolean
+          id: string
+          image_url: string | null
+          live_url: string | null
+          slug: string | null
+          title: string
+        }
+        Insert: {
+          activity_status?: string
+          created_at?: string
+          description?: string | null
+          featured?: boolean
+          id?: string
+          image_url?: string | null
+          live_url?: string | null
+          slug?: string | null
+          title: string
+        }
+        Update: {
+          activity_status?: string
+          created_at?: string
+          description?: string | null
+          featured?: boolean
+          id?: string
+          image_url?: string | null
+          live_url?: string | null
+          slug?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

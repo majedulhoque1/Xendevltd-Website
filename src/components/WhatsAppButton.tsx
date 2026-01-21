@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, Bot, Loader2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const WEBHOOK_URL = "https://n8n.srv915514.hstgr.cloud/webhook/6688d2c9-ea4a-4870-a08b-cd71175643d7";
 
@@ -39,30 +40,44 @@ const ChatBotButton = () => {
     setMessage("");
     setIsLoading(true);
 
+    let botResponseContent = "Thank you for your message! We'll get back to you soon.";
+
     try {
+      // Send to n8n webhook first to get bot response
       const response = await fetch(WEBHOOK_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-      body: JSON.stringify({
-        message: userMessage.content,
-        source: "chatbot",
-        timestamp: userMessage.timestamp.toISOString(),
-      }),
+        body: JSON.stringify({
+          message: userMessage.content,
+          source: "chatbot",
+          timestamp: userMessage.timestamp.toISOString(),
+        }),
       });
 
       if (response.ok) {
         const data = await response.json();
-        const botResponse: ChatMessage = {
-          role: "assistant",
-          content: data.message || data.response || "Thank you for your message! We'll get back to you soon.",
-          timestamp: new Date(),
-        };
-        setMessages((prev) => [...prev, botResponse]);
-      } else {
-        throw new Error("Failed to get response");
+        botResponseContent = data.message || data.response || botResponseContent;
       }
+
+      // Save to Supabase chat_logs table
+      const { error: dbError } = await supabase.from("chat_logs").insert({
+        user_message: userMessage.content,
+        bot_response: botResponseContent,
+        source: "chatbot",
+      });
+
+      if (dbError) {
+        console.error("Database error:", dbError);
+      }
+
+      const botResponse: ChatMessage = {
+        role: "assistant",
+        content: botResponseContent,
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, botResponse]);
     } catch (error) {
       console.error("Error sending message:", error);
       const errorMessage: ChatMessage = {

@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, Phone, Download, Shield, Loader2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
+const WEBHOOK_URL = "https://n8n.srv915514.hstgr.cloud/webhook/6688d2c9-ea4a-4870-a08b-cd71175643d7";
 
 const LeadCapture = () => {
   const [formData, setFormData] = useState({
@@ -17,19 +19,30 @@ const LeadCapture = () => {
     setIsSubmitting(true);
 
     try {
-      await fetch(
-        "https://n8n.srv915514.hstgr.cloud/webhook/6688d2c9-ea4a-4870-a08b-cd71175643d7",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: formData.name,
-            phone: formData.phone,
-            message: formData.message,
-            source: "contact_form",
-          }),
-        }
-      );
+      // Save to Supabase leads table
+      const { error: dbError } = await supabase.from("leads").insert({
+        full_name: formData.name,
+        phone: formData.phone,
+        message: formData.message,
+        source: "contact_form",
+      });
+
+      if (dbError) {
+        console.error("Database error:", dbError);
+      }
+
+      // Also send to n8n webhook
+      await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          message: formData.message,
+          source: "contact_form",
+        }),
+      });
+
       alert("Thank you! We will contact you within 24 hours.");
       setFormData({ name: "", phone: "", message: "" });
     } catch (error) {
