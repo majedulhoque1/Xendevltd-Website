@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Phone, Download, Shield } from "lucide-react";
+import { Send, Phone, Download, Shield, Loader2 } from "lucide-react";
 
 const interestOptions = [
   { value: "site-visit", label: "Schedule a Site Visit" },
@@ -16,12 +16,33 @@ const LeadCapture = () => {
     interest: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
-    alert("Thank you! We will contact you within 24 hours.");
-    setFormData({ name: "", phone: "", interest: "" });
+    setIsSubmitting(true);
+
+    try {
+      await fetch(
+        "https://n8n.srv915514.hstgr.cloud/webhook/6688d2c9-ea4a-4870-a08b-cd71175643d7",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...formData,
+            timestamp: new Date().toISOString(),
+            source: "contact-form",
+          }),
+        }
+      );
+      alert("Thank you! We will contact you within 24 hours.");
+      setFormData({ name: "", phone: "", interest: "" });
+    } catch (error) {
+      console.error("Form submission error:", error);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -179,16 +200,21 @@ const LeadCapture = () => {
 
               <motion.button
                 type="submit"
+                disabled={isSubmitting}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.4 }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="btn-primary w-full"
+                className="btn-primary w-full disabled:opacity-50"
               >
-                Request a Call Back
-                <Send className="ml-2 w-4 h-4" />
+                {isSubmitting ? "Submitting..." : "Request a Call Back"}
+                {isSubmitting ? (
+                  <Loader2 className="ml-2 w-4 h-4 animate-spin" />
+                ) : (
+                  <Send className="ml-2 w-4 h-4" />
+                )}
               </motion.button>
 
               {/* Trust Note */}
