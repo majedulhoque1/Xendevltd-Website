@@ -181,7 +181,7 @@ const ChatBotButton = () => {
       {/* Bot Button */}
       <motion.button
         onClick={handleToggle}
-        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-background text-primary shadow-lg border border-border hover:bg-muted transition-colors duration-300 md:h-16 md:w-16"
+        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg hover:bg-primary/90 transition-colors duration-300 md:h-16 md:w-16"
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 0.5, type: "spring", stiffness: 260, damping: 20 }}
