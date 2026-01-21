@@ -29,7 +29,7 @@ const Navigation = ({
 
           {/* Desktop Navigation - Centered Links */}
           <div className="hidden lg:flex items-center justify-center absolute left-1/2 -translate-x-1/2 gap-16">
-            <a href="#projects" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
+            <a href="#projects" className="font-medium transition-colors text-xs text-destructive-foreground">
               Projects
             </a>
             <a href="#trust" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
@@ -43,7 +43,9 @@ const Navigation = ({
           {/* Right Side - Theme Toggle & CTA */}
           <div className="hidden lg:flex items-center gap-4">
             <ThemeToggle isDark={isDark} onToggle={onThemeToggle} />
-            <a href="tel:+8801717192730" className="btn-sm">Call Now: 01717-19-27-30</a>
+            <a href="#contact" className="btn-sm">
+              Schedule Visit
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
