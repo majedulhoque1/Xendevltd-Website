@@ -2,8 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, Bot, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-
-const WEBHOOK_URL = "https://n8n.srv915514.hstgr.cloud/webhook/6688d2c9-ea4a-4870-a08b-cd71175643d7";
+import { chatMessageSchema } from "@/lib/validation";
 
 interface ChatMessage {
   role: "user" | "assistant";
@@ -30,9 +29,15 @@ const ChatBotButton = () => {
   const handleSendMessage = async () => {
     if (!message.trim() || isLoading) return;
 
+    // Validate message
+    const validation = chatMessageSchema.safeParse({ user_message: message.trim() });
+    if (!validation.success) {
+      return;
+    }
+
     const userMessage: ChatMessage = {
       role: "user",
-      content: message.trim(),
+      content: validation.data.user_message,
       timestamp: new Date(),
     };
 
@@ -43,21 +48,16 @@ const ChatBotButton = () => {
     let botResponseContent = "Thank you for your message! We'll get back to you soon.";
 
     try {
-      // Send to n8n webhook first to get bot response
-      const response = await fetch(WEBHOOK_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+      // Send to n8n webhook via edge function proxy
+      const { data, error: webhookError } = await supabase.functions.invoke("webhook-proxy", {
+        body: {
           message: userMessage.content,
           source: "chatbot",
           timestamp: userMessage.timestamp.toISOString(),
-        }),
+        },
       });
 
-      if (response.ok) {
-        const data = await response.json();
+      if (!webhookError && data) {
         botResponseContent = data.message || data.response || botResponseContent;
       }
 
@@ -68,7 +68,7 @@ const ChatBotButton = () => {
         source: "chatbot",
       });
 
-      if (dbError) {
+      if (dbError && import.meta.env.DEV) {
         console.error("Database error:", dbError);
       }
 
@@ -79,7 +79,9 @@ const ChatBotButton = () => {
       };
       setMessages((prev) => [...prev, botResponse]);
     } catch (error) {
-      console.error("Error sending message:", error);
+      if (import.meta.env.DEV) {
+        console.error("Error sending message:", error);
+      }
       const errorMessage: ChatMessage = {
         role: "assistant",
         content: "Sorry, I'm having trouble connecting right now. Please try again later or contact us directly.",
