@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import TrustSection from "@/components/TrustSection";
@@ -10,6 +11,19 @@ import ChatBotButton from "@/components/WhatsAppButton";
 
 const Index = () => {
   const [isDark, setIsDark] = useState(false);
+  const location = useLocation();
+
+  // Handle hash navigation (scroll to section)
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.querySelector(location.hash);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    }
+  }, [location]);
 
   useEffect(() => {
     // Apply theme class to document

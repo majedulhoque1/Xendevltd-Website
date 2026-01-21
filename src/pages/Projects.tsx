@@ -265,9 +265,9 @@ const Projects = () => {
               <p className="body-large max-w-xl mx-auto mb-8">
                 Schedule a site visit or get in touch with our team to learn more about our developments.
               </p>
-              <a href="/#contact" className="btn-primary">
+              <Link to="/#contact" className="btn-primary">
                 Get in Touch
-              </a>
+              </Link>
             </motion.div>
           </div>
         </section>
