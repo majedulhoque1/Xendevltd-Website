@@ -1,5 +1,6 @@
 import { CheckCircle, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const TrustSection = () => {
   const trustPoints = [
@@ -53,13 +54,13 @@ const TrustSection = () => {
               ))}
             </ul>
 
-            <a
-              href="#contact"
-              className="btn-ghost text-primary p-0 group"
+            <Link
+              to="/about"
+              className="btn-ghost text-primary p-0 group inline-flex items-center"
             >
               Learn More About Xen
               <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </a>
+            </Link>
           </motion.div>
 
           {/* Right Content - Stats */}
