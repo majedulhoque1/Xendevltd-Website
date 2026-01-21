@@ -191,7 +191,7 @@ const HeroSection = ({
             duration: 0.7,
             delay: 0.5
           }} className="flex flex-wrap items-center gap-3">
-              <a href="#featured" className="btn-primary group">
+              <a href="#featured" className="btn-primary group text-white">
                 Project Details
                 <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
               </a>
