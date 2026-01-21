@@ -195,8 +195,7 @@ const HeroSection = ({
                 Project Details
                 <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
               </a>
-              <a href="#featured" className="btn-secondary">Schedule a Site Visit{isDark ? "Brochure" : "Floor Plans"}
-              </a>
+              <a href="#featured" className="btn-secondary">Schedule a Site Visit</a>
             </motion.div>
           </div>
         </motion.div>
