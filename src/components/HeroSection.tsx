@@ -47,7 +47,7 @@ const HeroSection = ({
           initial={{ opacity: 0, y: 20 }} 
           animate={{ opacity: 1, y: 0 }} 
           transition={{ duration: 0.7, ease: "easeOut" }} 
-          className="absolute inset-0 flex flex-col justify-center items-start px-6 md:px-12"
+          className="absolute inset-0 flex flex-col justify-center items-start px-6 md:px-12 pb-20"
         >
           <div className="max-w-lg">
             {/* Badge */}
