@@ -3,8 +3,10 @@ import { motion } from "framer-motion";
 import { Send, Phone, Download, Shield, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { leadSchema } from "@/lib/validation";
+import { useToast } from "@/hooks/use-toast";
 
 const LeadCapture = () => {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -24,7 +26,11 @@ const LeadCapture = () => {
     });
 
     if (!validation.success) {
-      alert(validation.error.errors[0].message);
+      toast({
+        variant: "destructive",
+        title: "Validation Error",
+        description: validation.error.errors[0].message,
+      });
       return;
     }
 
@@ -43,7 +49,11 @@ const LeadCapture = () => {
         if (import.meta.env.DEV) {
           console.error("Database error:", dbError);
         }
-        alert("Failed to submit. Please try again later.");
+        toast({
+          variant: "destructive",
+          title: "Submission Failed",
+          description: "Please try again later.",
+        });
         return;
       }
 
@@ -57,13 +67,20 @@ const LeadCapture = () => {
         },
       });
 
-      alert("Thank you! We will contact you within 24 hours.");
+      toast({
+        title: "Thank you for showing interest!",
+        description: "We will get back to you shortly.",
+      });
       setFormData({ name: "", phone: "", message: "" });
     } catch (error) {
       if (import.meta.env.DEV) {
         console.error("Form submission error:", error);
       }
-      alert("Something went wrong. Please try again.");
+      toast({
+        variant: "destructive",
+        title: "Something went wrong",
+        description: "Please try again.",
+      });
     } finally {
       setIsSubmitting(false);
     }
