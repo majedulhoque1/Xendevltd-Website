@@ -23,24 +23,26 @@ const HeroSection = ({
       <div className="lg:hidden relative h-[calc(100vh-5rem)] overflow-hidden">
         {/* Day Background */}
         <div className={`absolute inset-0 transition-opacity duration-700 ${isDark ? "opacity-0" : "opacity-100"}`}>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#5ba3d9] via-[#7ec8e3] to-[#8ed1e8]" />
           <img 
             src={heroDay} 
             alt="Jolshiri Lakeview Residence - Day View" 
-            className="absolute inset-0 w-full h-full object-cover object-center" 
+            className="absolute inset-0 w-full h-full object-cover object-bottom scale-[0.85] origin-bottom" 
           />
         </div>
 
         {/* Night Background */}
         <div className={`absolute inset-0 transition-opacity duration-700 ${isDark ? "opacity-100" : "opacity-0"}`}>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#4a5568] via-[#718096] to-[#a0aec0]" />
           <img 
             src={heroNight} 
             alt="Jolshiri Lakeview Residence - Night View" 
-            className="absolute inset-0 w-full h-full object-cover object-center" 
+            className="absolute inset-0 w-full h-full object-cover object-bottom scale-[0.85] origin-bottom" 
           />
         </div>
 
-        {/* Subtle gradient overlay only at bottom for text readability - keeps lake visible */}
-        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
+        {/* Gradient overlay for text readability */}
+        <div className={`absolute inset-0 ${isDark ? "bg-gradient-to-t from-black/80 via-black/40 to-transparent" : "bg-gradient-to-t from-black/70 via-black/30 to-transparent"}`} />
 
         {/* Text Content Overlay */}
         <motion.div 
