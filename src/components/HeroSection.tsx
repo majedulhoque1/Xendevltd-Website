@@ -23,33 +23,31 @@ const HeroSection = ({
       <div className="lg:hidden relative h-[calc(100vh-5rem)] overflow-hidden">
         {/* Day Background */}
         <div className={`absolute inset-0 transition-opacity duration-700 ${isDark ? "opacity-0" : "opacity-100"}`}>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#5ba3d9] via-[#7ec8e3] to-[#8ed1e8]" />
           <img 
             src={heroDay} 
             alt="Jolshiri Lakeview Residence - Day View" 
-            className="absolute inset-0 w-full h-full object-cover object-bottom scale-[0.85] origin-bottom" 
+            className="absolute inset-0 w-full h-full object-cover object-[center_40%]" 
           />
         </div>
 
         {/* Night Background */}
         <div className={`absolute inset-0 transition-opacity duration-700 ${isDark ? "opacity-100" : "opacity-0"}`}>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#4a5568] via-[#718096] to-[#a0aec0]" />
           <img 
             src={heroNight} 
             alt="Jolshiri Lakeview Residence - Night View" 
-            className="absolute inset-0 w-full h-full object-cover object-bottom scale-[0.85] origin-bottom" 
+            className="absolute inset-0 w-full h-full object-cover object-[center_40%]" 
           />
         </div>
 
-        {/* Gradient overlay for text readability */}
-        <div className={`absolute inset-0 ${isDark ? "bg-gradient-to-t from-black/80 via-black/40 to-transparent" : "bg-gradient-to-t from-black/70 via-black/30 to-transparent"}`} />
+        {/* Gradient overlay for text readability - positioned at top */}
+        <div className="absolute inset-x-0 top-0 h-2/3 bg-gradient-to-b from-black/70 via-black/40 to-transparent" />
 
-        {/* Text Content Overlay */}
+        {/* Text Content Overlay - positioned at top to keep lake visible */}
         <motion.div 
-          initial={{ opacity: 0, y: 20 }} 
+          initial={{ opacity: 0, y: -20 }} 
           animate={{ opacity: 1, y: 0 }} 
           transition={{ duration: 0.7, ease: "easeOut" }} 
-          className="absolute inset-0 flex flex-col justify-end px-6 pb-12 md:pb-16 md:px-12"
+          className="absolute inset-x-0 top-0 flex flex-col justify-start px-6 pt-8 md:pt-12 md:px-12"
         >
           <div className="max-w-lg">
             {/* Badge */}
@@ -81,7 +79,7 @@ const HeroSection = ({
               initial={{ opacity: 0, y: 15 }} 
               animate={{ opacity: 1, y: 0 }} 
               transition={{ duration: 0.7, delay: 0.4 }} 
-              className="text-sm md:text-base text-white/80 max-w-md mb-6 leading-relaxed"
+              className="text-sm md:text-base text-white/80 max-w-md mb-5 leading-relaxed"
             >
               {isDark ? "Designed for privacy, security, and long-term value." : "A thoughtfully designed residential project with uninterrupted lake views."}
             </motion.p>
@@ -91,18 +89,18 @@ const HeroSection = ({
               initial={{ opacity: 0, y: 15 }} 
               animate={{ opacity: 1, y: 0 }} 
               transition={{ duration: 0.7, delay: 0.5 }} 
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3"
+              className="flex flex-row items-center gap-3"
             >
               <a 
                 href="#contact" 
-                className="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground font-medium rounded-full transition-all hover:bg-primary/90 group"
+                className="inline-flex items-center justify-center px-5 py-2.5 bg-primary text-primary-foreground text-sm font-medium rounded-full transition-all hover:bg-primary/90 group"
               >
                 {isDark ? "Book a Visit" : "Schedule Visit"}
                 <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
               </a>
               <a 
                 href="#featured" 
-                className="inline-flex items-center justify-center px-6 py-3 bg-white/20 backdrop-blur-sm text-white font-medium rounded-full border border-white/30 transition-all hover:bg-white/30"
+                className="inline-flex items-center justify-center px-5 py-2.5 bg-white/20 backdrop-blur-sm text-white text-sm font-medium rounded-full border border-white/30 transition-all hover:bg-white/30"
               >
                 {isDark ? "Brochure" : "Floor Plans"}
               </a>
