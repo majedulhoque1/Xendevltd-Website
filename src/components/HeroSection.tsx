@@ -58,9 +58,7 @@ const HeroSection = ({
             delay: 0.2
           }} className="inline-flex items-center gap-2 px-3 py-1.5 mb-4 border border-white/30 rounded-full bg-white/10 backdrop-blur-sm">
               <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
-              <span className="text-xs tracking-widest uppercase text-white/90">
-                Lakeview Project
-              </span>
+              <span className="text-xs tracking-widest uppercase text-white/90">LAKEVIEW TASMEE</span>
             </motion.div>
 
             {/* Headline */}
