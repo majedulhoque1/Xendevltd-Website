@@ -64,8 +64,8 @@ const LeadCapture = () => {
       // Generate a human-readable reference number from the UUID
       const leadRef = leadData?.id ? `XEN-${leadData.id.slice(0, 8).toUpperCase()}` : null;
 
-      // Send to n8n webhook via edge function proxy
-      await supabase.functions.invoke("webhook-proxy", {
+      // Send to n8n webhook via edge function proxy (fire-and-forget, don't block success)
+      supabase.functions.invoke("webhook-proxy", {
         body: {
           name: validation.data.full_name,
           phone: validation.data.phone,
@@ -74,6 +74,11 @@ const LeadCapture = () => {
           lead_id: leadData?.id,
           lead_ref: leadRef,
         },
+      }).catch((webhookError) => {
+        // Log webhook errors but don't fail the form submission
+        if (import.meta.env.DEV) {
+          console.error("Webhook notification failed:", webhookError);
+        }
       });
 
       toast({
