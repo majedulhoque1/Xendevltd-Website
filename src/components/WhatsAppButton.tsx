@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Send, Bot, Loader2 } from "lucide-react";
+import { X, Send, Bot, Loader2, ArrowUp } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { chatMessageSchema } from "@/lib/validation";
 
@@ -12,6 +12,7 @@ interface ChatMessage {
 
 const ChatBotButton = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
@@ -21,6 +22,18 @@ const ChatBotButton = () => {
     },
   ]);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 300);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -193,6 +206,25 @@ const ChatBotButton = () => {
               </div>
             </div>
           </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Back to Top Button */}
+      <AnimatePresence>
+        {showBackToTop && (
+          <motion.button
+            onClick={scrollToTop}
+            className="fixed bottom-24 right-6 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-secondary-foreground shadow-md border border-border hover:bg-secondary/80 transition-colors duration-300 md:bottom-[6.5rem] md:h-12 md:w-12"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0, opacity: 0 }}
+            transition={{ type: "spring", stiffness: 260, damping: 20 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            aria-label="Back to top"
+          >
+            <ArrowUp className="h-5 w-5 md:h-6 md:w-6" />
+          </motion.button>
         )}
       </AnimatePresence>
 
