@@ -214,16 +214,15 @@ const ChatBotButton = () => {
         {showBackToTop && (
           <motion.button
             onClick={scrollToTop}
-            className="fixed bottom-24 right-6 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-secondary-foreground shadow-md border border-border hover:bg-secondary/80 transition-colors duration-300 md:bottom-[6.5rem] md:h-12 md:w-12"
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0, opacity: 0 }}
-            transition={{ type: "spring", stiffness: 260, damping: 20 }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
+            className="fixed bottom-24 right-7 z-50 flex items-center justify-center text-foreground/40 hover:text-foreground/70 transition-colors duration-300 md:bottom-[6.5rem] md:right-8"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.3 }}
+            whileHover={{ y: -2 }}
             aria-label="Back to top"
           >
-            <ArrowUp className="h-5 w-5 md:h-6 md:w-6" />
+            <ArrowUp className="h-7 w-7 stroke-[1.5] md:h-8 md:w-8" />
           </motion.button>
         )}
       </AnimatePresence>
