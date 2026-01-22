@@ -13,6 +13,7 @@ interface ChatMessage {
 const ChatBotButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [isAtBottom, setIsAtBottom] = useState(false);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
@@ -26,6 +27,11 @@ const ChatBotButton = () => {
   useEffect(() => {
     const handleScroll = () => {
       setShowBackToTop(window.scrollY > 300);
+      
+      // Check if at bottom of page (within 100px of bottom)
+      const scrollPosition = window.scrollY + window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      setIsAtBottom(scrollPosition >= documentHeight - 100);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -214,7 +220,11 @@ const ChatBotButton = () => {
         {showBackToTop && (
           <motion.button
             onClick={scrollToTop}
-            className="fixed bottom-24 right-7 z-50 flex items-center justify-center text-foreground/40 hover:text-foreground/70 transition-colors duration-300 md:bottom-[6.5rem] md:right-8"
+            className={`fixed bottom-24 right-7 z-50 flex items-center justify-center transition-colors duration-300 md:bottom-[6.5rem] md:right-8 ${
+              isAtBottom 
+                ? "text-background/60 hover:text-background/90" 
+                : "text-foreground/40 hover:text-foreground/70"
+            }`}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
