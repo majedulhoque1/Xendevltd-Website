@@ -12,20 +12,30 @@ const Navigation = ({
   onThemeToggle
 }: NavigationProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isAtBottom, setIsAtBottom] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+      
+      // Check if at bottom of page (within 100px of bottom)
+      const scrollPosition = window.scrollY + window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      setIsAtBottom(scrollPosition >= documentHeight - 100);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Logo should be white in dark mode when: at top (not scrolled) OR at bottom of page
+  const shouldLogoBeWhite = isDark && (!isScrolled || isAtBottom);
+
   return <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? "bg-background/98 backdrop-blur-lg border-b border-border/50 shadow-sm py-2" : "bg-transparent py-4"}`}>
       <div className="container-wide">
         <div className="flex items-center justify-between h-14">
           {/* Logo */}
           <a href="/" className="flex items-center gap-3 group">
-            <img src={xenLogo} alt="Xen Developments" className={`h-12 w-auto transition-all duration-300 group-hover:scale-105 ${isDark && !isScrolled ? "brightness-0 invert" : ""}`} />
+            <img src={xenLogo} alt="Xen Developments" className={`h-12 w-auto transition-all duration-300 group-hover:scale-105 ${shouldLogoBeWhite ? "brightness-0 invert" : ""}`} />
           </a>
 
           {/* Desktop Navigation - Centered Links */}
