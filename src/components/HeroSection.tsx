@@ -102,12 +102,12 @@ const HeroSection = ({
             duration: 0.7,
             delay: 0.5
           }} className="flex flex-row items-center gap-3">
-              <a href="#contact" className="inline-flex items-center justify-center px-5 py-2.5 bg-primary text-primary-foreground text-sm font-medium rounded-full transition-all hover:bg-primary/90 group">
-                {isDark ? "Book a Visit" : "Schedule Visit"}
+              <a href="#featured" className="inline-flex items-center justify-center px-5 py-2.5 bg-primary text-primary-foreground text-sm font-medium rounded-full transition-all hover:bg-primary/90 group">
+                Project Details
                 <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
               </a>
-              <a href="#featured" className="inline-flex items-center justify-center px-5 py-2.5 bg-white/20 backdrop-blur-sm text-white text-sm font-medium rounded-full border border-white/30 transition-all hover:bg-white/30">
-                {isDark ? "Brochure" : "Floor Plans"}
+              <a href="#contact" className="inline-flex items-center justify-center px-5 py-2.5 bg-white/20 backdrop-blur-sm text-white text-sm font-medium rounded-full border border-white/30 transition-all hover:bg-white/30">
+                Get in Touch
               </a>
             </motion.div>
           </div>
