@@ -37,17 +37,13 @@ const LeadCapture = () => {
     setIsSubmitting(true);
 
     try {
-      // Save to Supabase leads table and get the generated ID
-      const { data: leadData, error: dbError } = await supabase
-        .from("leads")
-        .insert({
-          full_name: validation.data.full_name,
-          phone: validation.data.phone,
-          message: validation.data.message || null,
-          source: "contact_form",
-        })
-        .select("id")
-        .single();
+      // Save to Supabase leads table
+      const { error: dbError } = await supabase.from("leads").insert({
+        full_name: validation.data.full_name,
+        phone: validation.data.phone,
+        message: validation.data.message || null,
+        source: "contact_form",
+      });
 
       if (dbError) {
         if (import.meta.env.DEV) {
@@ -61,31 +57,19 @@ const LeadCapture = () => {
         return;
       }
 
-      // Generate a human-readable reference number from the UUID
-      const leadRef = leadData?.id ? `XEN-${leadData.id.slice(0, 8).toUpperCase()}` : null;
-
-      // Send to n8n webhook via edge function proxy (fire-and-forget, don't block success)
-      supabase.functions.invoke("webhook-proxy", {
+      // Send to n8n webhook via edge function proxy
+      await supabase.functions.invoke("webhook-proxy", {
         body: {
           name: validation.data.full_name,
           phone: validation.data.phone,
           message: validation.data.message,
           source: "contact_form",
-          lead_id: leadData?.id,
-          lead_ref: leadRef,
         },
-      }).catch((webhookError) => {
-        // Log webhook errors but don't fail the form submission
-        if (import.meta.env.DEV) {
-          console.error("Webhook notification failed:", webhookError);
-        }
       });
 
       toast({
         title: "Thank you for showing interest!",
-        description: leadRef 
-          ? `Your reference ID: ${leadRef}. We will get back to you shortly.`
-          : "We will get back to you shortly.",
+        description: "We will get back to you shortly.",
       });
       setFormData({ name: "", phone: "", message: "" });
     } catch (error) {
