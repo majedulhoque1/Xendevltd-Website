@@ -215,9 +215,9 @@ const ChatBotButton = () => {
         )}
       </AnimatePresence>
 
-      {/* Back to Top Button */}
+      {/* Back to Top Button - hidden when chat is open */}
       <AnimatePresence>
-        {showBackToTop && (
+        {showBackToTop && !isOpen && (
           <motion.button
             onClick={scrollToTop}
             className={`fixed bottom-24 right-7 z-50 flex items-center justify-center transition-colors duration-300 md:bottom-[6.5rem] md:right-8 ${
