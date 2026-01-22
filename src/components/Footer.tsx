@@ -28,7 +28,7 @@ const Footer = () => {
               <img 
                 src={xenLogo} 
                 alt="Xen Developments" 
-                className="h-14 w-auto brightness-0 invert"
+                className="h-14 w-auto brightness-0 invert dark:brightness-100 dark:invert-0"
               />
             </a>
             <p className="text-background/70 max-w-md mb-6">
