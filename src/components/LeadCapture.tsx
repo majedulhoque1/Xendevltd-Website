@@ -37,19 +37,15 @@ const LeadCapture = () => {
     setIsSubmitting(true);
 
     try {
-      // Save to Supabase leads table and get the generated ID
-      const { data: leadData, error: dbError } = await supabase
-        .from("leads")
-        .insert({
-          full_name: validation.data.full_name,
-          phone: validation.data.phone,
-          message: validation.data.message || null,
-          source: "contact_form",
-        })
-        .select("id")
-        .single();
+      // Save to Supabase leads table
+      const { error: dbError } = await supabase.from("leads").insert({
+        full_name: validation.data.full_name,
+        phone: validation.data.phone,
+        message: validation.data.message || null,
+        source: "contact_form",
+      });
 
-      if (dbError || !leadData) {
+      if (dbError) {
         if (import.meta.env.DEV) {
           console.error("Database error:", dbError);
         }
@@ -61,10 +57,9 @@ const LeadCapture = () => {
         return;
       }
 
-      // Send to n8n webhook via edge function proxy with lead ID
+      // Send to n8n webhook via edge function proxy
       await supabase.functions.invoke("webhook-proxy", {
         body: {
-          lead_id: leadData.id,
           name: validation.data.full_name,
           phone: validation.data.phone,
           message: validation.data.message,

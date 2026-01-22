@@ -6,7 +6,6 @@ const corsHeaders = {
 };
 
 interface WebhookPayload {
-  lead_id?: string;
   name?: string;
   phone?: string;
   message?: string;
