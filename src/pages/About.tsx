@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import ChatBotButton from "@/components/WhatsAppButton";
 
 const About = () => {
   const { isDark, toggleTheme } = useTheme();
@@ -251,6 +252,7 @@ const About = () => {
       </main>
 
       <Footer />
+      <ChatBotButton />
     </div>
   );
 };

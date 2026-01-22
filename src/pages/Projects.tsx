@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import ChatBotButton from "@/components/WhatsAppButton";
 import projectLakeside from "@/assets/project-lakeside.jpg";
 
 const projects = [
@@ -263,6 +264,7 @@ const Projects = () => {
       </main>
 
       <Footer />
+      <ChatBotButton />
     </div>
   );
 };
