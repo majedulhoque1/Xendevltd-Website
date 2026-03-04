@@ -124,9 +124,9 @@ const Footer = () => {
             href="https://xendevltd.lovable.app"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-background/30 hover:text-background/50 transition-colors text-xs"
+            className="text-background/50 hover:text-background/80 transition-colors text-xs mr-20 md:mr-24"
           >
-            Admin
+            Admin Login
           </a>
         </div>
       </div>
