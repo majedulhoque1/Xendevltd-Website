@@ -116,10 +116,18 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-background/10 text-center text-sm text-background/50">
+        <div className="mt-12 pt-8 border-t border-background/10 flex items-center justify-between text-sm text-background/50">
           <p>
             © {currentYear} Xen Developments Ltd. All rights reserved.
           </p>
+          <a
+            href="https://xendevltd.lovable.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-background/30 hover:text-background/50 transition-colors text-xs"
+          >
+            Admin
+          </a>
         </div>
       </div>
     </footer>
