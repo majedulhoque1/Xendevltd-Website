@@ -40,6 +40,32 @@ serve(async (req: Request) => {
       );
     }
 
+    // Server-side input validation (mirrors client-side Zod schemas)
+    const MAX_NAME = 100;
+    const MAX_PHONE = 20;
+    const MAX_MESSAGE = 1000;
+
+    if (payload.name !== undefined && (typeof payload.name !== "string" || payload.name.length > MAX_NAME)) {
+      return new Response(
+        JSON.stringify({ error: "Invalid or too long name" }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    if (payload.phone !== undefined && (typeof payload.phone !== "string" || payload.phone.length > MAX_PHONE)) {
+      return new Response(
+        JSON.stringify({ error: "Invalid or too long phone" }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    if (payload.message !== undefined && (typeof payload.message !== "string" || payload.message.length > MAX_MESSAGE)) {
+      return new Response(
+        JSON.stringify({ error: "Invalid or too long message" }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
     // Forward to n8n webhook
     const response = await fetch(webhookUrl, {
       method: "POST",
