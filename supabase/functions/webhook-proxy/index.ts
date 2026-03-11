@@ -67,6 +67,9 @@ serve(async (req: Request) => {
     }
 
     // Forward to n8n webhook
+    console.log("Forwarding to webhook:", webhookUrl);
+    console.log("Payload:", JSON.stringify(payload));
+
     const response = await fetch(webhookUrl, {
       method: "POST",
       headers: {
@@ -75,10 +78,14 @@ serve(async (req: Request) => {
       body: JSON.stringify(payload),
     });
 
+    const responseText = await response.text();
+    console.log("Webhook response status:", response.status);
+    console.log("Webhook response body:", responseText);
+
     if (!response.ok) {
-      console.error("Webhook failed:", response.status);
+      console.error("Webhook failed:", response.status, responseText);
       return new Response(
-        JSON.stringify({ error: "Webhook failed" }),
+        JSON.stringify({ error: "Webhook failed", status: response.status, detail: responseText }),
         { status: 502, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
