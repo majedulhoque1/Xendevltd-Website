@@ -93,7 +93,7 @@ serve(async (req: Request) => {
     // Try to parse response, fallback to success message
     let responseData;
     try {
-      responseData = await response.json();
+      responseData = JSON.parse(responseText);
     } catch {
       responseData = { success: true };
     }
