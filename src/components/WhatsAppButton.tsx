@@ -93,6 +93,15 @@ const ChatBotButton = () => {
         console.error("Database error:", dbError);
       }
 
+      // Also log to Google Sheets via webhook-proxy
+      supabase.functions.invoke("webhook-proxy", {
+        body: {
+          name: "Chatbot User",
+          message: userMessage.content,
+          source: "chatbot",
+          timestamp: userMessage.timestamp.toISOString(),
+        },
+      }).catch(() => {}); // fire-and-forget
 
       const botResponse: ChatMessage = {
         role: "assistant",
