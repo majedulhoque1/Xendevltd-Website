@@ -57,13 +57,15 @@ const LeadCapture = () => {
         return;
       }
 
-      // Send to n8n webhook via edge function proxy
+      // Send to Google Sheets via edge function proxy
       await supabase.functions.invoke("webhook-proxy", {
         body: {
           name: validation.data.full_name,
           phone: validation.data.phone,
           message: validation.data.message,
           source: "contact_form",
+          submitted_at: new Date().toISOString(),
+          status: "New",
         },
       });
 

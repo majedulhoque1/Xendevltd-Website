@@ -67,17 +67,19 @@ const ChatBotButton = () => {
     let botResponseContent = "Thank you for your message! We'll get back to you soon.";
 
     try {
-      // Send to n8n webhook via edge function proxy
-      const { data, error: webhookError } = await supabase.functions.invoke("webhook-proxy", {
-        body: {
-          message: userMessage.content,
-          source: "chatbot",
-          timestamp: userMessage.timestamp.toISOString(),
-        },
+      // Build conversation history for AI context
+      const conversationHistory = messages
+        .filter((m) => m.role === "user" || m.role === "assistant")
+        .map((m) => ({ role: m.role, content: m.content }));
+      conversationHistory.push({ role: "user", content: userMessage.content });
+
+      // Call chat-ai edge function for Gemini response
+      const { data, error: aiError } = await supabase.functions.invoke("chat-ai", {
+        body: { messages: conversationHistory },
       });
 
-      if (!webhookError && data) {
-        botResponseContent = data.message || data.response || botResponseContent;
+      if (!aiError && data?.message) {
+        botResponseContent = data.message;
       }
 
       // Save to Supabase chat_logs table
@@ -90,6 +92,16 @@ const ChatBotButton = () => {
       if (dbError && import.meta.env.DEV) {
         console.error("Database error:", dbError);
       }
+
+      // Also log to Google Sheets via webhook-proxy
+      supabase.functions.invoke("webhook-proxy", {
+        body: {
+          name: "Chatbot User",
+          message: userMessage.content,
+          source: "chatbot",
+          timestamp: userMessage.timestamp.toISOString(),
+        },
+      }).catch(() => {}); // fire-and-forget
 
       const botResponse: ChatMessage = {
         role: "assistant",
