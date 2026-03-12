@@ -20,10 +20,10 @@ serve(async (req: Request) => {
   }
 
   try {
-    const webhookUrl = Deno.env.get("N8N_WEBHOOK_URL");
+    const webhookUrl = Deno.env.get("GOOGLE_SHEETS_WEBHOOK_URL");
     
     if (!webhookUrl) {
-      console.error("N8N_WEBHOOK_URL not configured");
+      console.error("GOOGLE_SHEETS_WEBHOOK_URL not configured");
       return new Response(
         JSON.stringify({ error: "Webhook not configured" }),
         { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
