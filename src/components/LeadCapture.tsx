@@ -37,28 +37,8 @@ const LeadCapture = () => {
     setIsSubmitting(true);
 
     try {
-      // Save to Supabase leads table
-      const { error: dbError } = await supabase.from("leads").insert({
-        full_name: validation.data.full_name,
-        phone: validation.data.phone,
-        message: validation.data.message || null,
-        source: "contact_form",
-      });
-
-      if (dbError) {
-        if (import.meta.env.DEV) {
-          console.error("Database error:", dbError);
-        }
-        toast({
-          variant: "destructive",
-          title: "Submission Failed",
-          description: "Please try again later.",
-        });
-        return;
-      }
-
       // Send to Google Sheets via edge function proxy
-      await supabase.functions.invoke("webhook-proxy", {
+      const { error: proxyError } = await supabase.functions.invoke("webhook-proxy", {
         body: {
           name: validation.data.full_name,
           phone: validation.data.phone,
@@ -68,6 +48,18 @@ const LeadCapture = () => {
           status: "New",
         },
       });
+
+      if (proxyError) {
+        if (import.meta.env.DEV) {
+          console.error("Proxy error:", proxyError);
+        }
+        toast({
+          variant: "destructive",
+          title: "Submission Failed",
+          description: "Please try again later.",
+        });
+        return;
+      }
 
       toast({
         title: "Thank you for showing interest!",
