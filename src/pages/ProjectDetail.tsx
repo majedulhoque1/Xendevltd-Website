@@ -1,4 +1,4 @@
-import { ArrowLeft, Waves, MapPin, Calendar, Home, CheckCircle, Building2, Layers, Ruler, Maximize, LayoutGrid, ListChecks } from "lucide-react";
+import { ArrowLeft, Waves, MapPin, Calendar, Home, CheckCircle, Building2, Layers, Ruler, Maximize, LayoutGrid, ListChecks, Compass } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -6,26 +6,35 @@ import { useTheme } from "@/contexts/ThemeContext";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ChatBotButton from "@/components/WhatsAppButton";
-import projectLakeside from "@/assets/project-lakeside.jpg";
 import xenOrionAsset from "@/assets/Xen_Orion_Plot_30__Road_2__DOHS_Chittagong.jpeg.asset.json";
 import xenAndromedaAsset from "@/assets/Xen_Andromeda_Plot_29__Rd_2__DOHS_Chittagong.jpeg.asset.json";
 import xenPegasusAsset from "@/assets/Xen_Pegasus_Plot_1__Road_1__DOHS_Chittagong.jpeg.asset.json";
+import xenLakeviewTasmeeAsset from "@/assets/Xen_Lakeview_Tasmee.jpeg.asset.json";
+import upcomingBananiAsset from "@/assets/Upcoming_Banani.jpeg.asset.json";
+import upcomingJolshiriAsset from "@/assets/Upcoming_Jolshiri.jpeg.asset.json";
+import completedDohsChittagongAsset from "@/assets/Completed_DOHS_Chittagong.jpeg.asset.json";
 
 const projects = [
   {
     id: 1,
-    slug: "jolshiri-lakeview-residence",
-    name: "Jolshiri Lakeview Residence",
+    slug: "xen-lakeview-tasmee",
+    name: "Xen Lakeview Tasmee",
     status: "On-going",
-    location: "Jolshiri Abashon, Dhaka",
+    location: "Plot 38, Rd: 504, Sec: 14, Jolshiri Abashon, Dhaka",
     badge: "Lakeview Project",
     description: "A premium residential development featuring dual-aspect design with open street frontage and uninterrupted lake views. Experience lakeside serenity with modern architectural excellence.",
     fullDescription: "Jolshiri Lakeview Residence represents the pinnacle of modern living in Dhaka. This exclusive development combines the tranquility of lakeside living with contemporary architectural design. Each residence is thoughtfully crafted to maximize natural light and ventilation while offering stunning views of the surrounding landscape.",
     features: ["Lake View", "Dual Aspect Design", "Premium Finishes", "Modern Architecture", "24/7 Security", "Covered Parking"],
     amenities: ["Swimming Pool", "Fitness Center", "Children's Play Area", "Community Hall", "Landscaped Gardens"],
     expectedCompletion: "2026",
-    image: projectLakeside,
-    gallery: [projectLakeside],
+    image: xenLakeviewTasmeeAsset.url,
+    gallery: [xenLakeviewTasmeeAsset.url],
+    buildingType: "Residential Apartment",
+    totalFloors: "G+8 (9 Stories)",
+    floorArea: "2850 sft",
+    configuration: "4 Beds, 5 Baths, 7 Balcony/Verandas",
+    frontageNE: "30' Green + 200' Lake + 8' Walking Track",
+    frontageSW: "40' Wide Road",
   },
   {
     id: 2,
@@ -41,6 +50,65 @@ const projects = [
     expectedCompletion: "2027",
     image: null,
     gallery: [],
+  },
+  {
+    id: 8,
+    slug: "upcoming-banani",
+    name: "Title Coming Soon",
+    status: "Up-coming",
+    location: "Block B, Rd 18, Plot 21, Banani, Dhaka",
+    badge: null,
+    description: "",
+    fullDescription: "Details coming soon.",
+    features: ["TBD"],
+    amenities: ["TBD"],
+    expectedCompletion: "TBD",
+    image: upcomingBananiAsset.url,
+    gallery: [],
+    buildingType: "—",
+    totalFloors: "—",
+    floorArea: "—",
+    configuration: "—",
+  },
+  {
+    id: 9,
+    slug: "upcoming-jolshiri",
+    name: "Title Coming Soon",
+    status: "Up-coming",
+    location: "Sec 8, Rd 403, Plot 07, Jolshiri, Dhaka",
+    badge: null,
+    description: "",
+    fullDescription: "Details coming soon.",
+    features: ["TBD"],
+    amenities: ["TBD"],
+    expectedCompletion: "TBD",
+    image: upcomingJolshiriAsset.url,
+    gallery: [],
+    buildingType: "—",
+    totalFloors: "—",
+    floorArea: "—",
+    configuration: "—",
+  },
+  {
+    id: 10,
+    slug: "completed-dohs-chittagong",
+    name: "Title Coming Soon",
+    status: "Completed",
+    location: "Road 2, Plot 41, DOHS Chittagong",
+    badge: null,
+    description: "",
+    fullDescription: "Details coming soon.",
+    features: ["TBD"],
+    amenities: ["TBD"],
+    expectedCompletion: "Completed",
+    image: completedDohsChittagongAsset.url,
+    gallery: [],
+    buildingType: "—",
+    totalFloors: "—",
+    landArea: "—",
+    apartmentSize: "—",
+    configuration: "—",
+    availableFloors: "—",
   },
   {
     id: 3,
@@ -341,12 +409,39 @@ const ProjectDetail = () => {
                         </div>
                       </div>
                     )}
+                    {"floorArea" in project && (project as any).floorArea && (
+                      <div className="flex items-start gap-3">
+                        <Maximize className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        <div>
+                          <span className="text-xs text-muted-foreground uppercase tracking-wider">Floor Area</span>
+                          <p className="text-sm font-medium">{(project as any).floorArea}</p>
+                        </div>
+                      </div>
+                    )}
                     {"configuration" in project && (project as any).configuration && (
                       <div className="flex items-start gap-3">
                         <LayoutGrid className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                         <div>
                           <span className="text-xs text-muted-foreground uppercase tracking-wider">Configuration</span>
                           <p className="text-sm font-medium">{(project as any).configuration}</p>
+                        </div>
+                      </div>
+                    )}
+                    {"frontageNE" in project && (project as any).frontageNE && (
+                      <div className="flex items-start gap-3">
+                        <Compass className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        <div>
+                          <span className="text-xs text-muted-foreground uppercase tracking-wider">Frontage (NE)</span>
+                          <p className="text-sm font-medium">{(project as any).frontageNE}</p>
+                        </div>
+                      </div>
+                    )}
+                    {"frontageSW" in project && (project as any).frontageSW && (
+                      <div className="flex items-start gap-3">
+                        <Compass className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        <div>
+                          <span className="text-xs text-muted-foreground uppercase tracking-wider">Frontage (SW)</span>
+                          <p className="text-sm font-medium">{(project as any).frontageSW}</p>
                         </div>
                       </div>
                     )}

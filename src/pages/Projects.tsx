@@ -6,23 +6,26 @@ import { useTheme } from "@/contexts/ThemeContext";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ChatBotButton from "@/components/WhatsAppButton";
-import projectLakeside from "@/assets/project-lakeside.jpg";
 import xenOrionAsset from "@/assets/Xen_Orion_Plot_30__Road_2__DOHS_Chittagong.jpeg.asset.json";
 import xenAndromedaAsset from "@/assets/Xen_Andromeda_Plot_29__Rd_2__DOHS_Chittagong.jpeg.asset.json";
 import xenPegasusAsset from "@/assets/Xen_Pegasus_Plot_1__Road_1__DOHS_Chittagong.jpeg.asset.json";
+import xenLakeviewTasmeeAsset from "@/assets/Xen_Lakeview_Tasmee.jpeg.asset.json";
+import upcomingBananiAsset from "@/assets/Upcoming_Banani.jpeg.asset.json";
+import upcomingJolshiriAsset from "@/assets/Upcoming_Jolshiri.jpeg.asset.json";
+import completedDohsChittagongAsset from "@/assets/Completed_DOHS_Chittagong.jpeg.asset.json";
 
 const projects = [
   {
     id: 1,
-    slug: "jolshiri-lakeview-residence",
-    name: "Jolshiri Lakeview Residence",
+    slug: "xen-lakeview-tasmee",
+    name: "Xen Lakeview Tasmee",
     status: "On-going",
-    location: "Jolshiri Abashon, Dhaka",
+    location: "Plot 38, Rd: 504, Sec: 14, Jolshiri Abashon, Dhaka",
     badge: "Lakeview Project",
     description: "A premium residential development featuring dual-aspect design with open street frontage and uninterrupted lake views. Experience lakeside serenity with modern architectural excellence.",
-    features: ["Lake View", "Dual Aspect Design", "Premium Finishes", "Modern Architecture"],
+    features: ["Lake View", "Dual Aspect Design", "Premium Finishes"],
     expectedCompletion: "2026",
-    image: projectLakeside,
+    image: xenLakeviewTasmeeAsset.url,
   },
   {
     id: 2,
@@ -35,6 +38,42 @@ const projects = [
     features: ["Prime Location", "Modern Design", "Urban Connectivity"],
     expectedCompletion: "2027",
     image: null,
+  },
+  {
+    id: 8,
+    slug: "upcoming-banani",
+    name: "Title Coming Soon",
+    status: "Up-coming",
+    location: "Block B, Rd 18, Plot 21, Banani, Dhaka",
+    badge: null,
+    description: "An upcoming residential project in a prime Banani location, featuring modern architectural design.",
+    features: ["Prime Location", "Modern Design"],
+    expectedCompletion: "TBD",
+    image: upcomingBananiAsset.url,
+  },
+  {
+    id: 9,
+    slug: "upcoming-jolshiri",
+    name: "Title Coming Soon",
+    status: "Up-coming",
+    location: "Sec 8, Rd 403, Plot 07, Jolshiri, Dhaka",
+    badge: null,
+    description: "An upcoming residential project in a prime Jolshiri location, featuring modern architectural design.",
+    features: ["Prime Location", "Modern Design"],
+    expectedCompletion: "TBD",
+    image: upcomingJolshiriAsset.url,
+  },
+  {
+    id: 10,
+    slug: "completed-dohs-chittagong",
+    name: "Title Coming Soon",
+    status: "Completed",
+    location: "Road 2, Plot 41, DOHS Chittagong",
+    badge: null,
+    description: "A successfully completed residential project showcasing our commitment to quality construction and timely delivery.",
+    features: ["Quality Construction", "Timely Delivery", "Premium Location"],
+    expectedCompletion: "Completed",
+    image: completedDohsChittagongAsset.url,
   },
   {
     id: 3,
