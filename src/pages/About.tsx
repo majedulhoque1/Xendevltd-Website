@@ -1,4 +1,4 @@
-import { ArrowLeft, Building2, Users, Award, Target, Heart, Shield } from "lucide-react";
+import { ArrowLeft, Building2, Users, Award, Target, Heart, Shield, BadgeCheck, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
@@ -34,6 +34,16 @@ const About = () => {
       icon: Target,
       title: "Timely Delivery",
       description: "We respect your time and investment, ensuring projects are completed on schedule.",
+    },
+    {
+      icon: BadgeCheck,
+      title: "REHAB Certified Member",
+      description: "Proud members of the Real Estate Housing Association Bangladesh, upholding industry standards.",
+    },
+    {
+      icon: ShieldCheck,
+      title: "BNBC Compliant",
+      description: "Every structure is built in full compliance with Bangladesh National Building Code for your safety.",
     },
   ];
 
@@ -87,20 +97,19 @@ const About = () => {
                   Building Dreams,<br />Creating Legacies
                 </h2>
                 <p className="body-large text-muted-foreground mb-6">
-                  Xen Developments was founded with a vision to transform the real estate landscape 
-                  in Bangladesh. We believe that a home is more than just four walls—it's where 
-                  memories are made, families grow, and dreams take shape.
+                  Xen Developments Limited entered the real estate sector as a building construction company — with a little difference. Our motto is simple: "Quality is our Priority."
                 </p>
                 <p className="text-muted-foreground mb-6">
-                  With over a decade of experience in premium residential development, we have 
-                  established ourselves as a trusted name in the industry. Our commitment to 
-                  quality, transparency, and customer satisfaction sets us apart in every project 
-                  we undertake.
+                  We are organised with a group of professionals, managed by a Brigadier General (retired), whose engineering consultancy and technical management are handled by highly qualified BUET civil engineers with long-time experience in building construction and project management. Each project is supervised full time by dedicated site engineers, supported by our administrative staff.
+                </p>
+                <p className="text-muted-foreground mb-6">
+                  Our architectural designs are crafted by very experienced architects, and structural designs are executed by highly experienced civil engineers — ensuring aestheticism, optimum space management, and full compliance with safety standards.
+                </p>
+                <p className="text-muted-foreground mb-6">
+                  We are a proud member of REHAB (Real Estate Housing Association Bangladesh) and every structure we build fully complies with the Bangladesh National Building Code (BNBC). Construction materials used at each level are tested from the laboratories at HBRI (Housing and Building Research Institute). We also maintain a CCTV camera network across all our sites, allowing the MD, company officials, engineers, consultants, and land owners to monitor progress live from anywhere in the world.
                 </p>
                 <p className="text-muted-foreground">
-                  From carefully selecting prime locations to incorporating modern architectural 
-                  designs, every aspect of our projects reflects our dedication to excellence. 
-                  We don't just build homes; we create communities where families thrive.
+                  The name Xen itself reflects who we are — where 'X' stands for Executive and 'En' stands for Engineering.
                 </p>
               </motion.div>
 
@@ -204,7 +213,7 @@ const About = () => {
               <h2 className="heading-section mt-4">Our Core Values</h2>
             </motion.div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {values.map((value, index) => (
                 <motion.div
                   key={value.title}
