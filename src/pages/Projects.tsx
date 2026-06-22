@@ -7,6 +7,9 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ChatBotButton from "@/components/WhatsAppButton";
 import projectLakeside from "@/assets/project-lakeside.jpg";
+import xenOrionAsset from "@/assets/Xen_Orion_Plot_30__Road_2__DOHS_Chittagong.jpeg.asset.json";
+import xenAndromedaAsset from "@/assets/Xen_Andromeda_Plot_29__Rd_2__DOHS_Chittagong.jpeg.asset.json";
+import xenPegasusAsset from "@/assets/Xen_Pegasus_Plot_1__Road_1__DOHS_Chittagong.jpeg.asset.json";
 
 const projects = [
   {
@@ -35,12 +38,60 @@ const projects = [
   },
   {
     id: 3,
-    slug: "bashundhara-residence",
-    name: "Bashundhara Residence",
+    slug: "xen-orion",
+    name: "Xen Orion",
     status: "Completed",
-    location: "Bashundhara R/A, Dhaka",
+    location: "Plot#30, Road#2, DOHS Chittagong",
     badge: null,
-    description: "A successfully completed residential project showcasing our commitment to quality construction and timely delivery in one of Dhaka's most sought-after areas.",
+    description: "A successfully completed residential project showcasing our commitment to quality construction and timely delivery.",
+    features: ["Quality Construction", "Timely Delivery", "Premium Location"],
+    expectedCompletion: "Completed",
+    image: xenOrionAsset.url,
+  },
+  {
+    id: 4,
+    slug: "xen-andromeda",
+    name: "Xen Andromeda",
+    status: "Completed",
+    location: "Plot#29, Rd#2, DOHS Chittagong",
+    badge: null,
+    description: "A successfully completed residential project showcasing our commitment to quality construction and timely delivery.",
+    features: ["Quality Construction", "Timely Delivery", "Premium Location"],
+    expectedCompletion: "Completed",
+    image: xenAndromedaAsset.url,
+  },
+  {
+    id: 5,
+    slug: "xen-pegasus",
+    name: "Xen Pegasus",
+    status: "Completed",
+    location: "Plot#1, Road#1, DOHS Chittagong",
+    badge: null,
+    description: "A successfully completed residential project showcasing our commitment to quality construction and timely delivery.",
+    features: ["Quality Construction", "Timely Delivery", "Premium Location"],
+    expectedCompletion: "Completed",
+    image: xenPegasusAsset.url,
+  },
+  {
+    id: 6,
+    slug: "xen-citadelle",
+    name: "Xen Citadelle",
+    status: "Completed",
+    location: "Road#3, Plot#90, Jalalabad Housing Society, West Khulshi, Chittagong",
+    badge: null,
+    description: "A 9-story residential apartment complex in the calm, hilly surroundings of West Khulshi, designed for light, airflow, and quiet living.",
+    features: ["Quality Construction", "BNBC Compliant", "Premium Location"],
+    expectedCompletion: "Completed",
+    image: null,
+  },
+  {
+    id: 7,
+    slug: "xen-nirvana",
+    name: "Xen Nirvana",
+    status: "Completed",
+    location: "Plot#62, Road#2, DOHS Chittagong",
+    badge: null,
+    description: "A successfully completed residential project showcasing our commitment to quality construction and timely delivery.",
     features: ["Quality Construction", "Timely Delivery", "Premium Location"],
     expectedCompletion: "Completed",
     image: null,

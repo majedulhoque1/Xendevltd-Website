@@ -1,4 +1,4 @@
-import { ArrowLeft, Waves, MapPin, Calendar, Home, CheckCircle } from "lucide-react";
+import { ArrowLeft, Waves, MapPin, Calendar, Home, CheckCircle, Building2, Layers, Ruler, Maximize, LayoutGrid, ListChecks } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -7,6 +7,9 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ChatBotButton from "@/components/WhatsAppButton";
 import projectLakeside from "@/assets/project-lakeside.jpg";
+import xenOrionAsset from "@/assets/Xen_Orion_Plot_30__Road_2__DOHS_Chittagong.jpeg.asset.json";
+import xenAndromedaAsset from "@/assets/Xen_Andromeda_Plot_29__Rd_2__DOHS_Chittagong.jpeg.asset.json";
+import xenPegasusAsset from "@/assets/Xen_Pegasus_Plot_1__Road_1__DOHS_Chittagong.jpeg.asset.json";
 
 const projects = [
   {
@@ -41,15 +44,94 @@ const projects = [
   },
   {
     id: 3,
-    slug: "bashundhara-residence",
-    name: "Bashundhara Residence",
+    slug: "xen-orion",
+    name: "Xen Orion",
     status: "Completed",
-    location: "Bashundhara R/A, Dhaka",
+    location: "Plot#30, Road#2, DOHS Chittagong",
     badge: null,
-    description: "A successfully completed residential project showcasing our commitment to quality construction and timely delivery in one of Dhaka's most sought-after areas.",
-    fullDescription: "Bashundhara Residence stands as a testament to our commitment to excellence. This completed project has set new standards in residential construction, with all units delivered on time and to the highest specifications. Residents now enjoy a premium lifestyle in one of Dhaka's most prestigious addresses.",
-    features: ["Quality Construction", "Timely Delivery", "Premium Location", "Elegant Design"],
-    amenities: ["Community Space", "Parking Facility", "Security System", "Power Backup"],
+    description: "",
+    fullDescription: "Details coming soon.",
+    features: ["TBD"],
+    amenities: ["TBD"],
+    expectedCompletion: "Completed",
+    image: xenOrionAsset.url,
+    gallery: [],
+  },
+  {
+    id: 4,
+    slug: "xen-andromeda",
+    name: "Xen Andromeda",
+    status: "Completed",
+    location: "Plot#29, Rd#2, DOHS Chittagong",
+    badge: null,
+    description: "",
+    fullDescription: "Details coming soon.",
+    features: ["TBD"],
+    amenities: ["TBD"],
+    expectedCompletion: "Completed",
+    image: xenAndromedaAsset.url,
+    gallery: [],
+  },
+  {
+    id: 5,
+    slug: "xen-pegasus",
+    name: "Xen Pegasus",
+    status: "Completed",
+    location: "Plot#1, Road#1, DOHS Chittagong",
+    badge: null,
+    description: "",
+    fullDescription: "Details coming soon.",
+    features: ["TBD"],
+    amenities: ["TBD"],
+    expectedCompletion: "Completed",
+    image: xenPegasusAsset.url,
+    gallery: [],
+  },
+  {
+    id: 6,
+    slug: "xen-citadelle",
+    name: "Xen Citadelle",
+    status: "Completed",
+    location: "Road#3, Plot#90, Jalalabad Housing Society, West Khulshi, Chittagong",
+    badge: null,
+    description: "",
+    fullDescription: "Xen Citadelle is a 9-story residential apartment complex built over 7 katha of land, featuring two units on each floor with the ground floor dedicated to parking and utility facilities. Designed with an excellent architectural layout that ensures light and airflow from all directions, Citadelle offers a calm and quiet living environment away from the main road in the hilly surroundings of West Khulshi, Chittagong.",
+    features: [
+      "East Facing Project",
+      "Excellent Architectural Design",
+      "Light & Airflow from All Directions",
+      "Two Units Per Floor",
+      "Large Roof & Open Terrace",
+      "Calm & Quiet Surroundings",
+    ],
+    amenities: [
+      "Parking Facility",
+      "Rooftop Access",
+      "Open Terrace (1st Floor)",
+      "Utility Facilities",
+      "Community Space",
+    ],
+    expectedCompletion: "Completed",
+    image: null,
+    gallery: [],
+    buildingType: "Residential Apartment",
+    totalFloors: "G+8 (9 Stories)",
+    landArea: "7 Katha",
+    apartmentSize: "1360 sq ft (approx)",
+    configuration: "3 Bed, 3 Bath (2 attached), 3 Wide Veranda, Drawing, Dining, Kitchen",
+    availableFloors: "All floors available",
+  },
+  {
+    id: 7,
+    slug: "xen-nirvana",
+    name: "Xen Nirvana",
+    status: "Completed",
+    location: "Plot#62, Road#2, DOHS Chittagong",
+    badge: null,
+    description: "",
+    fullDescription: "Details coming soon.",
+    features: ["TBD"],
+    amenities: ["TBD"],
     expectedCompletion: "Completed",
     image: null,
     gallery: [],
@@ -222,6 +304,61 @@ const ProjectDetail = () => {
                         <p className="text-sm font-medium">{project.expectedCompletion}</p>
                       </div>
                     </div>
+
+                    {"buildingType" in project && (project as any).buildingType && (
+                      <div className="flex items-start gap-3">
+                        <Building2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        <div>
+                          <span className="text-xs text-muted-foreground uppercase tracking-wider">Building Type</span>
+                          <p className="text-sm font-medium">{(project as any).buildingType}</p>
+                        </div>
+                      </div>
+                    )}
+                    {"totalFloors" in project && (project as any).totalFloors && (
+                      <div className="flex items-start gap-3">
+                        <Layers className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        <div>
+                          <span className="text-xs text-muted-foreground uppercase tracking-wider">Total Floors</span>
+                          <p className="text-sm font-medium">{(project as any).totalFloors}</p>
+                        </div>
+                      </div>
+                    )}
+                    {"landArea" in project && (project as any).landArea && (
+                      <div className="flex items-start gap-3">
+                        <Ruler className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        <div>
+                          <span className="text-xs text-muted-foreground uppercase tracking-wider">Land Area</span>
+                          <p className="text-sm font-medium">{(project as any).landArea}</p>
+                        </div>
+                      </div>
+                    )}
+                    {"apartmentSize" in project && (project as any).apartmentSize && (
+                      <div className="flex items-start gap-3">
+                        <Maximize className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        <div>
+                          <span className="text-xs text-muted-foreground uppercase tracking-wider">Apartment Size</span>
+                          <p className="text-sm font-medium">{(project as any).apartmentSize}</p>
+                        </div>
+                      </div>
+                    )}
+                    {"configuration" in project && (project as any).configuration && (
+                      <div className="flex items-start gap-3">
+                        <LayoutGrid className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        <div>
+                          <span className="text-xs text-muted-foreground uppercase tracking-wider">Configuration</span>
+                          <p className="text-sm font-medium">{(project as any).configuration}</p>
+                        </div>
+                      </div>
+                    )}
+                    {"availableFloors" in project && (project as any).availableFloors && (
+                      <div className="flex items-start gap-3">
+                        <ListChecks className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        <div>
+                          <span className="text-xs text-muted-foreground uppercase tracking-wider">Available Floors</span>
+                          <p className="text-sm font-medium">{(project as any).availableFloors}</p>
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   <div className="border-t border-border mt-6 pt-6">
