@@ -410,12 +410,39 @@ const ProjectDetail = () => {
                         </div>
                       </div>
                     )}
+                    {"floorArea" in project && (project as any).floorArea && (
+                      <div className="flex items-start gap-3">
+                        <Maximize className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        <div>
+                          <span className="text-xs text-muted-foreground uppercase tracking-wider">Floor Area</span>
+                          <p className="text-sm font-medium">{(project as any).floorArea}</p>
+                        </div>
+                      </div>
+                    )}
                     {"configuration" in project && (project as any).configuration && (
                       <div className="flex items-start gap-3">
                         <LayoutGrid className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                         <div>
                           <span className="text-xs text-muted-foreground uppercase tracking-wider">Configuration</span>
                           <p className="text-sm font-medium">{(project as any).configuration}</p>
+                        </div>
+                      </div>
+                    )}
+                    {"frontageNE" in project && (project as any).frontageNE && (
+                      <div className="flex items-start gap-3">
+                        <Compass className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        <div>
+                          <span className="text-xs text-muted-foreground uppercase tracking-wider">Frontage (NE)</span>
+                          <p className="text-sm font-medium">{(project as any).frontageNE}</p>
+                        </div>
+                      </div>
+                    )}
+                    {"frontageSW" in project && (project as any).frontageSW && (
+                      <div className="flex items-start gap-3">
+                        <Compass className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        <div>
+                          <span className="text-xs text-muted-foreground uppercase tracking-wider">Frontage (SW)</span>
+                          <p className="text-sm font-medium">{(project as any).frontageSW}</p>
                         </div>
                       </div>
                     )}
