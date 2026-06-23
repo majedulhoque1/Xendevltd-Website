@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import heroImageAsset from "@/assets/Xen_Tasmee_Hero.png.asset.json";
+import heroImageAsset from "@/assets/Xen_Lakeview_Tasmee.jpeg.asset.json";
 
 interface HeroSectionProps {
   isDark: boolean;
