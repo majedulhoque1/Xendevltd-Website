@@ -12,12 +12,14 @@ interface HeroSectionProps {
 const HEADLINE_WORDS = ["XEN", "TASMEE"];
 const SUBHEAD_WORDS = ["DESIGN.", "BUILD.", "MOVE", "IN."];
 
+const EASE = [0.22, 1, 0.36, 1] as const;
+
 const wordVariants = {
   hidden: { opacity: 0, y: 24 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, delay: 0.2 + i * 0.08, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.7, delay: 0.2 + i * 0.08, ease: EASE },
   }),
 };
 
@@ -113,7 +115,7 @@ const HeroSection = (_props: HeroSectionProps) => {
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.9, delay: 0.6, ease: EASE }}
         style={{ opacity: subheadOpacity }}
         className="absolute bottom-0 left-0 right-0 backdrop-blur-md bg-black/40 border-t border-white/10"
       >
@@ -134,11 +136,7 @@ const HeroSection = (_props: HeroSectionProps) => {
                     <motion.span
                       initial={{ y: "100%" }}
                       animate={{ y: "0%" }}
-                      transition={{
-                        duration: 0.7,
-                        delay: 0.9 + i * 0.08,
-                        ease: [0.22, 1, 0.36, 1],
-                      }}
+                      transition={{ duration: 0.7, delay: 0.9 + i * 0.08, ease: EASE }}
                       className="inline-block"
                     >
                       {word}
