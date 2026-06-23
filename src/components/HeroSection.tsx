@@ -81,7 +81,7 @@ const HeroSection = (_props: HeroSectionProps) => {
           <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-end">
             {/* Left: copy & buttons */}
             <div>
-              <h2 className="text-white text-xl md:text-2xl font-bold uppercase leading-tight mb-3 md:mb-4">
+              <h2 className="text-white font-sans text-xl md:text-2xl font-bold uppercase leading-tight mb-3 md:mb-4">
                 OPEN TO THE LAKE.
                 <br />
                 OPEN TO THE CITY.
