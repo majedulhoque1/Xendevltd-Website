@@ -131,11 +131,25 @@ const Projects = () => {
   
   const { isDark, toggleTheme } = useTheme();
   const [filter, setFilter] = useState<string>(initialFilter);
+  const [lightbox, setLightbox] = useState<{ image: string; name: string } | null>(null);
 
   // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    if (!lightbox) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightbox(null);
+    };
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [lightbox]);
 
   const filteredProjects = filter === "all" 
     ? projects 
