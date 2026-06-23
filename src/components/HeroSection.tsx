@@ -10,7 +10,6 @@ interface HeroSectionProps {
 }
 
 const HEADLINE_WORDS = ["XEN", "TASMEE"];
-const SUBHEAD_WORDS = ["DESIGN.", "BUILD.", "MOVE", "IN."];
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -53,12 +52,12 @@ const HeroSection = (_props: HeroSectionProps) => {
         />
       </motion.div>
 
-      {/* Dark overlay for readability + premium mood */}
+      {/* Subtle overlay for readability — heavy gradient removed */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 35%, rgba(0,0,0,0.45) 75%, rgba(0,0,0,0.85) 100%)",
+            "linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.2) 100%)",
         }}
       />
 
@@ -111,38 +110,44 @@ const HeroSection = (_props: HeroSectionProps) => {
         </motion.span>
       </motion.div>
 
-      {/* Bottom information grid — glassmorphic */}
+      {/* Bottom information grid */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, delay: 0.6, ease: EASE }}
         style={{ opacity: subheadOpacity }}
-        className="absolute bottom-0 left-0 right-0 backdrop-blur-md bg-black/40 border-t border-white/10"
+        className="absolute bottom-0 left-0 right-0 backdrop-blur-md bg-gradient-to-t from-black/80 via-black/40 to-transparent border-t border-white/10"
       >
-        <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-8 md:py-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="max-w-7xl mx-auto px-6 py-8 md:py-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Left: action */}
           <div>
             <h2
-              className="text-white font-bold uppercase leading-[1.05]"
+              className="text-white font-bold uppercase leading-[1.1]"
               style={{
                 fontFamily: "'Inter', system-ui, sans-serif",
                 fontSize: "clamp(20px, 2.2vw, 30px)",
                 letterSpacing: "-0.01em",
               }}
             >
-              <span className="flex flex-wrap gap-x-3">
-                {SUBHEAD_WORDS.map((word, i) => (
-                  <span key={word} className="overflow-hidden inline-block">
-                    <motion.span
-                      initial={{ y: "100%" }}
-                      animate={{ y: "0%" }}
-                      transition={{ duration: 0.7, delay: 0.9 + i * 0.08, ease: EASE }}
-                      className="inline-block"
-                    >
-                      {word}
-                    </motion.span>
-                  </span>
-                ))}
+              <span className="block overflow-hidden">
+                <motion.span
+                  initial={{ y: "100%" }}
+                  animate={{ y: "0%" }}
+                  transition={{ duration: 0.7, delay: 0.9, ease: EASE }}
+                  className="block"
+                >
+                  OPEN TO THE LAKE.
+                </motion.span>
+              </span>
+              <span className="block overflow-hidden">
+                <motion.span
+                  initial={{ y: "100%" }}
+                  animate={{ y: "0%" }}
+                  transition={{ duration: 0.7, delay: 0.98, ease: EASE }}
+                  className="block"
+                >
+                  OPEN TO THE CITY.
+                </motion.span>
               </span>
             </h2>
 
