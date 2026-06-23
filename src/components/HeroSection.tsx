@@ -116,7 +116,7 @@ const HeroSection = (_props: HeroSectionProps) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, delay: 0.6, ease: EASE }}
         style={{ opacity: subheadOpacity }}
-        className="absolute bottom-0 left-0 right-0 backdrop-blur-md bg-gradient-to-t from-black/80 via-black/40 to-transparent border-t border-white/10"
+        className="absolute bottom-0 left-0 right-0"
       >
         <div className="max-w-7xl mx-auto px-6 py-8 md:py-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Left: action */}
