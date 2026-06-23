@@ -45,7 +45,7 @@ const HeroSection = (_props: HeroSectionProps) => {
       {/* Content wrapper — flex column with justify-between */}
       <div className="relative z-10 flex flex-col justify-between min-h-screen pb-12">
         {/* Top spacer for fixed nav */}
-        <div className="shrink-0" />
+        <div className="h-24 md:h-28 shrink-0" />
 
         {/* Main content — title + bottom grid pushed to bottom with mt-auto */}
         <motion.div
