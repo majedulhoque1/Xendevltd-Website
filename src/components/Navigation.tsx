@@ -38,15 +38,42 @@ const Navigation = ({
             <img src={xenLogo} alt="Xen Developments" className={`h-12 w-auto transition-all duration-300 group-hover:scale-105 ${shouldLogoBeWhite ? "brightness-0 invert" : ""}`} />
           </a>
 
-          {/* Desktop Navigation - Centered Links */}
-          <div className="hidden lg:flex items-center justify-center absolute left-1/2 -translate-x-1/2 gap-16">
-            <Link to="/projects" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
+          {/* Desktop Navigation - Centered Links in Glassmorphic Pill */}
+          <div
+            className={`hidden lg:flex items-center justify-center absolute left-1/2 -translate-x-1/2 gap-8 rounded-full px-8 py-2.5 backdrop-blur-md border transition-all duration-500 ${
+              isScrolled
+                ? "bg-background/60 border-border/40"
+                : "bg-black/20 border-white/15"
+            }`}
+          >
+            <Link
+              to="/projects"
+              className={`text-sm font-medium transition-colors ${
+                isScrolled
+                  ? "text-foreground/80 hover:text-primary"
+                  : "text-white/90 hover:text-white"
+              }`}
+            >
               Projects
             </Link>
-            <Link to="/about" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
+            <Link
+              to="/about"
+              className={`text-sm font-medium transition-colors ${
+                isScrolled
+                  ? "text-foreground/80 hover:text-primary"
+                  : "text-white/90 hover:text-white"
+              }`}
+            >
               About
             </Link>
-            <Link to="/#contact" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
+            <Link
+              to="/#contact"
+              className={`text-sm font-medium transition-colors ${
+                isScrolled
+                  ? "text-foreground/80 hover:text-primary"
+                  : "text-white/90 hover:text-white"
+              }`}
+            >
               Contact
             </Link>
           </div>

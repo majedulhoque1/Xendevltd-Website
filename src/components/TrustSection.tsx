@@ -18,7 +18,7 @@ const TrustSection = () => {
 
   return (
     <section id="trust" className="section-padding bg-secondary/30">
-      <div className="container-narrow">
+      <div className="container-wide">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left Content */}
           <motion.div
