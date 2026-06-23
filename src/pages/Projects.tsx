@@ -389,6 +389,40 @@ const Projects = () => {
 
       <Footer />
       <ChatBotButton />
+
+      {lightbox && (
+        <div
+          className="fixed inset-0 z-[100] bg-background/90 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setLightbox(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setLightbox(null);
+            }}
+            aria-label="Close"
+            className="absolute top-4 right-4 p-2 rounded-full bg-secondary/80 hover:bg-secondary text-foreground transition-colors"
+          >
+            <X className="w-5 h-5" />
+          </button>
+          <div
+            className="max-w-5xl w-full flex flex-col items-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={lightbox.image}
+              alt={lightbox.name}
+              className="max-h-[80vh] w-auto max-w-full object-contain rounded-lg shadow-2xl"
+            />
+            <p className="mt-4 text-center text-base md:text-lg font-serif font-medium text-foreground">
+              {lightbox.name}
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
