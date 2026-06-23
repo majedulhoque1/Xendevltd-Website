@@ -59,7 +59,7 @@ const HeroSection = (_props: HeroSectionProps) => {
               <p className="text-white/80 text-sm md:text-base font-light tracking-wide mb-4 md:mb-6">
                 Featured Development | Jolshiri Abashon
               </p>
-              <h1 className="text-white font-bold uppercase leading-[0.92]">
+              <h1 className="text-white font-sans font-bold uppercase leading-[0.92]">
                 <span className="block text-6xl sm:text-7xl md:text-8xl lg:text-[7rem]">
                   LAKEVIEW
                 </span>
