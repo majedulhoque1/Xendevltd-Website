@@ -217,18 +217,21 @@ const Projects = () => {
         <section className="py-8 md:py-12">
           <div className="container-wide">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredProjects.map((project, index) => (
-                <Link
-                  key={project.id}
-                  to={`/projects/${project.slug}`}
-                  className="block"
-                >
+              {filteredProjects.map((project, index) => {
+                const isCompleted = project.status === "Completed";
+                const cardInner = (
                   <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                    className="card-premium overflow-hidden group cursor-pointer h-full"
+                    whileHover={
+                      isCompleted && !project.image
+                        ? undefined
+                        : { y: -8, transition: { duration: 0.3 } }
+                    }
+                    className={`card-premium overflow-hidden group h-full ${
+                      isCompleted && !project.image ? "" : "cursor-pointer"
+                    }`}
                   >
                     {/* Image */}
                     <div
@@ -285,41 +288,70 @@ const Projects = () => {
                         {project.name}
                       </h3>
                       
-                      <div className="flex items-center text-sm text-muted-foreground mb-3">
+                      <div className="flex items-center text-sm text-muted-foreground">
                         <MapPin className="w-4 h-4 mr-1" />
                         {project.location}
                       </div>
 
-                      <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
-                        {project.description}
-                      </p>
-
-                      {/* Features */}
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.features.slice(0, 3).map((feature, idx) => (
-                          <span
-                            key={idx}
-                            className="px-2 py-1 text-xs bg-secondary rounded-full text-secondary-foreground"
-                          >
-                            {feature}
+                      {!isCompleted && (
+                        <>
+                          <p className="text-sm text-muted-foreground mt-3 mb-4 line-clamp-3">
+                            {project.description}
+                          </p>
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {project.features.slice(0, 3).map((feature, idx) => (
+                              <span
+                                key={idx}
+                                className="px-2 py-1 text-xs bg-secondary rounded-full text-secondary-foreground"
+                              >
+                                {feature}
+                              </span>
+                            ))}
+                          </div>
+                          <div className="flex items-center text-sm text-muted-foreground mb-4">
+                            <Calendar className="w-4 h-4 mr-1" />
+                            {`Expected: ${project.expectedCompletion}`}
+                          </div>
+                          <span className="inline-flex items-center text-sm font-medium text-primary group/link">
+                            View Details
+                            <ArrowLeft className="ml-2 w-4 h-4 rotate-180 transition-transform group-hover:translate-x-1" />
                           </span>
-                        ))}
-                      </div>
-
-                      {/* Expected Completion */}
-                      <div className="flex items-center text-sm text-muted-foreground mb-4">
-                        <Calendar className="w-4 h-4 mr-1" />
-                        {project.status === "Completed" ? "Completed" : `Expected: ${project.expectedCompletion}`}
-                      </div>
-
-                      <span className="inline-flex items-center text-sm font-medium text-primary group/link">
-                        View Details
-                        <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-                      </span>
+                        </>
+                      )}
                     </div>
                   </motion.div>
-                </Link>
-              ))}
+                );
+
+                if (isCompleted) {
+                  if (!project.image) {
+                    return (
+                      <div key={project.id} className="block">
+                        {cardInner}
+                      </div>
+                    );
+                  }
+                  return (
+                    <button
+                      key={project.id}
+                      type="button"
+                      onClick={() => setLightbox({ image: project.image!, name: project.name })}
+                      className="block text-left w-full"
+                    >
+                      {cardInner}
+                    </button>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={project.id}
+                    to={`/projects/${project.slug}`}
+                    className="block"
+                  >
+                    {cardInner}
+                  </Link>
+                );
+              })}
             </div>
 
             {filteredProjects.length === 0 && (
