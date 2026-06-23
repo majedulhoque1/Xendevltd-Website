@@ -1,4 +1,4 @@
-import { ArrowLeft, Waves, MapPin, Calendar, ArrowRight } from "lucide-react";
+import { ArrowLeft, Waves, MapPin, Calendar, X } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link, useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -12,7 +12,7 @@ import xenPegasusAsset from "@/assets/Xen_Pegasus_Plot_1__Road_1__DOHS_Chittagon
 import xenLakeviewTasmeeAsset from "@/assets/Xen_Lakeview_Tasmee.jpeg.asset.json";
 import upcomingBananiAsset from "@/assets/Upcoming_Banani.jpeg.asset.json";
 import upcomingJolshiriAsset from "@/assets/Upcoming_Jolshiri.jpeg.asset.json";
-import completedDohsChittagongAsset from "@/assets/Completed_DOHS_Chittagong.jpeg.asset.json";
+import project41Asset from "@/assets/Completed_DOHS_Chittagong.jpeg.asset.json";
 
 const projects = [
   {
@@ -26,6 +26,18 @@ const projects = [
     features: ["Lake View", "Dual Aspect Design", "Premium Finishes"],
     expectedCompletion: "2026",
     image: xenLakeviewTasmeeAsset.url,
+  },
+  {
+    id: 11,
+    slug: "project-41",
+    name: "Project 41",
+    status: "On-going",
+    location: "Road 2, Plot 41, DOHS Chittagong",
+    badge: null,
+    description: "Details coming soon.",
+    features: ["Quality Construction", "Modern Design"],
+    expectedCompletion: "TBD",
+    image: project41Asset.url,
   },
   {
     id: 2,
@@ -64,18 +76,6 @@ const projects = [
     image: upcomingJolshiriAsset.url,
   },
   {
-    id: 10,
-    slug: "completed-dohs-chittagong",
-    name: "Title Coming Soon",
-    status: "Completed",
-    location: "Road 2, Plot 41, DOHS Chittagong",
-    badge: null,
-    description: "A successfully completed residential project showcasing our commitment to quality construction and timely delivery.",
-    features: ["Quality Construction", "Timely Delivery", "Premium Location"],
-    expectedCompletion: "Completed",
-    image: completedDohsChittagongAsset.url,
-  },
-  {
     id: 3,
     slug: "xen-orion",
     name: "Xen Orion",
@@ -110,18 +110,6 @@ const projects = [
     features: ["Quality Construction", "Timely Delivery", "Premium Location"],
     expectedCompletion: "Completed",
     image: xenPegasusAsset.url,
-  },
-  {
-    id: 6,
-    slug: "xen-citadelle",
-    name: "Xen Citadelle",
-    status: "Completed",
-    location: "Road#3, Plot#90, Jalalabad Housing Society, West Khulshi, Chittagong",
-    badge: null,
-    description: "A 9-story residential apartment complex in the calm, hilly surroundings of West Khulshi, designed for light, airflow, and quiet living.",
-    features: ["Quality Construction", "BNBC Compliant", "Premium Location"],
-    expectedCompletion: "Completed",
-    image: null,
   },
   {
     id: 7,
