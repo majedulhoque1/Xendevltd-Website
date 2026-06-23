@@ -48,8 +48,8 @@ const HeroSection = (_props: HeroSectionProps) => {
         {/* Spacer for fixed nav */}
         <div className="h-20 md:h-24" />
 
-        {/* Main typography — left aligned */}
-        <div className="flex-1 flex items-center">
+        {/* Main typography — left aligned, pushed toward upper area */}
+        <div className="flex-1 flex items-start pt-8 md:pt-12 lg:pt-16">
           <div className="max-w-7xl mx-auto px-4 md:px-8 w-full">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -60,10 +60,10 @@ const HeroSection = (_props: HeroSectionProps) => {
                 Featured Development | Jolshiri Abashon
               </p>
               <h1 className="text-white font-bold uppercase leading-[0.92]">
-                <span className="block text-6xl sm:text-7xl md:text-8xl lg:text-[7.5rem]">
+                <span className="block text-6xl sm:text-7xl md:text-8xl lg:text-[7rem]">
                   LAKEVIEW
                 </span>
-                <span className="block text-6xl sm:text-7xl md:text-8xl lg:text-[7.5rem]">
+                <span className="block text-6xl sm:text-7xl md:text-8xl lg:text-[7rem]">
                   TASMEE
                 </span>
               </h1>
