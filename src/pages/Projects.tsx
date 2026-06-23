@@ -1,4 +1,4 @@
-import { ArrowLeft, Waves, MapPin, Calendar, ArrowRight } from "lucide-react";
+import { ArrowLeft, Waves, MapPin, Calendar, X } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link, useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -12,7 +12,7 @@ import xenPegasusAsset from "@/assets/Xen_Pegasus_Plot_1__Road_1__DOHS_Chittagon
 import xenLakeviewTasmeeAsset from "@/assets/Xen_Lakeview_Tasmee.jpeg.asset.json";
 import upcomingBananiAsset from "@/assets/Upcoming_Banani.jpeg.asset.json";
 import upcomingJolshiriAsset from "@/assets/Upcoming_Jolshiri.jpeg.asset.json";
-import completedDohsChittagongAsset from "@/assets/Completed_DOHS_Chittagong.jpeg.asset.json";
+import project41Asset from "@/assets/Completed_DOHS_Chittagong.jpeg.asset.json";
 
 const projects = [
   {
@@ -26,6 +26,18 @@ const projects = [
     features: ["Lake View", "Dual Aspect Design", "Premium Finishes"],
     expectedCompletion: "2026",
     image: xenLakeviewTasmeeAsset.url,
+  },
+  {
+    id: 11,
+    slug: "project-41",
+    name: "Project 41",
+    status: "On-going",
+    location: "Road 2, Plot 41, DOHS Chittagong",
+    badge: null,
+    description: "Details coming soon.",
+    features: ["Quality Construction", "Modern Design"],
+    expectedCompletion: "TBD",
+    image: project41Asset.url,
   },
   {
     id: 2,
@@ -64,18 +76,6 @@ const projects = [
     image: upcomingJolshiriAsset.url,
   },
   {
-    id: 10,
-    slug: "completed-dohs-chittagong",
-    name: "Title Coming Soon",
-    status: "Completed",
-    location: "Road 2, Plot 41, DOHS Chittagong",
-    badge: null,
-    description: "A successfully completed residential project showcasing our commitment to quality construction and timely delivery.",
-    features: ["Quality Construction", "Timely Delivery", "Premium Location"],
-    expectedCompletion: "Completed",
-    image: completedDohsChittagongAsset.url,
-  },
-  {
     id: 3,
     slug: "xen-orion",
     name: "Xen Orion",
@@ -112,18 +112,6 @@ const projects = [
     image: xenPegasusAsset.url,
   },
   {
-    id: 6,
-    slug: "xen-citadelle",
-    name: "Xen Citadelle",
-    status: "Completed",
-    location: "Road#3, Plot#90, Jalalabad Housing Society, West Khulshi, Chittagong",
-    badge: null,
-    description: "A 9-story residential apartment complex in the calm, hilly surroundings of West Khulshi, designed for light, airflow, and quiet living.",
-    features: ["Quality Construction", "BNBC Compliant", "Premium Location"],
-    expectedCompletion: "Completed",
-    image: null,
-  },
-  {
     id: 7,
     slug: "xen-nirvana",
     name: "Xen Nirvana",
@@ -143,11 +131,25 @@ const Projects = () => {
   
   const { isDark, toggleTheme } = useTheme();
   const [filter, setFilter] = useState<string>(initialFilter);
+  const [lightbox, setLightbox] = useState<{ image: string; name: string } | null>(null);
 
   // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    if (!lightbox) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightbox(null);
+    };
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [lightbox]);
 
   const filteredProjects = filter === "all" 
     ? projects 
@@ -215,18 +217,21 @@ const Projects = () => {
         <section className="py-8 md:py-12">
           <div className="container-wide">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredProjects.map((project, index) => (
-                <Link
-                  key={project.id}
-                  to={`/projects/${project.slug}`}
-                  className="block"
-                >
+              {filteredProjects.map((project, index) => {
+                const isCompleted = project.status === "Completed";
+                const cardInner = (
                   <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                    className="card-premium overflow-hidden group cursor-pointer h-full"
+                    whileHover={
+                      isCompleted && !project.image
+                        ? undefined
+                        : { y: -8, transition: { duration: 0.3 } }
+                    }
+                    className={`card-premium overflow-hidden group h-full ${
+                      isCompleted && !project.image ? "" : "cursor-pointer"
+                    }`}
                   >
                     {/* Image */}
                     <div
@@ -283,41 +288,70 @@ const Projects = () => {
                         {project.name}
                       </h3>
                       
-                      <div className="flex items-center text-sm text-muted-foreground mb-3">
+                      <div className="flex items-center text-sm text-muted-foreground">
                         <MapPin className="w-4 h-4 mr-1" />
                         {project.location}
                       </div>
 
-                      <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
-                        {project.description}
-                      </p>
-
-                      {/* Features */}
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.features.slice(0, 3).map((feature, idx) => (
-                          <span
-                            key={idx}
-                            className="px-2 py-1 text-xs bg-secondary rounded-full text-secondary-foreground"
-                          >
-                            {feature}
+                      {!isCompleted && (
+                        <>
+                          <p className="text-sm text-muted-foreground mt-3 mb-4 line-clamp-3">
+                            {project.description}
+                          </p>
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {project.features.slice(0, 3).map((feature, idx) => (
+                              <span
+                                key={idx}
+                                className="px-2 py-1 text-xs bg-secondary rounded-full text-secondary-foreground"
+                              >
+                                {feature}
+                              </span>
+                            ))}
+                          </div>
+                          <div className="flex items-center text-sm text-muted-foreground mb-4">
+                            <Calendar className="w-4 h-4 mr-1" />
+                            {`Expected: ${project.expectedCompletion}`}
+                          </div>
+                          <span className="inline-flex items-center text-sm font-medium text-primary group/link">
+                            View Details
+                            <ArrowLeft className="ml-2 w-4 h-4 rotate-180 transition-transform group-hover:translate-x-1" />
                           </span>
-                        ))}
-                      </div>
-
-                      {/* Expected Completion */}
-                      <div className="flex items-center text-sm text-muted-foreground mb-4">
-                        <Calendar className="w-4 h-4 mr-1" />
-                        {project.status === "Completed" ? "Completed" : `Expected: ${project.expectedCompletion}`}
-                      </div>
-
-                      <span className="inline-flex items-center text-sm font-medium text-primary group/link">
-                        View Details
-                        <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-                      </span>
+                        </>
+                      )}
                     </div>
                   </motion.div>
-                </Link>
-              ))}
+                );
+
+                if (isCompleted) {
+                  if (!project.image) {
+                    return (
+                      <div key={project.id} className="block">
+                        {cardInner}
+                      </div>
+                    );
+                  }
+                  return (
+                    <button
+                      key={project.id}
+                      type="button"
+                      onClick={() => setLightbox({ image: project.image!, name: project.name })}
+                      className="block text-left w-full"
+                    >
+                      {cardInner}
+                    </button>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={project.id}
+                    to={`/projects/${project.slug}`}
+                    className="block"
+                  >
+                    {cardInner}
+                  </Link>
+                );
+              })}
             </div>
 
             {filteredProjects.length === 0 && (
@@ -355,6 +389,40 @@ const Projects = () => {
 
       <Footer />
       <ChatBotButton />
+
+      {lightbox && (
+        <div
+          className="fixed inset-0 z-[100] bg-background/90 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setLightbox(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setLightbox(null);
+            }}
+            aria-label="Close"
+            className="absolute top-4 right-4 p-2 rounded-full bg-secondary/80 hover:bg-secondary text-foreground transition-colors"
+          >
+            <X className="w-5 h-5" />
+          </button>
+          <div
+            className="max-w-5xl w-full flex flex-col items-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={lightbox.image}
+              alt={lightbox.name}
+              className="max-h-[80vh] w-auto max-w-full object-contain rounded-lg shadow-2xl"
+            />
+            <p className="mt-4 text-center text-base md:text-lg font-serif font-medium text-foreground">
+              {lightbox.name}
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
