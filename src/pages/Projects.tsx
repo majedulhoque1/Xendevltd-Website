@@ -48,18 +48,6 @@ const projects = [
     image: project41Asset.url,
   },
   {
-    id: 2,
-    slug: "uttara-heights",
-    name: "Uttara Heights",
-    status: "Up-coming",
-    location: "Uttara, Dhaka",
-    badge: null,
-    description: "An upcoming residential project in the heart of Uttara, designed to offer modern living spaces with excellent connectivity and urban amenities.",
-    features: ["Prime Location", "Modern Design", "Urban Connectivity"],
-    expectedCompletion: "2027",
-    image: null,
-  },
-  {
     id: 8,
     slug: "upcoming-banani",
     name: "Title Coming Soon",
