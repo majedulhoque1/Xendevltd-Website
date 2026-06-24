@@ -43,88 +43,75 @@ const HeroSection = (_props: HeroSectionProps) => {
       />
 
       {/* Content wrapper — flex column with justify-between */}
-      <div className="relative z-10 flex flex-col justify-between min-h-screen pb-12">
+      <div className="relative z-10 flex flex-col justify-between min-h-screen">
         {/* Top spacer for fixed nav */}
         <div className="h-24 md:h-28 shrink-0" />
 
-        {/* Main content — title + bottom grid pushed to bottom with mt-auto */}
+        {/* Main content block — 2 column grid */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: EASE }}
-          className="max-w-7xl mx-auto w-full px-4 md:px-8 mt-auto"
+          className="mt-auto grid grid-cols-2 items-end gap-x-12 px-8 md:px-12 pb-8"
         >
-          {/* Title block */}
-          <div className="mb-16 md:mb-24">
-            <p className="text-white/80 text-sm md:text-base font-light tracking-wide mb-4 md:mb-6">
+          {/* LEFT COLUMN */}
+          <div className="flex flex-col">
+            <p className="italic text-white/60 text-sm tracking-wide mb-3">
               Featured Development | Jolshiri Abashon
             </p>
-            <h1 className="text-white font-sans font-bold uppercase leading-none">
-              <span className="block text-6xl md:text-7xl lg:text-8xl">
-                LAKEVIEW
-              </span>
-              <span className="block text-6xl md:text-7xl lg:text-8xl">
-                TASMEE
-              </span>
+            <h1 className="text-white font-sans font-bold uppercase leading-none text-7xl lg:text-8xl mb-8">
+              <span className="block">LAKEVIEW</span>
+              <span className="block">TASMEE</span>
             </h1>
+            <div className="flex flex-row gap-4 items-center">
+              <Link
+                to="/projects/xen-lakeview-tasmee"
+                className="inline-flex items-center justify-center bg-green-700 text-white rounded-full px-6 py-3 text-sm font-semibold hover:bg-green-800 transition-colors"
+              >
+                Explore Xen Tasmee
+              </Link>
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center bg-transparent text-white border border-white/50 rounded-full px-6 py-3 text-sm font-medium hover:border-white transition-colors"
+              >
+                Book A Visit
+              </Link>
+            </div>
           </div>
 
-          {/* Bottom info grid */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.4, ease: EASE }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-end"
-          >
-            {/* Left: copy & buttons */}
-            <div className="flex flex-col gap-4 md:gap-6">
-              <h2 className="text-white font-sans text-xl md:text-2xl font-bold uppercase leading-tight">
-                OPEN TO THE LAKE.
-                <br />
-                OPEN TO THE CITY.
-              </h2>
-              <p className="text-white/80 text-sm md:text-[15px] max-w-lg leading-relaxed">
-                A Thoughtfully Designed Lakeside Residence On The Edge Of
-                Jolshiri Abashon — Open Horizons, Considered Architecture, And
-                A Calm That Meets The City.
-              </p>
-              <div className="flex flex-row flex-wrap gap-4 items-center">
-                <Link
-                  to="/projects/xen-lakeview-tasmee"
-                  className="inline-flex items-center justify-center px-5 py-2.5 md:px-6 md:py-3 bg-[#107c41] text-white text-sm font-medium rounded hover:bg-[#0d6a37] transition-colors"
-                >
-                  Explore Xen Tasmee
-                </Link>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center px-5 py-2.5 md:px-6 md:py-3 bg-black/30 backdrop-blur-md border border-white/30 rounded-full text-white text-sm font-medium hover:bg-black/40 transition-all"
-                >
-                  Book A Visit
-                </Link>
-              </div>
-            </div>
+          {/* RIGHT COLUMN */}
+          <div className="flex flex-col items-end justify-end">
+            <h2 className="font-extrabold uppercase text-white text-2xl lg:text-3xl tracking-wide leading-tight text-right mb-4">
+              OPEN TO THE LAKE.
+              <br />
+              OPEN TO THE CITY.
+            </h2>
+            <p className="text-sm text-white/65 text-right leading-relaxed max-w-xs">
+              A Thoughtfully Designed Lakeside Residence On The Edge Of Jolshiri
+              Abashon — Open Horizons, Considered Architecture, And A Calm That
+              Meets The City.
+            </p>
+          </div>
+        </motion.div>
 
-            {/* Right: stats */}
-            <div className="flex justify-start lg:justify-end">
-              <div className="flex items-end">
-                {STATS.map((stat, i) => (
-                  <div
-                    key={stat.label}
-                    className={`flex flex-col justify-end px-4 md:px-6 ${
-                      i > 0 ? "border-l border-white/50" : ""
-                    }`}
-                  >
-                    <div className="text-white text-3xl md:text-4xl font-bold leading-none">
-                      {stat.value}
-                    </div>
-                    <div className="text-white/80 text-sm mt-2">
-                      {stat.label}
-                    </div>
-                  </div>
-                ))}
+        {/* STATS BAR — full width at bottom */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.4, ease: EASE }}
+          className="w-full bg-black/30 backdrop-blur-sm"
+        >
+          <div className="grid grid-cols-3 divide-x divide-white/20 py-6 px-0">
+            {STATS.map((stat) => (
+              <div
+                key={stat.label}
+                className="flex flex-col items-center justify-center gap-1"
+              >
+                <div className="text-4xl font-bold text-white">{stat.value}</div>
+                <div className="text-xs text-white/65">{stat.label}</div>
               </div>
-            </div>
-          </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>
