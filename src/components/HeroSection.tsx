@@ -22,98 +22,87 @@ const HeroSection = (_props: HeroSectionProps) => {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen h-screen w-full overflow-hidden"
+      className="relative h-screen min-h-[800px] w-full flex flex-col justify-between overflow-hidden bg-cover bg-[position:center_bottom]"
+      style={{ backgroundImage: `url(${heroImageAsset.url})` }}
     >
-      {/* Full-bleed background image — lake at bottom visible */}
-      <div className="absolute inset-0">
-        <img
-          src={heroImageAsset.url}
-          alt="Xen Tasmee Lakeview"
-          className="w-full h-full object-cover object-bottom"
-        />
-      </div>
+      {/* Global dark overlay */}
+      <div className="absolute inset-0 bg-black/40 pointer-events-none" />
 
-      {/* Global overlay: darker at top/middle, fading toward lake */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.40) 50%, rgba(0,0,0,0.30) 100%)",
-        }}
-      />
+      {/* Top spacer for fixed nav */}
+      <div className="h-24 md:h-28 shrink-0 relative z-10" />
 
-      {/* Content wrapper — flex column with justify-between */}
-      <div className="relative z-10 flex flex-col justify-between min-h-screen">
-        {/* Top spacer for fixed nav */}
-        <div className="h-24 md:h-28 shrink-0" />
-
-        {/* Main content block — 2 column grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: EASE }}
-          className="mt-auto grid grid-cols-2 items-end gap-x-16 pb-10 px-10 w-full"
-        >
-          {/* LEFT COLUMN */}
-          <div className="flex flex-col items-start">
-            <p className="font-gruppo italic text-white/60 text-sm tracking-widest mb-2">
-              Featured Development | Jolshiri Abashon
-            </p>
-            <h1 className="font-gruppo text-white font-normal uppercase leading-none text-8xl mb-8">
-              <span className="block">LAKEVIEW</span>
-              <span className="block">TASMEE</span>
-            </h1>
-            <div className="flex flex-row gap-4 items-center">
-              <Link
-                to="/projects/xen-lakeview-tasmee"
-                className="inline-flex items-center justify-center bg-green-700 text-white rounded-full px-6 py-3 text-sm font-medium hover:bg-green-800 transition-colors"
-              >
-                Explore Xen Tasmee
-              </Link>
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center bg-transparent text-white border border-white/50 rounded-full px-6 py-3 text-sm hover:border-white transition-colors"
-              >
-                Book A Visit
-              </Link>
-            </div>
+      {/* MAIN SPLIT CONTENT */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: EASE }}
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto w-full px-4 md:px-8 flex-1 items-center z-10 relative"
+      >
+        {/* LEFT COLUMN */}
+        <div className="flex flex-col items-start text-left">
+          <p className="font-gruppo text-white/90 text-lg uppercase tracking-widest mb-4">
+            Featured Development | Jolshiri Abashon
+          </p>
+          <h1 className="font-gruppo text-white uppercase leading-tight text-7xl lg:text-[100px]">
+            <span className="block">LAKEVIEW</span>
+            <span className="block">TASMEE</span>
+          </h1>
+          <div className="flex gap-4 mt-8">
+            <Link
+              to="/projects/xen-lakeview-tasmee"
+              className="inline-flex items-center justify-center px-6 py-3 bg-[#107c41] text-white text-sm font-medium rounded-full hover:bg-[#0d6a37] transition-colors"
+            >
+              Explore Xen Tasmee
+            </Link>
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center px-6 py-3 bg-black/30 backdrop-blur-md border border-white/30 text-white text-sm font-medium rounded-full hover:bg-black/40 transition-all"
+            >
+              Book A Visit
+            </Link>
           </div>
+        </div>
 
-          {/* RIGHT COLUMN */}
-          <div className="flex flex-col items-end justify-end">
-            <h2 className="font-gruppo uppercase text-white text-3xl text-right leading-tight mb-4">
-              OPEN TO THE LAKE.
-              <br />
-              OPEN TO THE CITY.
-            </h2>
-            <p className="text-sm text-white/65 text-right leading-relaxed max-w-xs">
-              A Thoughtfully Designed Lakeside Residence On The Edge Of Jolshiri
-              Abashon — Open Horizons, Considered Architecture, And A Calm That
-              Meets The City.
-            </p>
-          </div>
-        </motion.div>
+        {/* RIGHT COLUMN */}
+        <div className="text-right flex flex-col items-end">
+          <h2 className="font-gruppo uppercase text-white text-4xl lg:text-5xl leading-tight font-bold">
+            OPEN TO THE LAKE.
+            <br />
+            OPEN TO THE CITY.
+          </h2>
+          <p className="text-white/80 text-sm md:text-base leading-relaxed max-w-md mt-4">
+            A Thoughtfully Designed Lakeside Residence On The Edge Of Jolshiri
+            Abashon — Open Horizons, Considered Architecture, And A Calm That
+            Meets The City.
+          </p>
+        </div>
+      </motion.div>
 
-        {/* STATS BAR — full width at bottom */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.4, ease: EASE }}
-          className="w-full bg-black/30 backdrop-blur-sm"
-        >
-          <div className="grid grid-cols-3 divide-x divide-white/20 py-6 px-0">
-            {STATS.map((stat) => (
-              <div
-                key={stat.label}
-                className="flex flex-col items-center justify-center gap-1"
-              >
-                <div className="text-4xl font-bold text-white">{stat.value}</div>
-                <div className="text-xs text-white/65">{stat.label}</div>
+      {/* BOTTOM STATS GRID — floating over lake */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, delay: 0.4, ease: EASE }}
+        className="w-full max-w-5xl mx-auto mb-12 relative z-10 px-4"
+      >
+        <div className="grid grid-cols-3">
+          {STATS.map((stat, i) => (
+            <div
+              key={stat.label}
+              className={`flex flex-col items-center justify-center text-center ${
+                i > 0 ? "border-l border-white/50 h-16" : ""
+              }`}
+            >
+              <div className="text-4xl lg:text-5xl font-bold text-white leading-none">
+                {stat.value}
               </div>
-            ))}
-          </div>
-        </motion.div>
-      </div>
+              <div className="text-sm lg:text-base text-white/80 mt-2">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </motion.div>
     </section>
   );
 };

@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import xenLogo from "@/assets/xen-logo.png";
+import ThemeToggle from "./ThemeToggle";
 
 interface NavigationProps {
   isDark: boolean;
   onThemeToggle: () => void;
 }
 
-const Navigation = ({ isDark, onThemeToggle: _onThemeToggle }: NavigationProps) => {
+const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -79,8 +80,9 @@ const Navigation = ({ isDark, onThemeToggle: _onThemeToggle }: NavigationProps) 
             </Link>
           </div>
 
-          {/* Right Side — CTA */}
-          <div className="hidden lg:flex items-center">
+          {/* Right Side — Theme toggle + CTA */}
+          <div className="hidden lg:flex items-center gap-3">
+            <ThemeToggle isDark={isDark} onToggle={onThemeToggle} />
             <a
               href="tel:+8801717192730"
               className="inline-flex items-center justify-center px-5 py-2.5 bg-[#107c41] text-white text-sm font-medium rounded-full hover:bg-[#0d6a37] transition-colors"
