@@ -22,7 +22,7 @@ const HeroSection = (_props: HeroSectionProps) => {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen w-full overflow-hidden"
+      className="relative min-h-screen h-screen w-full overflow-hidden"
     >
       {/* Full-bleed background image — lake at bottom visible */}
       <div className="absolute inset-0">
@@ -52,27 +52,27 @@ const HeroSection = (_props: HeroSectionProps) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: EASE }}
-          className="mt-auto grid grid-cols-2 items-end gap-x-12 px-8 md:px-12 pb-8"
+          className="mt-auto grid grid-cols-2 items-end gap-x-16 pb-10 px-10 w-full"
         >
           {/* LEFT COLUMN */}
-          <div className="flex flex-col">
-            <p className="italic text-white/60 text-sm tracking-wide mb-3">
+          <div className="flex flex-col items-start">
+            <p className="font-gruppo italic text-white/60 text-sm tracking-widest mb-2">
               Featured Development | Jolshiri Abashon
             </p>
-            <h1 className="text-white font-sans font-bold uppercase leading-none text-7xl lg:text-8xl mb-8">
+            <h1 className="font-gruppo text-white font-normal uppercase leading-none text-8xl mb-8">
               <span className="block">LAKEVIEW</span>
               <span className="block">TASMEE</span>
             </h1>
             <div className="flex flex-row gap-4 items-center">
               <Link
                 to="/projects/xen-lakeview-tasmee"
-                className="inline-flex items-center justify-center bg-green-700 text-white rounded-full px-6 py-3 text-sm font-semibold hover:bg-green-800 transition-colors"
+                className="inline-flex items-center justify-center bg-green-700 text-white rounded-full px-6 py-3 text-sm font-medium hover:bg-green-800 transition-colors"
               >
                 Explore Xen Tasmee
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center bg-transparent text-white border border-white/50 rounded-full px-6 py-3 text-sm font-medium hover:border-white transition-colors"
+                className="inline-flex items-center justify-center bg-transparent text-white border border-white/50 rounded-full px-6 py-3 text-sm hover:border-white transition-colors"
               >
                 Book A Visit
               </Link>
@@ -81,7 +81,7 @@ const HeroSection = (_props: HeroSectionProps) => {
 
           {/* RIGHT COLUMN */}
           <div className="flex flex-col items-end justify-end">
-            <h2 className="font-extrabold uppercase text-white text-2xl lg:text-3xl tracking-wide leading-tight text-right mb-4">
+            <h2 className="font-gruppo uppercase text-white text-3xl text-right leading-tight mb-4">
               OPEN TO THE LAKE.
               <br />
               OPEN TO THE CITY.
