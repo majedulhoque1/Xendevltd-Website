@@ -39,41 +39,47 @@ const Navigation = ({ isDark, onThemeToggle: _onThemeToggle }: NavigationProps) 
             />
           </a>
 
-          {/* Desktop Navigation — Centered Links in Glassmorphic Pill */}
+          {/* Desktop Navigation — Centered Links in Dark Pill */}
           <div
-            className={`hidden lg:flex items-center justify-center gap-8 rounded-full px-8 py-2.5 backdrop-blur-md border transition-all duration-500 ${
-              isScrolled
-                ? "bg-background/60 border-border/40"
-                : "bg-white/5 border-white/10"
+            className={`hidden lg:flex items-center justify-center backdrop-blur-md transition-all duration-500 ${
+              isScrolled ? "bg-background/60 border-border/40" : ""
             }`}
+            style={
+              isScrolled
+                ? { borderRadius: "9999px", padding: "10px 28px", gap: "32px", border: "1px solid" }
+                : {
+                    background: "rgba(20, 30, 50, 0.6)",
+                    borderRadius: "9999px",
+                    border: "1px solid rgba(255,255,255,0.12)",
+                    padding: "10px 28px",
+                    gap: "32px",
+                  }
+            }
           >
             <Link
               to="/projects"
-              className={`text-sm font-medium transition-colors ${
-                isScrolled
-                  ? "text-foreground/80 hover:text-primary"
-                  : "text-white/90 hover:text-white"
+              className={`transition-colors hover:text-[#16A34A] ${
+                isScrolled ? "text-foreground/80" : "text-white"
               }`}
+              style={{ fontSize: "15px", fontWeight: 400 }}
             >
               Projects
             </Link>
             <Link
               to="/about"
-              className={`text-sm font-medium transition-colors ${
-                isScrolled
-                  ? "text-foreground/80 hover:text-primary"
-                  : "text-white/90 hover:text-white"
+              className={`transition-colors hover:text-[#16A34A] ${
+                isScrolled ? "text-foreground/80" : "text-white"
               }`}
+              style={{ fontSize: "15px", fontWeight: 400 }}
             >
               About
             </Link>
             <Link
               to="/#contact"
-              className={`text-sm font-medium transition-colors ${
-                isScrolled
-                  ? "text-foreground/80 hover:text-primary"
-                  : "text-white/90 hover:text-white"
+              className={`transition-colors hover:text-[#16A34A] ${
+                isScrolled ? "text-foreground/80" : "text-white"
               }`}
+              style={{ fontSize: "15px", fontWeight: 400 }}
             >
               Contact
             </Link>
@@ -83,7 +89,8 @@ const Navigation = ({ isDark, onThemeToggle: _onThemeToggle }: NavigationProps) 
           <div className="hidden lg:flex items-center">
             <a
               href="tel:+8801717192730"
-              className="inline-flex items-center justify-center px-5 py-2.5 bg-[#107c41] text-white text-sm font-medium rounded-full hover:bg-[#0d6a37] transition-colors"
+              className="inline-flex items-center justify-center rounded-full bg-[#16A34A] text-white transition-colors hover:bg-[#15803D]"
+              style={{ padding: "10px 20px", fontSize: "14px", fontWeight: 600 }}
             >
               Call Now: 01717-19-27-30
             </a>
