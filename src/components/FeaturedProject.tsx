@@ -350,27 +350,37 @@ const FeaturedProject = () => {
     <section id="featured" className="section-padding">
       <div className="container-wide">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <span className="label-caps mb-4 block">Featured Project</span>
-          <h2 className="heading-section mb-4">Jolshiri Lakeview Residence</h2>
+        <div className="text-center mb-16">
+          <motion.span
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "0px 0px -50px 0px", amount: 0.15 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            className="label-caps mb-4 block"
+          >
+            Featured Project
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "0px 0px -50px 0px", amount: 0.15 }}
+            transition={{ duration: 1.0, ease: [0.25, 0.1, 0.25, 1] }}
+            className="heading-section mb-4"
+          >
+            Jolshiri Lakeview Residence
+          </motion.h2>
           <div className="accent-line mx-auto mb-6" />
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
             className="badge-lakeview"
           >
             <Waves className="w-3 h-3 mr-2" />
             Lakeview Project • On-going
           </motion.div>
-        </motion.div>
+        </div>
 
         {/* Tab Layout */}
         <div className="grid lg:grid-cols-[280px_1fr] gap-8 lg:gap-12">
@@ -388,8 +398,8 @@ const FeaturedProject = () => {
                 onClick={() => setActiveTab(tab.id)}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true, margin: "0px 0px -50px 0px", amount: 0.15 }}
+                transition={{ duration: 0.7, delay: index * 0.15, ease: [0.25, 0.1, 0.25, 1] }}
                 whileHover={{ x: 5 }}
                 whileTap={{ scale: 0.98 }}
                 className={`tab-vertical flex items-center gap-3 whitespace-nowrap ${
