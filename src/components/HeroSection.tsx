@@ -51,7 +51,7 @@ const HeroSection = (_props: HeroSectionProps) => {
       >
         {/* LEFT COLUMN */}
         <div className="grid grid-rows-[auto_auto_auto] items-start text-left">
-          <p className="font-gruppo text-white/90 text-lg uppercase tracking-widest mb-4">
+          <p className="font-gruppo text-white/90 uppercase tracking-widest mb-4" style={{ fontSize: "24px" }}>
             Featured Development | Jolshiri Abashon
           </p>
           <h1
@@ -79,15 +79,15 @@ const HeroSection = (_props: HeroSectionProps) => {
 
         {/* RIGHT COLUMN */}
         <div className="grid grid-rows-[auto_auto_auto] justify-items-end text-right mt-16 md:mt-24">
-          <p aria-hidden="true" className="font-gruppo text-lg uppercase tracking-widest mb-4 invisible">
+          <p aria-hidden="true" className="font-gruppo uppercase tracking-widest mb-4 invisible" style={{ fontSize: "24px" }}>
             Featured Development | Jolshiri Abashon
           </p>
-          <h2 className="font-gruppo uppercase text-white text-4xl lg:text-5xl leading-tight font-bold">
+          <h2 className="font-gruppo uppercase text-white leading-tight font-bold" style={{ fontSize: "36px" }}>
             OPEN TO THE LAKE.
             <br />
             OPEN TO THE CITY.
           </h2>
-          <p className="text-white/80 text-sm md:text-base leading-relaxed max-w-md mt-4">
+          <p className="text-white/80 leading-relaxed max-w-md mt-4" style={{ fontSize: "20px" }}>
             A Thoughtfully Designed Lakeside Residence On The Edge Of Jolshiri
             Abashon — Open Horizons, Considered Architecture, And A Calm That
             Meets The City.
