@@ -85,7 +85,7 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
             <ThemeToggle isDark={isDark} onToggle={onThemeToggle} />
             <a
               href="tel:+8801717192730"
-              className="inline-flex items-center justify-center px-5 py-2.5 bg-[#107c41] text-white text-sm font-medium rounded-full hover:bg-[#0d6a37] transition-colors"
+              className="inline-flex items-center justify-center px-5 py-2.5 bg-primary text-primary-foreground text-sm font-medium rounded-full hover:bg-primary/90 transition-colors"
             >
               Call Now: 01717-19-27-30
             </a>
@@ -135,7 +135,7 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
             </Link>
             <a
               href="tel:+8801717192730"
-              className="inline-flex items-center justify-center w-full px-5 py-3 bg-[#107c41] text-white text-sm font-medium rounded-full hover:bg-[#0d6a37] transition-colors mt-4"
+              className="inline-flex items-center justify-center w-full px-5 py-3 bg-primary text-primary-foreground text-sm font-medium rounded-full hover:bg-primary/90 transition-colors mt-4"
             >
               Call Now: 01717-19-27-30
             </a>
