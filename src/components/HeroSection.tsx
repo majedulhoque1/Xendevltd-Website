@@ -78,13 +78,13 @@ const HeroSection = (_props: HeroSectionProps) => {
         </div>
 
         {/* RIGHT COLUMN */}
-        <div className="flex flex-col justify-center items-end text-right -mt-16 md:-mt-24">
+        <div className="flex flex-col justify-center items-end text-right">
           <h2 className="font-gruppo uppercase text-white leading-tight font-bold" style={{ fontSize: "36px" }}>
             OPEN TO THE LAKE.
             <br />
             OPEN TO THE CITY.
           </h2>
-          <p className="text-white/80 text-sm md:text-base leading-relaxed max-w-md mt-6">
+          <p className="text-white/80 text-sm md:text-base leading-relaxed max-w-md mt-4">
             A Thoughtfully Designed Lakeside Residence On The Edge Of Jolshiri
             Abashon — Open Horizons, Considered Architecture, And A Calm That
             Meets The City.
