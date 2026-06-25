@@ -78,7 +78,7 @@ const HeroSection = (_props: HeroSectionProps) => {
         </div>
 
         {/* RIGHT COLUMN */}
-        <div className="grid grid-rows-[auto_auto_auto] justify-items-end text-right">
+        <div className="grid grid-rows-[auto_auto_auto] justify-items-end text-right mt-16 md:mt-24">
           <p aria-hidden="true" className="font-gruppo text-lg uppercase tracking-widest mb-4 invisible">
             Featured Development | Jolshiri Abashon
           </p>
