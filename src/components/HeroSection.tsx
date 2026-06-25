@@ -48,7 +48,7 @@ const HeroSection = (_props: HeroSectionProps) => {
         className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto w-full px-4 md:px-8 flex-1 items-start pt-24 z-10 relative"
       >
         {/* LEFT COLUMN */}
-        <div className="flex flex-col items-start text-left">
+        <div className="grid grid-rows-[auto_auto_auto] items-start text-left">
           <p className="font-gruppo text-white/90 text-lg uppercase tracking-widest mb-4">
             Featured Development | Jolshiri Abashon
           </p>
@@ -76,7 +76,7 @@ const HeroSection = (_props: HeroSectionProps) => {
         </div>
 
         {/* RIGHT COLUMN */}
-        <div className="text-right flex flex-col items-end">
+        <div className="grid grid-rows-[auto_auto_auto] justify-items-end text-right">
           <p aria-hidden="true" className="font-gruppo text-lg uppercase tracking-widest mb-4 invisible">
             Featured Development | Jolshiri Abashon
           </p>
