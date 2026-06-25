@@ -41,31 +41,47 @@ const ProjectsOverview = () => {
     <section id="projects" className="section-padding bg-secondary/30">
       <div className="container-wide">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <span className="label-caps mb-4 block">Our Portfolio</span>
-          <h2 className="heading-section mb-4">Our Developments</h2>
+        <div className="text-center mb-16">
+          <motion.span
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "0px 0px -50px 0px", amount: 0.15 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            className="label-caps mb-4 block"
+          >
+            Our Portfolio
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "0px 0px -50px 0px", amount: 0.15 }}
+            transition={{ duration: 1.0, ease: [0.25, 0.1, 0.25, 1] }}
+            className="heading-section mb-4"
+          >
+            Our Developments
+          </motion.h2>
           <div className="accent-line mx-auto mb-6" />
-          <p className="body-large max-w-2xl mx-auto">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "0px 0px -50px 0px", amount: 0.15 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+            className="body-large max-w-2xl mx-auto"
+          >
             Homes built with care, clarity, and long-term vision.
-          </p>
-        </motion.div>
+          </motion.p>
+        </div>
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              viewport={{ once: true, margin: "0px 0px -50px 0px", amount: 0.15 }}
+              transition={{ duration: 1.0, delay: index * 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+              whileHover={{ scale: 1.02, transition: { duration: 0.4, ease: "easeOut" } }}
               className={`card-premium overflow-hidden group ${
                 project.featured ? "ring-2 ring-primary" : ""
               }`}
@@ -138,10 +154,10 @@ const ProjectsOverview = () => {
 
         {/* View All CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          viewport={{ once: true, margin: "0px 0px -50px 0px", amount: 0.15 }}
+          transition={{ duration: 0.8, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
           className="text-center mt-12"
         >
           <Link to="/projects" className="btn-secondary">
