@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "@/contexts/ThemeContext";
 import {
   MapPin,
   Info,
@@ -17,6 +18,29 @@ import {
 import projectLakeside from "@/assets/project-lakeside.jpg";
 import projectRoadsideFront from "@/assets/project-roadside-front.jpg";
 import projectRoadsidePerspective from "@/assets/project-roadside-perspective.png";
+import lakesideDayAsset from "@/assets/Xen_Tasmee_Hero.png.asset.json";
+import lakesideNightAsset from "@/assets/Xen_Tasmee_Hero_Dark.png.asset.json";
+
+const LakesideImage = ({ alt, className }: { alt: string; className?: string }) => {
+  const { isDark } = useTheme();
+  return (
+    <div className={`relative w-full h-full ${className ?? ""}`}>
+      <img
+        src={lakesideDayAsset.url}
+        alt={alt}
+        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms] ease-in-out"
+        style={{ opacity: isDark ? 0 : 1 }}
+      />
+      <img
+        src={lakesideNightAsset.url}
+        alt={alt}
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms] ease-in-out"
+        style={{ opacity: isDark ? 1 : 0 }}
+      />
+    </div>
+  );
+};
 
 const tabs = [
   { id: "location", label: "Location", icon: MapPin },
@@ -59,7 +83,7 @@ const FeaturedProject = () => {
   const [selectedImage, setSelectedImage] = useState(0);
 
   const projectImages = [
-    { src: projectLakeside, label: "Lakeside View" },
+    { src: lakesideDayAsset.url, label: "Lakeside View", themed: true },
     { src: projectRoadsideFront, label: "Street Front" },
     { src: projectRoadsidePerspective, label: "Perspective View" },
   ];
@@ -90,16 +114,24 @@ const FeaturedProject = () => {
                   transition={{ duration: 0.3 }}
                 >
                   <AnimatePresence mode="wait">
-                    <motion.img
+                    <motion.div
                       key={selectedImage}
-                      src={projectImages[selectedImage].src}
-                      alt={projectImages[selectedImage].label}
-                      className="w-full h-full object-cover"
+                      className="absolute inset-0"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.3 }}
-                    />
+                    >
+                      {projectImages[selectedImage].themed ? (
+                        <LakesideImage alt={projectImages[selectedImage].label} />
+                      ) : (
+                        <img
+                          src={projectImages[selectedImage].src}
+                          alt={projectImages[selectedImage].label}
+                          className="w-full h-full object-cover"
+                        />
+                      )}
+                    </motion.div>
                   </AnimatePresence>
                   <div className="absolute bottom-4 left-4 right-4 flex gap-2">
                     {projectImages.map((img, index) => (
@@ -196,11 +228,7 @@ const FeaturedProject = () => {
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                <img
-                  src={projectRoadsidePerspective}
-                  alt="Jolshiri Residence - Perspective View"
-                  className="w-full h-full object-cover"
-                />
+                <LakesideImage alt="Jolshiri Residence - Perspective View" />
               </motion.div>
 
               {/* Content */}
@@ -243,11 +271,7 @@ const FeaturedProject = () => {
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                <img
-                  src={projectLakeside}
-                  alt="Jolshiri Residence - Lakeside View"
-                  className="w-full h-full object-cover"
-                />
+                <LakesideImage alt="Jolshiri Residence - Lakeside View" />
               </motion.div>
 
               {/* Content */}
