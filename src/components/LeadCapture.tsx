@@ -93,29 +93,46 @@ const LeadCapture = () => {
       <div className="container-narrow">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-          >
-            <span className="label-caps mb-4 block">Get In Touch</span>
-            <h2 className="heading-section mb-6">Interested in This Project?</h2>
+          <div>
+            <motion.span
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "0px 0px -50px 0px", amount: 0.15 }}
+              transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+              className="label-caps mb-4 block"
+            >
+              Get In Touch
+            </motion.span>
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "0px 0px -50px 0px", amount: 0.15 }}
+              transition={{ duration: 1.0, ease: [0.25, 0.1, 0.25, 1] }}
+              className="heading-section mb-6"
+            >
+              Interested in This Project?
+            </motion.h2>
             <div className="accent-line mb-8" />
-            <p className="body-large mb-8">
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "0px 0px -50px 0px", amount: 0.15 }}
+              transition={{ duration: 0.9, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+              className="body-large mb-8"
+            >
               Let us help you take the next step. Whether you're ready to
               schedule a visit or simply want more information, we're here to
               assist.
-            </p>
+            </motion.p>
 
             {/* Quick Actions */}
             <div className="space-y-4">
               <motion.a
                 href="tel:+8801700000000"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "0px 0px -50px 0px", amount: 0.15 }}
+                transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
                 whileHover={{ x: 5, transition: { duration: 0.2 } }}
                 className="flex items-center gap-4 p-4 bg-secondary/50 rounded-lg hover:bg-secondary transition-colors"
               >
@@ -132,10 +149,10 @@ const LeadCapture = () => {
 
               <motion.a
                 href="#"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 }}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "0px 0px -50px 0px", amount: 0.15 }}
+                transition={{ duration: 0.8, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
                 whileHover={{ x: 5, transition: { duration: 0.2 } }}
                 className="flex items-center gap-4 p-4 bg-secondary/50 rounded-lg hover:bg-secondary transition-colors"
               >
@@ -150,22 +167,22 @@ const LeadCapture = () => {
                 </div>
               </motion.a>
             </div>
-          </motion.div>
+          </div>
 
           {/* Right Content - Form */}
           <motion.div
-            initial={{ opacity: 0, x: 40, scale: 0.95 }}
-            whileInView={{ opacity: 1, x: 0, scale: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "0px 0px -50px 0px", amount: 0.15 }}
+            transition={{ duration: 1.0, ease: [0.25, 0.1, 0.25, 1] }}
             className="card-premium p-8 lg:p-10"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.1 }}
+                viewport={{ once: true, margin: "0px 0px -50px 0px", amount: 0.15 }}
+                transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
               >
                 <label
                   htmlFor="name"
@@ -189,8 +206,8 @@ const LeadCapture = () => {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.2 }}
+                viewport={{ once: true, margin: "0px 0px -50px 0px", amount: 0.15 }}
+                transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
               >
                 <label
                   htmlFor="phone"
@@ -214,8 +231,8 @@ const LeadCapture = () => {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.3 }}
+                viewport={{ once: true, margin: "0px 0px -50px 0px", amount: 0.15 }}
+                transition={{ duration: 0.8, delay: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
               >
                 <label
                   htmlFor="message"
@@ -241,8 +258,8 @@ const LeadCapture = () => {
                 disabled={isSubmitting}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.4 }}
+                viewport={{ once: true, margin: "0px 0px -50px 0px", amount: 0.15 }}
+                transition={{ duration: 0.8, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="btn-primary w-full disabled:opacity-50"

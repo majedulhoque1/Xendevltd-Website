@@ -1,5 +1,9 @@
 import { ArrowRight, Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
+import { motion } from "framer-motion";
 import xenLogo from "@/assets/xen-logo.png";
+
+const EASE = [0.25, 0.1, 0.25, 1] as const;
+const VP = { once: true, margin: "0px 0px -50px 0px", amount: 0.15 } as const;
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -23,7 +27,13 @@ const Footer = () => {
       <div className="container-wide py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
-          <div className="lg:col-span-2">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VP}
+            transition={{ duration: 0.8, ease: EASE }}
+            className="lg:col-span-2"
+          >
             <a href="/" className="inline-block mb-6">
               <img 
                 src={xenLogo} 
@@ -47,27 +57,43 @@ const Footer = () => {
                 </a>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Quick Links */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VP}
+            transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
+          >
             <h4 className="font-semibold mb-6">Quick Links</h4>
             <ul className="space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.label}>
+              {quickLinks.map((link, i) => (
+                <motion.li
+                  key={link.label}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={VP}
+                  transition={{ duration: 0.6, delay: 0.2 + i * 0.1, ease: EASE }}
+                >
                   <a
                     href={link.href}
                     className="text-background/70 hover:text-background transition-colors"
                   >
                     {link.label}
                   </a>
-                </li>
+                </motion.li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Contact */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VP}
+            transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
+          >
             <h4 className="font-semibold mb-6">Contact</h4>
             <ul className="space-y-3 text-background/70">
               <li>Dhaka, Bangladesh</li>
@@ -88,11 +114,17 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
-          </div>
+          </motion.div>
         </div>
 
         {/* CTA Strip */}
-        <div className="mt-16 pt-8 border-t border-background/10">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={VP}
+          transition={{ duration: 0.8, ease: EASE }}
+          className="mt-16 pt-8 border-t border-background/10"
+        >
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <p className="text-background/70">
               Ready to find your dream home?
@@ -113,10 +145,16 @@ const Footer = () => {
               </a>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-background/10 flex items-center justify-between text-sm text-background/50">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={VP}
+          transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
+          className="mt-12 pt-8 border-t border-background/10 flex items-center justify-between text-sm text-background/50"
+        >
           <p>
             © {currentYear} Xen Developments Ltd. All rights reserved.
           </p>
@@ -128,7 +166,7 @@ const Footer = () => {
           >
             Admin Login
           </a>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );
