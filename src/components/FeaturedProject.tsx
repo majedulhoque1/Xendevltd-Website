@@ -347,73 +347,29 @@ const FeaturedProject = () => {
               Select layouts designed to maximize lake-facing views and natural
               airflow.
             </p>
-            <div className="space-y-4 mb-8">
-              {floorPlans.map((plan, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 + index * 0.1 }}
-                  className="border border-border rounded-lg overflow-hidden hover:border-primary transition-colors"
-                >
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setExpandedPlan(expandedPlan === index ? null : index)
-                    }
-                    className="w-full flex items-center justify-between p-6 cursor-pointer group text-left"
-                    aria-expanded={expandedPlan === index}
-                  >
-                    <div className="flex items-center gap-6">
-                      <div className="w-16 h-16 bg-secondary rounded flex items-center justify-center">
-                        <Layout className="w-6 h-6 text-primary" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold">{plan.type}</h4>
-                        <p className="text-sm text-muted-foreground">
-                          {plan.bedrooms} • {plan.size}
-                        </p>
-                      </div>
-                    </div>
-                    <motion.div
-                      animate={{ rotate: expandedPlan === index ? 90 : 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                    </motion.div>
-                  </button>
-                  <AnimatePresence initial={false}>
-                    {expandedPlan === index && (
-                      <motion.div
-                        key="content"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.6, ease: "easeOut" }}
-                        className="overflow-hidden"
-                      >
-                        <div className="px-6 pb-6 pt-2 flex justify-center">
-                          <img
-                            src={floorPlanImage.url}
-                            alt={`${plan.type} floor plan`}
-                            className="w-full max-w-[600px] object-contain rounded"
-                          />
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              ))}
-            </div>
-            <div className="flex flex-wrap gap-4">
-              <a href="#contact" className="btn-primary">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="flex flex-col items-center"
+            >
+              <img
+                src={floorPlanImage.url}
+                alt="Floor plan"
+                className="w-full object-contain rounded mb-8"
+                style={{ maxWidth: "560px" }}
+              />
+              <a
+                href={floorPlanImage.url}
+                download="Xen-Lakeview-Tasmee-Floor-Plan.jpeg"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+              >
                 <Download className="mr-2 w-4 h-4" />
-                Download Floor Plans
+                Download Floor Plan
               </a>
-              <a href="#contact" className="btn-secondary">
-                Book a Private Visit
-              </a>
-            </div>
+            </motion.div>
           </motion.div>
         );
       default:
