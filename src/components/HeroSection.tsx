@@ -45,7 +45,7 @@ const HeroSection = (_props: HeroSectionProps) => {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: EASE }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto w-full px-4 md:px-8 flex-1 items-center z-10 relative"
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto w-full px-4 md:px-8 items-start z-10 relative"
       >
         {/* LEFT COLUMN */}
         <div className="flex flex-col items-start text-left">
