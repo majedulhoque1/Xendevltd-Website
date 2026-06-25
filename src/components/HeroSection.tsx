@@ -45,7 +45,7 @@ const HeroSection = (_props: HeroSectionProps) => {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: EASE }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto w-full px-4 md:px-8 flex-1 items-center z-10 relative"
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto w-full px-4 md:px-8 flex-1 items-start pt-24 z-10 relative"
       >
         {/* LEFT COLUMN */}
         <div className="flex flex-col items-start text-left">
@@ -77,6 +77,9 @@ const HeroSection = (_props: HeroSectionProps) => {
 
         {/* RIGHT COLUMN */}
         <div className="text-right flex flex-col items-end">
+          <p aria-hidden="true" className="font-gruppo text-lg uppercase tracking-widest mb-4 invisible">
+            Featured Development | Jolshiri Abashon
+          </p>
           <h2 className="font-gruppo uppercase text-white text-4xl lg:text-5xl leading-tight font-bold">
             OPEN TO THE LAKE.
             <br />
