@@ -12,6 +12,9 @@ import {
   Wind,
   Shield,
   Waves,
+  Eye,
+  Sparkles,
+  Car,
 } from "lucide-react";
 
 // Import project images
@@ -61,24 +64,34 @@ const tabs = [
 
 const features = [
   {
+    icon: Eye,
+    title: "Lake View",
+    description: "Uninterrupted lake-facing vistas",
+  },
+  {
     icon: Waves,
-    title: "Dual-Aspect Design",
+    title: "Dual Aspect Design",
     description: "Street-facing front & lake-facing rear",
   },
   {
-    icon: Wind,
-    title: "Natural Ventilation",
-    description: "Enhanced cross-ventilation throughout",
+    icon: Sparkles,
+    title: "Premium Finishes",
+    description: "High-quality materials throughout",
   },
   {
     icon: Building2,
-    title: "Premium Construction",
-    description: "High-quality materials and finishes",
+    title: "Modern Architecture",
+    description: "Contemporary design language",
   },
   {
     icon: Shield,
     title: "24/7 Security",
     description: "Advanced security systems and personnel",
+  },
+  {
+    icon: Car,
+    title: "Covered Parking",
+    description: "Dedicated covered parking spaces",
   },
 ];
 
@@ -250,16 +263,12 @@ const FeaturedProject = () => {
                 <h3 className="heading-subsection mb-4">
                   Designed for Modern Living
                 </h3>
-                <p className="body-large mb-6">
-                  This project reflects Xen's commitment to livable layouts, natural
-                  ventilation, and practical elegance. Designed around openness and
-                  balance, the project takes full advantage of its street-facing
-                  front and lake-facing rear.
-                </p>
-                <p className="body-regular text-muted-foreground mb-8">
-                  Natural light, ventilation, and views shape everyday living —
-                  creating homes that feel spacious, calm, and connected to their
-                  surroundings.
+                <p className="body-large mb-8">
+                  Lakeview Tasmee represents the pinnacle of modern living in Dhaka.
+                  This exclusive development combines the tranquility of lakeside
+                  living with contemporary architectural design. Each residence is
+                  thoughtfully crafted to maximize natural light and ventilation
+                  while offering stunning views of the surrounding landscape.
                 </p>
                 <a href="#contact" className="btn-primary">
                   <Download className="mr-2 w-4 h-4" />
@@ -398,7 +407,7 @@ const FeaturedProject = () => {
             transition={{ duration: 1.0, ease: [0.25, 0.1, 0.25, 1] }}
             className="heading-section mb-4"
           >
-            Jolshiri Lakeview Residence
+            Lakeview Tasmee
           </motion.h2>
           <div className="accent-line mx-auto mb-6" />
           <motion.div
