@@ -21,6 +21,7 @@ import projectRoadsidePerspective from "@/assets/project-roadside-perspective.pn
 import projectDark1 from "@/assets/Project_dark_mode_1.png.asset.json";
 import projectDark2 from "@/assets/Project_dark_mode_2.png.asset.json";
 import projectDark3 from "@/assets/Project_dark_mode_3.png.asset.json";
+import floorPlanImage from "@/assets/Floor_Plan.jpeg.asset.json";
 
 const CrossfadeImage = ({
   light,
@@ -90,6 +91,7 @@ const floorPlans = [
 const FeaturedProject = () => {
   const [activeTab, setActiveTab] = useState("location");
   const [selectedImage, setSelectedImage] = useState(0);
+  const [expandedPlan, setExpandedPlan] = useState<number | null>(null);
   const { isDark } = useTheme();
 
   const projectImages = [
@@ -352,21 +354,54 @@ const FeaturedProject = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + index * 0.1 }}
-                  whileHover={{ scale: 1.02, x: 10 }}
-                  className="flex items-center justify-between p-6 border border-border rounded-lg hover:border-primary transition-colors cursor-pointer group"
+                  className="border border-border rounded-lg overflow-hidden hover:border-primary transition-colors"
                 >
-                  <div className="flex items-center gap-6">
-                    <div className="w-16 h-16 bg-secondary rounded flex items-center justify-center">
-                      <Layout className="w-6 h-6 text-primary" />
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setExpandedPlan(expandedPlan === index ? null : index)
+                    }
+                    className="w-full flex items-center justify-between p-6 cursor-pointer group text-left"
+                    aria-expanded={expandedPlan === index}
+                  >
+                    <div className="flex items-center gap-6">
+                      <div className="w-16 h-16 bg-secondary rounded flex items-center justify-center">
+                        <Layout className="w-6 h-6 text-primary" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold">{plan.type}</h4>
+                        <p className="text-sm text-muted-foreground">
+                          {plan.bedrooms} • {plan.size}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="font-semibold">{plan.type}</h4>
-                      <p className="text-sm text-muted-foreground">
-                        {plan.bedrooms} • {plan.size}
-                      </p>
-                    </div>
-                  </div>
-                  <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                    <motion.div
+                      animate={{ rotate: expandedPlan === index ? 90 : 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                    </motion.div>
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {expandedPlan === index && (
+                      <motion.div
+                        key="content"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-6 pb-6 pt-2 flex justify-center">
+                          <img
+                            src={floorPlanImage.url}
+                            alt={`${plan.type} floor plan`}
+                            className="w-full max-w-[600px] object-contain rounded"
+                          />
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </motion.div>
               ))}
             </div>
