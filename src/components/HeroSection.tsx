@@ -51,8 +51,13 @@ const HeroSection = (_props: HeroSectionProps) => {
       >
         {/* LEFT COLUMN */}
         <div className="grid grid-rows-[auto_auto_auto] items-start text-left">
-          <p className="font-gruppo text-white/90 text-lg uppercase tracking-widest mb-4">
-            Featured Development | Jolshiri Abashon
+          <p className="font-gruppo text-white/90 text-lg uppercase tracking-widest mb-4 inline-flex items-center gap-2">
+            Featured Development
+            <span
+              className="inline-block w-2 h-2 rounded-full bg-[#22c55e] shadow-[0_0_8px_#22c55e] animate-pulse"
+              aria-hidden="true"
+            />
+            Jolshiri Abashon
           </p>
           <h1
             className="font-gruppo text-white uppercase leading-tight text-[97px]"
