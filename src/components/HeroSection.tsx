@@ -22,7 +22,7 @@ const HeroSection = (_props: HeroSectionProps) => {
   return (
     <section
       ref={sectionRef}
-      className="relative h-screen min-h-[800px] w-full flex flex-col justify-between overflow-hidden bg-cover bg-[position:center_bottom]"
+      className="relative h-screen min-h-[800px] w-full flex flex-col overflow-hidden bg-cover bg-[position:center_bottom]"
       style={{ backgroundImage: `url(${heroImageAsset.url})` }}
     >
       {/* Global dark overlay */}
@@ -95,7 +95,7 @@ const HeroSection = (_props: HeroSectionProps) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, delay: 0.4, ease: EASE }}
-        className="w-full max-w-5xl mx-auto mb-12 relative z-10 px-4"
+        className="w-full max-w-5xl mx-auto mt-auto mb-12 relative z-10 px-4"
       >
         <div className="grid grid-cols-3">
           {STATS.map((stat, i) => (
