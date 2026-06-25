@@ -62,7 +62,7 @@ const HeroSection = (_props: HeroSectionProps) => {
           <div className="flex gap-4 mt-8">
             <Link
               to="/projects/xen-lakeview-tasmee"
-              className="inline-flex items-center justify-center px-6 py-3 bg-[#107c41] text-white text-sm font-medium rounded-full hover:bg-[#0d6a37] transition-colors"
+              className="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground text-sm font-medium rounded-full hover:bg-primary/90 transition-colors"
             >
               Explore Xen Tasmee
             </Link>
