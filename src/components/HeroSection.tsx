@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
@@ -11,6 +11,35 @@ interface HeroSectionProps {
 }
 
 const EASE = [0.25, 0.1, 0.25, 1] as const;
+const SWAP_EASE = [0.4, 0, 0.2, 1] as const;
+
+const HeroImageLayer = ({
+  url,
+  active,
+  y,
+  transitioning,
+}: {
+  url: string;
+  active: boolean;
+  y: MotionValue<number>;
+  transitioning: boolean;
+}) => (
+  <motion.div
+    aria-hidden
+    className="absolute inset-0 bg-cover bg-[position:center_bottom]"
+    style={{
+      backgroundImage: `url(${url})`,
+      y: active ? y : 0,
+      willChange: transitioning ? "transform, opacity" : "auto",
+    }}
+    animate={{
+      opacity: active ? 1 : 0,
+      scale: active ? 1 : 1.04,
+    }}
+    initial={false}
+    transition={{ duration: 1.4, ease: SWAP_EASE }}
+  />
+);
 
 const STATS = [
   { value: "15+", label: "Core Amenities" },
@@ -20,11 +49,21 @@ const STATS = [
 
 const HeroSection = (_props: HeroSectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
-  const heroUrl = _props.isDark ? heroImageDarkAsset.url : heroImageAsset.url;
   const { scrollY } = useScroll();
   // Parallax: background moves at 40% of scroll speed
   const bgY = useTransform(scrollY, [0, 1000], [0, 400]);
   const [scrolledPast, setScrolledPast] = useState(false);
+  const [transitioning, setTransitioning] = useState(false);
+  const isDark = _props.isDark;
+  const prevDark = useRef(isDark);
+
+  useEffect(() => {
+    if (prevDark.current === isDark) return;
+    prevDark.current = isDark;
+    setTransitioning(true);
+    const t = window.setTimeout(() => setTransitioning(false), 1400);
+    return () => window.clearTimeout(t);
+  }, [isDark]);
 
   useEffect(() => {
     const onScroll = () => setScrolledPast(window.scrollY > 100);
@@ -38,16 +77,20 @@ const HeroSection = (_props: HeroSectionProps) => {
       className="relative h-screen min-h-[800px] w-full flex flex-col justify-between overflow-hidden"
     >
       {/* Background image with Ken Burns zoom + parallax */}
-      <motion.div
-        aria-hidden
-        className="absolute inset-0 -z-0 bg-cover bg-[position:center_bottom] will-change-transform"
-        style={{ backgroundImage: `url(${heroUrl})`, y: bgY }}
-        initial={{ scale: 1.05 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 2, ease: EASE }}
+      {/* Stacked day/night image layers — cinematic cross-fade with parallax */}
+      <HeroImageLayer url={heroImageAsset.url} active={!isDark} y={bgY} transitioning={transitioning} />
+      <HeroImageLayer url={heroImageDarkAsset.url} active={isDark} y={bgY} transitioning={transitioning} />
+
+      {/* Global gradient overlay — shifts smoothly between light/dark */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: isDark
+            ? "linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.1) 100%)"
+            : "linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.05) 100%)",
+          transition: "background 1.4s cubic-bezier(0.4, 0, 0.2, 1)",
+        }}
       />
-      {/* Global dark overlay */}
-      <div className="absolute inset-0 bg-black/40 pointer-events-none" />
 
       {/* Forest-green brand shade from behind/back — tinted gradient pulled from the Xen logo */}
       <div
@@ -62,7 +105,11 @@ const HeroSection = (_props: HeroSectionProps) => {
       <div className="h-24 md:h-28 shrink-0 relative z-10" />
 
       {/* MAIN SPLIT CONTENT */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto w-full px-4 md:px-8 flex-1 items-center pt-24 z-10 relative">
+      <motion.div
+        animate={{ opacity: transitioning ? 0.3 : 1 }}
+        transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto w-full px-4 md:px-8 flex-1 items-center pt-24 z-10 relative"
+      >
         {/* LEFT COLUMN */}
         <div className="grid grid-rows-[auto_auto_auto] items-start text-left">
           <motion.p
@@ -151,7 +198,7 @@ const HeroSection = (_props: HeroSectionProps) => {
             Meets The City.
           </motion.p>
         </div>
-      </div>
+      </motion.div>
 
       {/* BOTTOM STATS GRID — floating over lake */}
       <div className="w-full max-w-5xl mx-auto mb-12 relative z-10 px-4">
