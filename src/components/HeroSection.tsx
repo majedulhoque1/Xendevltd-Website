@@ -82,7 +82,7 @@ const HeroSection = (_props: HeroSectionProps) => {
           <p aria-hidden="true" className="font-gruppo text-lg uppercase tracking-widest mb-4 invisible">
             Featured Development | Jolshiri Abashon
           </p>
-          <h2 className="font-gruppo uppercase text-white text-4xl lg:text-5xl leading-tight font-bold">
+          <h2 className="font-gruppo uppercase text-white leading-tight font-bold" style={{ fontSize: "36px" }}>
             OPEN TO THE LAKE.
             <br />
             OPEN TO THE CITY.
