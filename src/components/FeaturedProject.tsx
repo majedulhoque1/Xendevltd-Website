@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "@/contexts/ThemeContext";
 import {
   MapPin,
   Info,
@@ -17,6 +18,38 @@ import {
 import projectLakeside from "@/assets/project-lakeside.jpg";
 import projectRoadsideFront from "@/assets/project-roadside-front.jpg";
 import projectRoadsidePerspective from "@/assets/project-roadside-perspective.png";
+import projectDark1 from "@/assets/Project_dark_mode_1.png.asset.json";
+import projectDark2 from "@/assets/Project_dark_mode_2.png.asset.json";
+import projectDark3 from "@/assets/Project_dark_mode_3.png.asset.json";
+
+const CrossfadeImage = ({
+  light,
+  dark,
+  alt,
+  className = "",
+  isDark,
+}: {
+  light: string;
+  dark: string;
+  alt: string;
+  className?: string;
+  isDark: boolean;
+}) => (
+  <div className={`relative w-full h-full ${className}`}>
+    <img
+      src={light}
+      alt={alt}
+      className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms] ease-in-out"
+      style={{ opacity: isDark ? 0 : 1 }}
+    />
+    <img
+      src={dark}
+      alt={alt}
+      className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms] ease-in-out"
+      style={{ opacity: isDark ? 1 : 0 }}
+    />
+  </div>
+);
 
 const tabs = [
   { id: "location", label: "Location", icon: MapPin },
@@ -57,11 +90,12 @@ const floorPlans = [
 const FeaturedProject = () => {
   const [activeTab, setActiveTab] = useState("location");
   const [selectedImage, setSelectedImage] = useState(0);
+  const { isDark } = useTheme();
 
   const projectImages = [
-    { src: projectLakeside, label: "Lakeside View" },
-    { src: projectRoadsideFront, label: "Street Front" },
-    { src: projectRoadsidePerspective, label: "Perspective View" },
+    { src: projectLakeside, dark: projectDark1.url, label: "Lakeside View" },
+    { src: projectRoadsideFront, dark: projectDark2.url, label: "Street Front" },
+    { src: projectRoadsidePerspective, dark: projectDark3.url, label: "Perspective View" },
   ];
 
   const tabContentVariants = {
@@ -90,16 +124,21 @@ const FeaturedProject = () => {
                   transition={{ duration: 0.3 }}
                 >
                   <AnimatePresence mode="wait">
-                    <motion.img
+                    <motion.div
                       key={selectedImage}
-                      src={projectImages[selectedImage].src}
-                      alt={projectImages[selectedImage].label}
-                      className="w-full h-full object-cover"
+                      className="absolute inset-0"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.3 }}
-                    />
+                    >
+                      <CrossfadeImage
+                        light={projectImages[selectedImage].src}
+                        dark={projectImages[selectedImage].dark}
+                        alt={projectImages[selectedImage].label}
+                        isDark={isDark}
+                      />
+                    </motion.div>
                   </AnimatePresence>
                   <div className="absolute bottom-4 left-4 right-4 flex gap-2">
                     {projectImages.map((img, index) => (
@@ -129,10 +168,11 @@ const FeaturedProject = () => {
                           : "border-transparent opacity-70 hover:opacity-100"
                       }`}
                     >
-                      <img
-                        src={img.src}
+                      <CrossfadeImage
+                        light={img.src}
+                        dark={img.dark}
                         alt={img.label}
-                        className="w-full h-full object-cover"
+                        isDark={isDark}
                       />
                     </motion.button>
                   ))}
