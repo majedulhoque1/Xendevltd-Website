@@ -45,7 +45,7 @@ const HeroSection = (_props: HeroSectionProps) => {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: EASE }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto w-full px-4 md:px-8 flex-1 items-center z-10 relative"
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto w-full px-4 md:px-8 flex-1 items-end pb-8 z-10 relative"
       >
         {/* LEFT COLUMN */}
         <div className="flex flex-col items-start text-left">
@@ -53,7 +53,7 @@ const HeroSection = (_props: HeroSectionProps) => {
             Featured Development | Jolshiri Abashon
           </p>
           <h1
-            className="font-gruppo text-white uppercase leading-tight text-[100px]"
+            className="font-gruppo text-white uppercase leading-none text-5xl md:text-6xl lg:text-7xl"
             style={{ WebkitTextStroke: "1px #FFFFFF" }}
           >
             <span className="block">LAKEVIEW</span>
@@ -77,7 +77,7 @@ const HeroSection = (_props: HeroSectionProps) => {
 
         {/* RIGHT COLUMN */}
         <div className="text-right flex flex-col items-end">
-          <h2 className="font-gruppo uppercase text-white text-4xl lg:text-5xl leading-tight font-bold">
+          <h2 className="font-gruppo uppercase text-white text-2xl lg:text-3xl leading-tight font-bold">
             OPEN TO THE LAKE.
             <br />
             OPEN TO THE CITY.
