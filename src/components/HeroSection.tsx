@@ -69,13 +69,13 @@ const HeroSection = (_props: HeroSectionProps) => {
           <div className="flex gap-4 mt-8">
             <Link
               to="/projects/xen-lakeview-tasmee"
-              className="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground text-sm font-medium rounded-full hover:bg-primary/90 transition-colors"
+              className="font-sans inline-flex items-center justify-center h-12 px-7 text-sm bg-primary text-primary-foreground font-medium tracking-wide rounded-full transition-all duration-300 hover:bg-primary/90"
             >
               Explore Xen Tasmee
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center px-6 py-3 bg-black/30 backdrop-blur-md border border-white/30 text-white text-sm font-medium rounded-full hover:bg-black/40 transition-all"
+              className="font-sans inline-flex items-center justify-center h-12 px-7 text-sm bg-black/30 backdrop-blur-md border border-white/30 text-white font-medium tracking-wide rounded-full transition-all duration-300 hover:bg-black/40"
             >
               Book A Visit
             </Link>
