@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import heroImageAsset from "@/assets/Xen_Tasmee_Hero.png.asset.json";
+import heroImageDarkAsset from "@/assets/Xen_Tasmee_Hero_Dark.png.asset.json";
 
 interface HeroSectionProps {
   isDark: boolean;
@@ -18,12 +19,13 @@ const STATS = [
 
 const HeroSection = (_props: HeroSectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
+  const heroUrl = _props.isDark ? heroImageDarkAsset.url : heroImageAsset.url;
 
   return (
     <section
       ref={sectionRef}
       className="relative h-screen min-h-[800px] w-full flex flex-col justify-between overflow-hidden bg-cover bg-[position:center_bottom]"
-      style={{ backgroundImage: `url(${heroImageAsset.url})` }}
+      style={{ backgroundImage: `url(${heroUrl})` }}
     >
       {/* Global dark overlay */}
       <div className="absolute inset-0 bg-black/40 pointer-events-none" />
