@@ -52,7 +52,10 @@ const HeroSection = (_props: HeroSectionProps) => {
           <p className="font-gruppo text-white/90 text-lg uppercase tracking-widest mb-4">
             Featured Development | Jolshiri Abashon
           </p>
-          <h1 className="font-gruppo text-white uppercase leading-tight text-7xl lg:text-[100px]">
+          <h1
+            className="font-gruppo text-white uppercase leading-tight text-7xl lg:text-[100px]"
+            style={{ WebkitTextStroke: "1px #FFFFFF" }}
+          >
             <span className="block">LAKEVIEW</span>
             <span className="block">TASMEE</span>
           </h1>
