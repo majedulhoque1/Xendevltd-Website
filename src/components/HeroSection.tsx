@@ -11,6 +11,35 @@ interface HeroSectionProps {
 }
 
 const EASE = [0.25, 0.1, 0.25, 1] as const;
+const SWAP_EASE = [0.4, 0, 0.2, 1] as const;
+
+const HeroImageLayer = ({
+  url,
+  active,
+  y,
+  transitioning,
+}: {
+  url: string;
+  active: boolean;
+  y: MotionValue<number>;
+  transitioning: boolean;
+}) => (
+  <motion.div
+    aria-hidden
+    className="absolute inset-0 bg-cover bg-[position:center_bottom]"
+    style={{
+      backgroundImage: `url(${url})`,
+      y: active ? y : 0,
+      willChange: transitioning ? "transform, opacity" : "auto",
+    }}
+    animate={{
+      opacity: active ? 1 : 0,
+      scale: active ? 1 : 1.04,
+    }}
+    initial={false}
+    transition={{ duration: 1.4, ease: SWAP_EASE }}
+  />
+);
 
 const STATS = [
   { value: "15+", label: "Core Amenities" },
