@@ -105,7 +105,7 @@ const HeroSection = (_props: HeroSectionProps) => {
                 i > 0 ? "border-l border-white/50 h-16" : ""
               }`}
             >
-              <div className="text-4xl lg:text-5xl font-bold text-white leading-none">
+              <div className="text-5xl font-serif font-semibold text-white leading-none">
                 {stat.value}
               </div>
               <div className="text-sm lg:text-base text-white/80 mt-2">
