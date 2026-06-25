@@ -22,7 +22,7 @@ const HeroSection = (_props: HeroSectionProps) => {
   return (
     <section
       ref={sectionRef}
-      className="relative h-screen min-h-[800px] w-full flex flex-col overflow-hidden bg-cover bg-[position:center_bottom]"
+      className="relative h-screen min-h-[800px] w-full flex flex-col justify-between overflow-hidden bg-cover bg-[position:center_bottom]"
       style={{ backgroundImage: `url(${heroImageAsset.url})` }}
     >
       {/* Global dark overlay */}
@@ -45,7 +45,7 @@ const HeroSection = (_props: HeroSectionProps) => {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: EASE }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto w-full px-4 md:px-8 items-start z-10 relative"
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto w-full px-4 md:px-8 flex-1 items-center z-10 relative"
       >
         {/* LEFT COLUMN */}
         <div className="flex flex-col items-start text-left">
@@ -95,7 +95,7 @@ const HeroSection = (_props: HeroSectionProps) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, delay: 0.4, ease: EASE }}
-        className="w-full max-w-5xl mx-auto mt-auto mb-12 relative z-10 px-4"
+        className="w-full max-w-5xl mx-auto mb-12 relative z-10 px-4"
       >
         <div className="grid grid-cols-3">
           {STATS.map((stat, i) => (
