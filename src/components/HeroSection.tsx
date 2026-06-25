@@ -28,6 +28,15 @@ const HeroSection = (_props: HeroSectionProps) => {
       {/* Global dark overlay */}
       <div className="absolute inset-0 bg-black/40 pointer-events-none" />
 
+      {/* Forest-green brand shade from behind/back — tinted gradient pulled from the Xen logo */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(120% 80% at 50% 100%, rgba(16,124,65,0.55) 0%, rgba(13,90,48,0.35) 35%, rgba(8,40,22,0.15) 65%, transparent 100%)",
+        }}
+      />
+
       {/* Top spacer for fixed nav */}
       <div className="h-24 md:h-28 shrink-0 relative z-10" />
 
