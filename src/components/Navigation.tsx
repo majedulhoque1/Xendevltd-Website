@@ -30,7 +30,7 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8">
-        <div className="flex items-center justify-between h-14">
+        <div className="relative flex items-center justify-between h-14">
           {/* Logo */}
           <a href="/" className="flex items-center group">
             <img
@@ -42,7 +42,7 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
 
           {/* Desktop Navigation — Centered Links in Glassmorphic Pill */}
           <div
-            className={`hidden lg:flex items-center justify-center gap-8 rounded-full px-8 py-2.5 backdrop-blur-md border transition-all duration-500 ${
+            className={`hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center gap-8 rounded-full px-8 py-2.5 backdrop-blur-md border transition-all duration-500 ${
               isScrolled
                 ? "bg-background/60 border-border/40"
                 : "bg-white/5 border-white/10"
