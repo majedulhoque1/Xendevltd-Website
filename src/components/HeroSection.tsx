@@ -84,7 +84,7 @@ const HeroSection = (_props: HeroSectionProps) => {
 
       {/* Global gradient overlay — shifts smoothly between light/dark */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="hero-gradient-overlay absolute inset-0 pointer-events-none"
         style={{
           background: isDark
             ? "linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.1) 100%)"
