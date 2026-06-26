@@ -91,8 +91,15 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex items-center gap-4 lg:hidden">
+          {/* Mobile Menu Button + Call Now + Theme Toggle */}
+          <div className="flex items-center gap-2 lg:hidden">
+            <a
+              href="tel:+8801717192730"
+              className="nav-call-mobile inline-flex items-center justify-center px-2.5 py-1.5 bg-primary text-primary-foreground text-[11px] font-medium rounded-full hover:bg-primary/90 transition-colors"
+            >
+              Call Now
+            </a>
+            <ThemeToggle isDark={isDark} onToggle={onThemeToggle} />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={`p-2 transition-colors ${isScrolled ? "text-foreground" : "text-white"}`}
