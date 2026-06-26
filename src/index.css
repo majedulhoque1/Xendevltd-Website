@@ -381,21 +381,9 @@
     background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.05) 100%) !important;
   }
 
-  /* Hero stats bar — 3 columns, tighter */
+  /* Hide hero stats bar on mobile */
   section.relative.h-screen .max-w-5xl {
-    margin-bottom: 16px !important;
-    padding: 0 16px !important;
-  }
-  section.relative.h-screen .grid.grid-cols-3 > div {
-    padding: 12px 8px !important;
-    height: auto !important;
-  }
-  section.relative.h-screen .grid.grid-cols-3 .font-serif {
-    font-size: 22px !important;
-  }
-  section.relative.h-screen .grid.grid-cols-3 > div > div:last-child {
-    font-size: 9px !important;
-    margin-top: 4px !important;
+    display: none !important;
   }
 
   /* ---------- SECTION SPACING ---------- */
