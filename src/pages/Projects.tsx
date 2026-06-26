@@ -284,7 +284,7 @@ const Projects = () => {
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-            <h3 className="text-xl font-gruppo font-medium mb-1">{project.name}</h3>
+            <h3 className="text-xl font-gruppo font-semibold mb-1">{project.name}</h3>
             <p className="text-sm opacity-90">{project.location}</p>
           </div>
         </motion.div>
@@ -361,7 +361,7 @@ const Projects = () => {
           <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-300" />
         </div>
         <div className="p-6">
-          <h3 className="text-xl font-gruppo font-medium mb-2">{project.name}</h3>
+          <h3 className="text-xl font-gruppo font-semibold mb-2">{project.name}</h3>
           <div className="flex items-center text-sm text-muted-foreground">
             <MapPin className="w-4 h-4 mr-1" />
             {project.location}
@@ -430,7 +430,7 @@ const Projects = () => {
                   Home
                 </Link>
                 <div className="h-4 w-px bg-border" />
-                <h1 className="text-2xl md:text-3xl font-gruppo font-medium">Our Projects</h1>
+                <h1 className="text-2xl md:text-3xl font-gruppo font-semibold">Our Projects</h1>
               </motion.div>
 
               {/* Filter Tabs */}
@@ -479,7 +479,7 @@ const Projects = () => {
                           <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
                             Category
                           </span>
-                          <h2 className="text-2xl md:text-3xl font-gruppo font-medium mt-1">
+                          <h2 className="text-2xl md:text-3xl font-gruppo font-semibold mt-1">
                             {group.label}
                           </h2>
                         </div>
@@ -568,7 +568,7 @@ const Projects = () => {
               alt={lightbox.name}
               className="max-h-[80vh] w-auto max-w-full object-contain rounded-lg shadow-2xl"
             />
-            <p className="mt-4 text-center text-base md:text-lg font-gruppo font-medium text-foreground">
+            <p className="mt-4 text-center text-base md:text-lg font-gruppo font-semibold text-foreground">
               {lightbox.name}
             </p>
           </div>

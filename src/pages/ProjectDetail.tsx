@@ -193,7 +193,7 @@ const ProjectDetail = () => {
                     </span>
                   )}
                 </div>
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-gruppo font-medium text-foreground">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-gruppo font-semibold text-foreground">
                   {project.name}
                 </h1>
               </motion.div>
@@ -212,13 +212,13 @@ const ProjectDetail = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.1 }}
                 >
-                  <h2 className="text-2xl font-gruppo font-medium mb-4">About This Project</h2>
+                  <h2 className="text-2xl font-gruppo font-semibold mb-4">About This Project</h2>
                   <p className="body-large text-muted-foreground mb-6">
                     {project.fullDescription}
                   </p>
 
                   {/* Features */}
-                  <h3 className="text-xl font-gruppo font-medium mb-4 mt-8">Key Features</h3>
+                  <h3 className="text-xl font-gruppo font-semibold mb-4 mt-8">Key Features</h3>
                   <div className="grid sm:grid-cols-2 gap-3">
                     {project.features.map((feature, idx) => (
                       <div
@@ -232,7 +232,7 @@ const ProjectDetail = () => {
                   </div>
 
                   {/* Amenities */}
-                  <h3 className="text-xl font-gruppo font-medium mb-4 mt-8">Amenities</h3>
+                  <h3 className="text-xl font-gruppo font-semibold mb-4 mt-8">Amenities</h3>
                   <div className="grid sm:grid-cols-2 gap-3">
                     {project.amenities.map((amenity, idx) => (
                       <div
@@ -255,7 +255,7 @@ const ProjectDetail = () => {
                   transition={{ duration: 0.5, delay: 0.2 }}
                   className="card-premium p-6 sticky top-24"
                 >
-                  <h3 className="text-lg font-gruppo font-medium mb-4">Project Details</h3>
+                  <h3 className="text-lg font-gruppo font-semibold mb-4">Project Details</h3>
                   
                   <div className="space-y-4">
                     <div className="flex items-start gap-3">

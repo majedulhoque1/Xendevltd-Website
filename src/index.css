@@ -133,12 +133,12 @@
   }
 
   .heading-section {
-    @apply text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight;
+    @apply text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight;
     font-family: 'Gruppo', sans-serif;
   }
 
   .heading-subsection {
-    @apply text-2xl md:text-3xl font-medium tracking-tight;
+    @apply text-2xl md:text-3xl font-semibold tracking-tight;
     font-family: 'Gruppo', sans-serif;
   }
 

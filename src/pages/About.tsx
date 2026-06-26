@@ -77,7 +77,7 @@ const About = () => {
                 Home
               </Link>
               <div className="h-4 w-px bg-border" />
-              <h1 className="text-2xl md:text-3xl font-gruppo font-medium">About Xen</h1>
+              <h1 className="text-2xl md:text-3xl font-gruppo font-semibold">About Xen</h1>
             </motion.div>
           </div>
         </section>
@@ -170,7 +170,7 @@ const About = () => {
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-6">
                   <Target className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="text-2xl font-gruppo font-medium mb-4">Our Mission</h3>
+                <h3 className="text-2xl font-gruppo font-semibold mb-4">Our Mission</h3>
                 <p className="text-muted-foreground">
                   To deliver exceptional residential developments that combine modern design, 
                   quality construction, and thoughtful amenities—creating spaces where families 
@@ -188,7 +188,7 @@ const About = () => {
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-6">
                   <Users className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="text-2xl font-gruppo font-medium mb-4">Our Vision</h3>
+                <h3 className="text-2xl font-gruppo font-semibold mb-4">Our Vision</h3>
                 <p className="text-muted-foreground">
                   To be the most trusted name in residential development in Bangladesh, known 
                   for creating sustainable communities that enhance the quality of life for 
@@ -228,7 +228,7 @@ const About = () => {
                   <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                     <value.icon className="w-7 h-7 text-primary" />
                   </div>
-                  <h3 className="text-lg font-gruppo font-medium mb-2">{value.title}</h3>
+                  <h3 className="text-lg font-gruppo font-semibold mb-2">{value.title}</h3>
                   <p className="text-sm text-muted-foreground">{value.description}</p>
                 </motion.div>
               ))}
