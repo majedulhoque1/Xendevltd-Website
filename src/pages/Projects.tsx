@@ -26,7 +26,7 @@ const projects = [
   {
     id: 1,
     slug: "xen-lakeview-tasmee",
-    name: "Xen Lakeview Tasmee",
+    name: "Lakeview Tasmee",
     status: "On-going",
     location: "Plot 38, Rd: 504, Sec: 14, Jolshiri Abashon, Dhaka",
     badge: "Lakeview Project",
