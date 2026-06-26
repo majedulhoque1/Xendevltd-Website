@@ -109,7 +109,7 @@ const HeroSection = (_props: HeroSectionProps) => {
       <motion.div
         animate={{ opacity: transitioning ? 0.3 : 1 }}
         transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto w-full px-4 md:px-8 flex-1 items-center pt-24 z-10 relative"
+        className="hero-main-grid grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto w-full px-4 md:px-8 flex-1 items-center pt-24 z-10 relative"
       >
         {/* LEFT COLUMN */}
         <div className="grid grid-rows-[auto_auto_auto] items-start text-left">
