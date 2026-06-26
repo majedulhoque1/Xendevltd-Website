@@ -115,18 +115,15 @@ const ProjectDetail = () => {
         <section className="py-4 bg-secondary/30">
           <div className="container-wide">
             <div className="text-xs sm:text-sm text-muted-foreground">
-              <Link to="/" className="hover:text-primary transition-colors inline-flex items-center mb-2 sm:mb-0 sm:hidden">
-                <Home className="w-4 h-4" />
-              </Link>
-              <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                <Link to="/" className="hover:text-primary transition-colors hidden sm:inline-flex items-center">
+              <div className="flex flex-nowrap items-center gap-x-2 overflow-hidden leading-none">
+                <Link to="/" className="hover:text-primary transition-colors inline-flex items-center justify-center flex-shrink-0">
                   <Home className="w-4 h-4" />
                 </Link>
-                <span className="opacity-60 hidden sm:inline">/</span>
-                <Link to="/projects" className="hover:text-primary transition-colors whitespace-nowrap">
+                <span className="opacity-60 flex-shrink-0 leading-none">/</span>
+                <Link to="/projects" className="hover:text-primary transition-colors whitespace-nowrap leading-none flex-shrink-0">
                   Projects
                 </Link>
-                <span className="opacity-60">/</span>
+                <span className="opacity-60 flex-shrink-0 leading-none">/</span>
                 <Link
                   to={`/projects?filter=${
                     project.status === "On-going"
@@ -135,7 +132,7 @@ const ProjectDetail = () => {
                       ? "upcoming"
                       : "completed"
                   }`}
-                  className="hover:text-primary transition-colors whitespace-nowrap"
+                  className="hover:text-primary transition-colors whitespace-nowrap leading-none flex-shrink-0"
                 >
                   {project.status === "On-going"
                     ? "Ongoing"
@@ -143,8 +140,8 @@ const ProjectDetail = () => {
                     ? "Upcoming"
                     : "Completed"}
                 </Link>
-                <span className="opacity-60">/</span>
-                <span className="text-foreground truncate max-w-[55vw] sm:max-w-none">{project.name}</span>
+                <span className="opacity-60 flex-shrink-0 leading-none">/</span>
+                <span className="text-foreground truncate min-w-0 leading-none">{project.name}</span>
               </div>
             </div>
           </div>
