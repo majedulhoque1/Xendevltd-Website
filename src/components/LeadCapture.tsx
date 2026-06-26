@@ -128,7 +128,7 @@ const LeadCapture = () => {
             {/* Quick Actions */}
             <div className="space-y-4">
               <motion.a
-                href="tel:+8801700000000"
+                href="tel:+8801717192730"
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "0px 0px -50px 0px", amount: 0.15 }}
@@ -142,7 +142,7 @@ const LeadCapture = () => {
                 <div>
                   <p className="font-medium">Call Us Directly</p>
                   <p className="text-sm text-muted-foreground">
-                    +880 1700 000 000
+                    01717-19-27-30
                   </p>
                 </div>
               </motion.a>
