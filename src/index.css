@@ -361,15 +361,12 @@
     margin-top: 12px !important;
   }
   .hero-subtext {
-    font-size: 13px !important;
-    text-align: center !important;
-    max-width: 300px !important;
-    margin: 12px auto 0 auto !important;
-    line-height: 1.6 !important;
-    color: #fff !important;
-    opacity: 0.85 !important;
-    padding: 0 !important;
+    display: none !important;
   }
+  /* Flatten the 2-column grid so we can reorder children on mobile */
+  .hero-main-grid > div { display: contents; }
+  .hero-main-grid .hero-h2 { order: 3; }
+  .hero-main-grid .hero-cta-row { order: 4; }
   .hero-cta-row {
     display: flex !important;
     flex-direction: column !important;
