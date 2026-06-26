@@ -117,7 +117,7 @@ const HeroSection = (_props: HeroSectionProps) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
-            className="font-gruppo text-white/90 text-lg uppercase tracking-widest mb-4 inline-flex items-center gap-2"
+            className="hero-eyebrow font-gruppo text-white/90 text-lg uppercase tracking-widest mb-4 inline-flex items-center gap-2"
           >
             Featured Development
             <span
