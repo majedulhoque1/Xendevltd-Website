@@ -367,7 +367,7 @@
     max-width: 280px !important;
   }
   /* Strengthen gradient overlay on mobile for readability */
-  section.relative.h-screen > div.absolute.inset-0.pointer-events-none:first-of-type {
+  .hero-gradient-overlay {
     background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.05) 100%) !important;
   }
 
