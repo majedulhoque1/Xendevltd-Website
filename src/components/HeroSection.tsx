@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 import heroImageAsset from "@/assets/Xen_Tasmee_Hero.png.asset.json";
 import heroImageDarkAsset from "@/assets/Xen_Tasmee_Hero_Dark.png.asset.json";
+import CountUp from "@/components/CountUp";
 
 interface HeroSectionProps {
   isDark: boolean;
@@ -213,9 +214,10 @@ const HeroSection = (_props: HeroSectionProps) => {
                 i > 0 ? "border-l border-white/50 h-16" : ""
               }`}
             >
-              <div className="text-5xl font-serif font-semibold text-white leading-none">
-                {stat.value}
-              </div>
+              <CountUp
+                value={stat.value}
+                className="text-5xl font-serif font-semibold text-white leading-none"
+              />
               <div className="text-sm lg:text-base text-white/80 mt-2">
                 {stat.label}
               </div>
