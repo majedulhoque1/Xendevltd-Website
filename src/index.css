@@ -277,3 +277,165 @@
     transform: translateX(0);
   }
 }
+
+/* ===========================================================
+   MOBILE RESPONSIVE OVERRIDES (≤768px)
+   Desktop layout is untouched.
+   =========================================================== */
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero-h1 {
+    font-size: clamp(36px, 10vw, 56px) !important;
+    -webkit-text-stroke: 0.5px #FFFFFF !important;
+  }
+  .hero-h2 {
+    font-size: clamp(22px, 6vw, 36px) !important;
+  }
+  .hero-subtext {
+    font-size: 14px !important;
+    max-width: 100% !important;
+    padding: 0 20px !important;
+  }
+  .hero-cta-row {
+    flex-direction: column !important;
+    width: 100%;
+    gap: 12px !important;
+  }
+  .hero-cta {
+    width: 100% !important;
+  }
+  /* Hero section grid: full-width left-aligned on mobile */
+  section.relative.h-screen .grid.md\:grid-cols-2 > div {
+    text-align: left;
+    align-items: flex-start !important;
+  }
+  section.relative.h-screen .grid.md\:grid-cols-2 > div:last-child {
+    text-align: left !important;
+  }
+
+  /* Hero stats bar — 3 columns, tighter */
+  section.relative.h-screen .grid.grid-cols-3 > div {
+    padding: 16px 4px !important;
+  }
+  section.relative.h-screen .grid.grid-cols-3 .font-serif {
+    font-size: 2rem !important;
+  }
+  section.relative.h-screen .grid.grid-cols-3 .text-sm {
+    font-size: 11px !important;
+  }
+
+  /* ---------- SECTION SPACING ---------- */
+  .section-padding {
+    padding: 48px 24px !important;
+  }
+  .container-wide,
+  .container-narrow {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  /* ---------- TRUST SECTION ---------- */
+  #trust .grid.grid-cols-2 {
+    gap: 12px !important;
+  }
+  #trust .card-premium {
+    padding: 16px !important;
+  }
+  #trust .card-premium .text-5xl {
+    font-size: 2rem !important;
+  }
+
+  /* ---------- FEATURED PROJECT ---------- */
+  #featured .text-center .heading-section {
+    font-size: clamp(22px, 5vw, 32px) !important;
+  }
+  #featured .grid.lg\:grid-cols-\[280px_1fr\] {
+    grid-template-columns: 1fr !important;
+  }
+  #featured .tab-vertical {
+    padding: 10px 14px !important;
+    font-size: 13px !important;
+    border-left: 0 !important;
+    border-bottom: 2px solid transparent;
+  }
+  #featured .tab-vertical.active {
+    border-bottom-color: hsl(var(--primary));
+  }
+  #featured .grid.lg\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  #featured .flex.flex-wrap.gap-4 {
+    flex-direction: column;
+  }
+  #featured .flex.flex-wrap.gap-4 > a {
+    width: 100%;
+  }
+
+  /* ---------- PROJECTS OVERVIEW (Our Developments) ---------- */
+  #projects .overflow-hidden > .flex > div {
+    flex: 0 0 85vw !important;
+    max-width: 320px;
+  }
+  #projects .aspect-\[4\/5\] {
+    aspect-ratio: auto !important;
+    height: 200px !important;
+  }
+  #projects h3.font-gruppo {
+    font-size: 16px !important;
+  }
+  #projects .text-sm.opacity-90 {
+    font-size: 13px !important;
+  }
+
+  /* ---------- CONTACT / LEAD CAPTURE ---------- */
+  #contact .grid.lg\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  #contact .card-premium {
+    padding: 24px !important;
+  }
+  #contact .input-premium {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer .container-wide {
+    padding: 48px 24px !important;
+  }
+  footer .grid.md\:grid-cols-2.lg\:grid-cols-4 {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  footer .flex.flex-col.md\:flex-row {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center;
+  }
+  footer .mt-12.flex.items-center.justify-between {
+    flex-direction: column !important;
+    gap: 12px;
+    text-align: center;
+  }
+  footer .mt-12 a {
+    margin-right: 0 !important;
+  }
+
+  /* ---------- TOUCH TARGETS ---------- */
+  button, a.btn-primary, a.btn-secondary, a.btn-ghost {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 380px) {
+  /* Hide the long "Call Now" button text on very small navbars if it ever appears */
+  nav a[href^="tel:"] {
+    font-size: 12px;
+  }
+}
