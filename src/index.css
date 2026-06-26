@@ -476,16 +476,21 @@
   }
   /* Main image + thumbnails sizing */
   #featured .aspect-\[4\/5\] {
-    aspect-ratio: auto !important;
-    height: 240px !important;
+    aspect-ratio: 4 / 5 !important;
+    height: auto !important;
+    width: 100% !important;
     border-radius: 8px;
+    overflow: hidden;
   }
   #featured .grid.grid-cols-3 {
     gap: 8px !important;
   }
   #featured .grid.grid-cols-3 .aspect-square {
-    aspect-ratio: auto !important;
-    height: 80px !important;
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
+    width: 100% !important;
+    border-radius: 6px;
+    overflow: hidden;
   }
   #featured .heading-subsection {
     font-size: 18px !important;
@@ -519,8 +524,22 @@
     scroll-snap-type: x mandatory;
   }
   #projects .aspect-\[4\/5\] {
-    aspect-ratio: auto !important;
-    height: 180px !important;
+    aspect-ratio: 4 / 5 !important;
+    height: auto !important;
+    width: 100% !important;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  /* Slider dots size fix on mobile */
+  #projects .flex.justify-center.gap-2 button {
+    min-height: 0 !important;
+    height: 6px !important;
+  }
+  #projects .flex.justify-center.gap-2 button.w-8 {
+    width: 20px !important;
+  }
+  #projects .flex.justify-center.gap-2 button.w-2 {
+    width: 6px !important;
   }
   #projects h3.font-gruppo {
     font-size: 15px !important;
