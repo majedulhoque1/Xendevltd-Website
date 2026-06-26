@@ -84,7 +84,7 @@ const HeroSection = (_props: HeroSectionProps) => {
 
       {/* Global gradient overlay — shifts smoothly between light/dark */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="hero-gradient-overlay absolute inset-0 pointer-events-none"
         style={{
           background: isDark
             ? "linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.1) 100%)"
@@ -117,7 +117,7 @@ const HeroSection = (_props: HeroSectionProps) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
-            className="font-gruppo text-white/90 text-lg uppercase tracking-widest mb-4 inline-flex items-center gap-2"
+            className="hero-eyebrow font-gruppo text-white/90 text-lg uppercase tracking-widest mb-4 inline-flex items-center gap-2"
           >
             Featured Development
             <span
