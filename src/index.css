@@ -290,34 +290,31 @@
 }
 
 @media (max-width: 768px) {
-  .project-breadcrumb .breadcrumb-row {
+  nav[aria-label="breadcrumb"],
+  .breadcrumb,
+  [class*="breadcrumb"] {
     display: flex !important;
     flex-wrap: nowrap !important;
-    align-items: center !important;
-    gap: 2px !important;
-    font-size: 11px !important;
-    padding: 8px 16px !important;
-    line-height: 1.4 !important;
     overflow-x: auto !important;
-    overflow-y: hidden !important;
+    white-space: nowrap !important;
     scrollbar-width: none !important;
     -ms-overflow-style: none !important;
+    padding: 8px 16px !important;
+    font-size: 11px !important;
+    gap: 4px !important;
+    align-items: center !important;
   }
-  .project-breadcrumb .breadcrumb-row::-webkit-scrollbar {
+
+  nav[aria-label="breadcrumb"]::-webkit-scrollbar,
+  .breadcrumb::-webkit-scrollbar,
+  [class*="breadcrumb"]::-webkit-scrollbar {
     display: none !important;
   }
-  .project-breadcrumb .breadcrumb-item {
+
+  nav[aria-label="breadcrumb"] *,
+  .breadcrumb *,
+  [class*="breadcrumb"] * {
     white-space: nowrap !important;
-  }
-  .project-breadcrumb .breadcrumb-sep {
-    margin: 0 2px !important;
-    opacity: 0.6 !important;
-  }
-  .project-breadcrumb .breadcrumb-current {
-    font-weight: 500 !important;
-    white-space: nowrap !important;
-    overflow: visible !important;
-    text-overflow: clip !important;
     flex-shrink: 0 !important;
   }
   .hero-green-shade {
