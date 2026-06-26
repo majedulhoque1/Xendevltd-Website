@@ -282,6 +282,12 @@
    MOBILE RESPONSIVE OVERRIDES (≤768px)
    Desktop layout is untouched.
    =========================================================== */
+@media (min-width: 769px) {
+  /* Desktop hero: black backdrop + slightly reduced image opacity for richer contrast */
+  section.relative.h-screen { background-color: #000; }
+  .hero-bg-image { filter: opacity(0.85); }
+}
+
 @media (max-width: 768px) {
   .hero-green-shade {
     display: none !important;
