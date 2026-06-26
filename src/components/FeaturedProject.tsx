@@ -25,6 +25,8 @@ import projectDark1 from "@/assets/Project_dark_mode_1.png.asset.json";
 import projectDark2 from "@/assets/Project_dark_mode_2.png.asset.json";
 import projectDark3 from "@/assets/Project_dark_mode_3.png.asset.json";
 import floorPlanImage from "@/assets/Floor_Plan.jpeg.asset.json";
+import aboutDark from "@/assets/Featured_About_Dark.png.asset.json";
+import featuresDark from "@/assets/Featured_Features_Dark.png.asset.json";
 
 const CrossfadeImage = ({
   light,
@@ -251,10 +253,11 @@ const FeaturedProject = () => {
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                <img
-                  src={projectRoadsidePerspective}
+                <CrossfadeImage
+                  light={projectRoadsidePerspective}
+                  dark={aboutDark.url}
                   alt="Jolshiri Residence - Perspective View"
-                  className="w-full h-full object-cover"
+                  isDark={isDark}
                 />
               </motion.div>
 
@@ -294,10 +297,11 @@ const FeaturedProject = () => {
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                <img
-                  src={projectLakeside}
+                <CrossfadeImage
+                  light={projectLakeside}
+                  dark={featuresDark.url}
                   alt="Jolshiri Residence - Lakeside View"
-                  className="w-full h-full object-cover"
+                  isDark={isDark}
                 />
               </motion.div>
 
