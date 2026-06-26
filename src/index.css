@@ -283,6 +283,9 @@
    Desktop layout is untouched.
    =========================================================== */
 @media (max-width: 768px) {
+  .hero-green-shade {
+    display: none !important;
+  }
   html, body {
     overflow-x: hidden;
   }
