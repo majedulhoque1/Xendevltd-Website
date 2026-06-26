@@ -285,7 +285,8 @@
 @media (min-width: 769px) {
   /* Desktop hero: black backdrop + slightly reduced image opacity for richer contrast */
   section.relative.h-screen { background-color: #000; }
-  .hero-bg-image { filter: opacity(0.85); }
+  .hero-bg-image { filter: opacity(0.7); }
+  .hero-green-shade { display: none !important; }
 }
 
 @media (max-width: 768px) {
