@@ -602,6 +602,8 @@
     margin-bottom: 0;
   }
   footer img {
+    height: 40px !important;
+    width: auto !important;
     margin-bottom: 12px !important;
   }
   footer p.text-background\/70 {
@@ -616,8 +618,13 @@
   footer ul li {
     font-size: 13px !important;
     line-height: 1.8 !important;
-    padding: 6px 0;
-    display: inline-block;
+    padding: 4px 0;
+    display: block;
+  }
+  footer ul {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
   }
   footer .flex.gap-4 {
     gap: 16px !important;
@@ -643,6 +650,7 @@
     gap: 12px;
     text-align: center;
     font-size: 11px !important;
+    padding-bottom: 72px;
   }
   footer .mt-12 a {
     margin-right: 0 !important;
