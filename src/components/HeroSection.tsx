@@ -95,7 +95,7 @@ const HeroSection = (_props: HeroSectionProps) => {
 
       {/* Forest-green brand shade from behind/back — tinted gradient pulled from the Xen logo */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="hero-green-shade absolute inset-0 pointer-events-none"
         style={{
           background:
             "radial-gradient(120% 80% at 50% 100%, rgba(16,124,65,0.55) 0%, rgba(13,90,48,0.35) 35%, rgba(8,40,22,0.15) 65%, transparent 100%)",
