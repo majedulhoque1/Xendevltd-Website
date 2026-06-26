@@ -114,15 +114,15 @@ const ProjectDetail = () => {
         {/* Breadcrumb */}
         <section className="py-4 bg-secondary/30">
           <div className="container-wide">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Link to="/" className="hover:text-primary transition-colors">
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs sm:text-sm text-muted-foreground">
+              <Link to="/" className="hover:text-primary transition-colors inline-flex items-center">
                 <Home className="w-4 h-4" />
               </Link>
-              <span>/</span>
-              <Link to="/projects" className="hover:text-primary transition-colors">
+              <span className="opacity-60">/</span>
+              <Link to="/projects" className="hover:text-primary transition-colors whitespace-nowrap">
                 Projects
               </Link>
-              <span>/</span>
+              <span className="opacity-60">/</span>
               <Link
                 to={`/projects?filter=${
                   project.status === "On-going"
@@ -131,7 +131,7 @@ const ProjectDetail = () => {
                     ? "upcoming"
                     : "completed"
                 }`}
-                className="hover:text-primary transition-colors"
+                className="hover:text-primary transition-colors whitespace-nowrap"
               >
                 {project.status === "On-going"
                   ? "Ongoing"
@@ -139,8 +139,8 @@ const ProjectDetail = () => {
                   ? "Upcoming"
                   : "Completed"}
               </Link>
-              <span>/</span>
-              <span className="text-foreground">{project.name}</span>
+              <span className="opacity-60">/</span>
+              <span className="text-foreground truncate max-w-[60vw] sm:max-w-none">{project.name}</span>
             </div>
           </div>
         </section>
