@@ -114,16 +114,16 @@ const ProjectDetail = () => {
         {/* Breadcrumb */}
         <section className="py-4 bg-secondary/30">
           <div className="container-wide">
-            <div className="text-xs sm:text-sm text-muted-foreground project-breadcrumb">
-              <div className="breadcrumb-row flex flex-nowrap items-center gap-x-2 overflow-hidden leading-none">
-                <Link to="/" className="breadcrumb-item hover:text-primary transition-colors inline-flex items-center justify-center flex-shrink-0">
+            <div className="text-xs md:text-sm text-left text-muted-foreground project-breadcrumb">
+              <div className="breadcrumb-row flex flex-wrap items-center justify-start gap-x-2 gap-y-1 leading-tight">
+                <Link to="/" className="breadcrumb-item hover:text-primary transition-colors inline-flex items-center justify-center">
                   <Home className="w-4 h-4" />
                 </Link>
-                <span className="breadcrumb-sep opacity-60 flex-shrink-0 leading-none">/</span>
-                <Link to="/projects" className="breadcrumb-item hover:text-primary transition-colors whitespace-nowrap leading-none flex-shrink-0">
+                <span className="breadcrumb-sep opacity-60 mx-0">/</span>
+                <Link to="/projects" className="breadcrumb-item hover:text-primary transition-colors whitespace-nowrap">
                   Projects
                 </Link>
-                <span className="breadcrumb-sep opacity-60 flex-shrink-0 leading-none">/</span>
+                <span className="breadcrumb-sep opacity-60 mx-0">/</span>
                 <Link
                   to={`/projects?filter=${
                     project.status === "On-going"
@@ -132,7 +132,7 @@ const ProjectDetail = () => {
                       ? "upcoming"
                       : "completed"
                   }`}
-                  className="breadcrumb-item hover:text-primary transition-colors whitespace-nowrap leading-none flex-shrink-0"
+                  className="breadcrumb-item hover:text-primary transition-colors whitespace-nowrap"
                 >
                   {project.status === "On-going"
                     ? "Ongoing"
@@ -140,8 +140,8 @@ const ProjectDetail = () => {
                     ? "Upcoming"
                     : "Completed"}
                 </Link>
-                <span className="breadcrumb-sep opacity-60 flex-shrink-0 leading-none">/</span>
-                <span className="breadcrumb-current text-foreground truncate min-w-0 leading-none">{project.name}</span>
+                <span className="breadcrumb-sep opacity-60 mx-0">/</span>
+                <span className="breadcrumb-current text-foreground">{project.name}</span>
               </div>
             </div>
           </div>

@@ -290,26 +290,23 @@
 }
 
 @media (max-width: 768px) {
-  nav[aria-label="breadcrumb"],
-  .breadcrumb,
-  [class*="breadcrumb"] {
+  .project-breadcrumb .breadcrumb-row {
     display: flex !important;
     flex-wrap: wrap !important;
-    overflow-x: visible !important;
-    overflow: visible !important;
-    white-space: normal !important;
-    padding: 8px 16px !important;
-    font-size: 11px !important;
-    gap: 2px 4px !important;
+    justify-content: flex-start !important;
     align-items: center !important;
-    line-height: 1.6 !important;
+    text-align: left !important;
+    gap: 4px 8px !important;
+    padding: 0 !important;
+    font-size: 12px !important;
+    line-height: 1.4 !important;
   }
-
-  nav[aria-label="breadcrumb"] *,
-  .breadcrumb *,
-  [class*="breadcrumb"] * {
-    white-space: normal !important;
-    flex-shrink: 1 !important;
+  .project-breadcrumb .breadcrumb-sep {
+    margin: 0 !important;
+  }
+  .project-breadcrumb .breadcrumb-item,
+  .project-breadcrumb .breadcrumb-current {
+    white-space: nowrap;
   }
   .hero-green-shade {
     display: none !important;
