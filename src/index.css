@@ -330,6 +330,9 @@
     width: auto !important;
     max-width: none !important;
   }
+  .hero-bg-image {
+    filter: opacity(0.75) !important;
+  }
   .hero-h1 {
     font-size: clamp(40px, 12vw, 64px) !important;
     line-height: 1 !important;
