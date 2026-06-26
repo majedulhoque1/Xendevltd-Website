@@ -117,7 +117,8 @@ const HeroSection = (_props: HeroSectionProps) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
-            className="hero-eyebrow font-gruppo text-white/90 text-sm uppercase tracking-widest mb-4 inline-flex items-center gap-2"
+            className="hero-eyebrow font-gruppo text-white text-sm uppercase tracking-widest mb-4 inline-flex items-center gap-2 self-start px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/30 shadow-[0_4px_20px_rgba(0,0,0,0.15)] font-bold"
+            style={{ WebkitTextStroke: "0.4px #FFFFFF" }}
           >
             Featured Development
             <span
