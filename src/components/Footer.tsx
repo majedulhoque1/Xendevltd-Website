@@ -99,10 +99,10 @@ const Footer = () => {
               <li>Dhaka, Bangladesh</li>
               <li>
                 <a
-                  href="tel:+8801700000000"
+                  href="tel:+8801717192730"
                   className="hover:text-background transition-colors"
                 >
-                  +880 1700 000 000
+                  01717-19-27-30
                 </a>
               </li>
               <li>
