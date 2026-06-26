@@ -123,6 +123,23 @@ const ProjectDetail = () => {
                 Projects
               </Link>
               <span>/</span>
+              <Link
+                to={`/projects?filter=${
+                  project.status === "On-going"
+                    ? "ongoing"
+                    : project.status === "Up-coming"
+                    ? "upcoming"
+                    : "completed"
+                }`}
+                className="hover:text-primary transition-colors"
+              >
+                {project.status === "On-going"
+                  ? "Ongoing"
+                  : project.status === "Up-coming"
+                  ? "Upcoming"
+                  : "Completed"}
+              </Link>
+              <span>/</span>
               <span className="text-foreground">{project.name}</span>
             </div>
           </div>
@@ -131,7 +148,7 @@ const ProjectDetail = () => {
         {/* Hero Section */}
         <section className="relative">
           <div
-            className={`h-[40vh] md:h-[50vh] overflow-hidden ${
+            className={`h-[70vh] md:h-[85vh] overflow-hidden ${
               project.image ? "" : "bg-gradient-to-br from-secondary to-muted"
             }`}
           >
@@ -139,7 +156,7 @@ const ProjectDetail = () => {
               <img
                 src={project.image}
                 alt={project.name}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-center"
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center">
@@ -343,14 +360,11 @@ const ProjectDetail = () => {
                   </div>
 
                   <div className="border-t border-border mt-6 pt-6">
-                    <Link to="/#contact" className="btn-primary w-full text-center block">
+                    <Link to="/#contact" className="btn-primary w-full">
                       {project.status === "Up-coming" ? "Register Interest" : "Schedule a Visit"}
                     </Link>
-                    <Link
-                      to="/projects"
-                      className="btn-secondary w-full text-center block mt-3"
-                    >
-                      <ArrowLeft className="w-4 h-4 mr-2 inline" />
+                    <Link to="/projects" className="btn-secondary w-full mt-3">
+                      <ArrowLeft className="w-4 h-4 mr-2" />
                       Back to Projects
                     </Link>
                   </div>
