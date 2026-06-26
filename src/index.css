@@ -333,6 +333,10 @@
     width: auto !important;
     max-width: none !important;
   }
+  /* Dark backdrop behind hero image so reduced opacity doesn't wash to white */
+  section.relative.h-screen {
+    background-color: #000 !important;
+  }
   .hero-bg-image {
     filter: opacity(0.75) !important;
   }
@@ -378,7 +382,7 @@
   }
   /* Strengthen gradient overlay on mobile for readability */
   .hero-gradient-overlay {
-    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.05) 100%) !important;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.35) 100%) !important;
   }
 
   /* Hide hero stats bar on mobile */
