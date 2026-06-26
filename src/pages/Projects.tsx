@@ -1,4 +1,4 @@
-import { ArrowLeft, Waves, MapPin, Calendar, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Waves, MapPin, Calendar, X } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link, useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -254,6 +254,132 @@ const Projects = () => {
     { label: "Completed", value: "completed" },
   ];
 
+  const bannerGroups = [
+    { label: "On-going Projects", value: "ongoing", status: "On-going" },
+    { label: "Up-coming Projects", value: "upcoming", status: "Up-coming" },
+    { label: "Completed Projects", value: "completed", status: "Completed" },
+  ];
+
+  const renderProjectCard = (project: typeof projects[number], index: number) => {
+    const isCompleted = project.status === "Completed";
+    const cardInner = (
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        whileHover={
+          isCompleted && !project.image
+            ? undefined
+            : { y: -8, transition: { duration: 0.3 } }
+        }
+        className={`card-premium overflow-hidden group h-full ${
+          isCompleted && !project.image ? "" : "cursor-pointer"
+        }`}
+      >
+        <div
+          className={`relative h-64 overflow-hidden ${
+            project.image ? "" : "bg-gradient-to-br from-secondary to-muted"
+          }`}
+        >
+          {project.image ? (
+            <motion.img
+              src={project.image}
+              alt={project.name}
+              className="w-full h-full object-cover"
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.6 }}
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center">
+              <span className="text-muted-foreground text-sm">Image Coming Soon</span>
+            </div>
+          )}
+          <div className="absolute top-4 left-4">
+            <span
+              className={`inline-flex items-center px-3 py-1 text-xs uppercase tracking-wider rounded-full ${
+                project.status === "On-going"
+                  ? "bg-primary text-primary-foreground"
+                  : project.status === "Up-coming"
+                  ? "bg-gold text-charcoal"
+                  : "bg-secondary text-secondary-foreground"
+              }`}
+            >
+              {project.status}
+            </span>
+          </div>
+          {project.badge && (
+            <div className="absolute top-4 right-4">
+              <span className="inline-flex items-center px-3 py-1 text-xs bg-background/90 backdrop-blur-sm rounded-full">
+                <Waves className="w-3 h-3 mr-1 text-primary" />
+                {project.badge}
+              </span>
+            </div>
+          )}
+          <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-300" />
+        </div>
+        <div className="p-6">
+          <h3 className="text-xl font-serif font-medium mb-2">{project.name}</h3>
+          <div className="flex items-center text-sm text-muted-foreground">
+            <MapPin className="w-4 h-4 mr-1" />
+            {project.location}
+          </div>
+          {!isCompleted && (
+            <>
+              <p className="text-sm text-muted-foreground mt-3 mb-4 line-clamp-3">
+                {project.description}
+              </p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {project.features.slice(0, 3).map((feature, idx) => (
+                  <span
+                    key={idx}
+                    className="px-2 py-1 text-xs bg-secondary rounded-full text-secondary-foreground"
+                  >
+                    {feature}
+                  </span>
+                ))}
+              </div>
+              <div className="flex items-center text-sm text-muted-foreground mb-4">
+                <Calendar className="w-4 h-4 mr-1" />
+                {`Expected: ${project.expectedCompletion}`}
+              </div>
+              <span className="inline-flex items-center text-sm font-medium text-primary group/link">
+                View Details
+                <ArrowLeft className="ml-2 w-4 h-4 rotate-180 transition-transform group-hover:translate-x-1" />
+              </span>
+            </>
+          )}
+        </div>
+      </motion.div>
+    );
+
+    if (isCompleted) {
+      if (!project.image) {
+        return <div key={project.id} className="block">{cardInner}</div>;
+      }
+      return (
+        <button
+          key={project.id}
+          type="button"
+          onClick={() => setLightbox({ image: project.image!, name: project.name })}
+          className="block text-left w-full"
+        >
+          {cardInner}
+        </button>
+      );
+    }
+
+    return (
+      <Link key={project.id} to={`/projects/${project.slug}`} className="block">
+        {cardInner}
+      </Link>
+    );
+  };
+
+  const goToFilter = (value: string) => {
+    setFilter(value);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-500">
       <Navigation isDark={isDark} onThemeToggle={toggleTheme} />
@@ -308,145 +434,51 @@ const Projects = () => {
         {/* Projects Grid */}
         <section className="py-8 md:py-12">
           <div className="container-wide">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredProjects.map((project, index) => {
-                const isCompleted = project.status === "Completed";
-                const cardInner = (
-                  <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    whileHover={
-                      isCompleted && !project.image
-                        ? undefined
-                        : { y: -8, transition: { duration: 0.3 } }
-                    }
-                    className={`card-premium overflow-hidden group h-full ${
-                      isCompleted && !project.image ? "" : "cursor-pointer"
-                    }`}
-                  >
-                    {/* Image */}
-                    <div
-                      className={`relative h-64 overflow-hidden ${
-                        project.image ? "" : "bg-gradient-to-br from-secondary to-muted"
-                      }`}
-                    >
-                      {project.image ? (
-                        <motion.img
-                          src={project.image}
-                          alt={project.name}
-                          className="w-full h-full object-cover"
-                          whileHover={{ scale: 1.1 }}
-                          transition={{ duration: 0.6 }}
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center">
-                          <span className="text-muted-foreground text-sm">Image Coming Soon</span>
-                        </div>
-                      )}
-                      
-                      {/* Status Badge */}
-                      <div className="absolute top-4 left-4">
-                        <span
-                          className={`inline-flex items-center px-3 py-1 text-xs uppercase tracking-wider rounded-full ${
-                            project.status === "On-going"
-                              ? "bg-primary text-primary-foreground"
-                              : project.status === "Up-coming"
-                              ? "bg-gold text-charcoal"
-                              : "bg-secondary text-secondary-foreground"
-                          }`}
-                        >
-                          {project.status}
-                        </span>
-                      </div>
-
-                      {/* Special Badge */}
-                      {project.badge && (
-                        <div className="absolute top-4 right-4">
-                          <span className="inline-flex items-center px-3 py-1 text-xs bg-background/90 backdrop-blur-sm rounded-full">
-                            <Waves className="w-3 h-3 mr-1 text-primary" />
-                            {project.badge}
-                          </span>
-                        </div>
-                      )}
-
-                      {/* Hover Overlay */}
-                      <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-300" />
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-6">
-                      <h3 className="text-xl font-serif font-medium mb-2">
-                        {project.name}
-                      </h3>
-                      
-                      <div className="flex items-center text-sm text-muted-foreground">
-                        <MapPin className="w-4 h-4 mr-1" />
-                        {project.location}
-                      </div>
-
-                      {!isCompleted && (
-                        <>
-                          <p className="text-sm text-muted-foreground mt-3 mb-4 line-clamp-3">
-                            {project.description}
-                          </p>
-                          <div className="flex flex-wrap gap-2 mb-4">
-                            {project.features.slice(0, 3).map((feature, idx) => (
-                              <span
-                                key={idx}
-                                className="px-2 py-1 text-xs bg-secondary rounded-full text-secondary-foreground"
-                              >
-                                {feature}
-                              </span>
-                            ))}
-                          </div>
-                          <div className="flex items-center text-sm text-muted-foreground mb-4">
-                            <Calendar className="w-4 h-4 mr-1" />
-                            {`Expected: ${project.expectedCompletion}`}
-                          </div>
-                          <span className="inline-flex items-center text-sm font-medium text-primary group/link">
-                            View Details
-                            <ArrowLeft className="ml-2 w-4 h-4 rotate-180 transition-transform group-hover:translate-x-1" />
-                          </span>
-                        </>
-                      )}
-                    </div>
-                  </motion.div>
-                );
-
-                if (isCompleted) {
-                  if (!project.image) {
-                    return (
-                      <div key={project.id} className="block">
-                        {cardInner}
-                      </div>
-                    );
-                  }
+            {filter === "all" ? (
+              <div className="space-y-16">
+                {bannerGroups.map((group) => {
+                  const items = projects.filter((p) => p.status === group.status).slice(0, 3);
+                  if (items.length === 0) return null;
                   return (
-                    <button
-                      key={project.id}
-                      type="button"
-                      onClick={() => setLightbox({ image: project.image!, name: project.name })}
-                      className="block text-left w-full"
-                    >
-                      {cardInner}
-                    </button>
+                    <div key={group.value}>
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
+                        className="flex items-end justify-between mb-6 pb-4 border-b border-border"
+                      >
+                        <div>
+                          <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                            Category
+                          </span>
+                          <h2 className="text-2xl md:text-3xl font-serif font-medium mt-1">
+                            {group.label}
+                          </h2>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => goToFilter(group.value)}
+                          className="inline-flex items-center text-sm font-medium text-primary hover:opacity-80 transition-opacity"
+                        >
+                          See All
+                          <ArrowRight className="ml-2 w-4 h-4" />
+                        </button>
+                      </motion.div>
+                      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {items.map((project, index) => renderProjectCard(project, index))}
+                      </div>
+                    </div>
                   );
-                }
+                })}
+              </div>
+            ) : (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredProjects.map((project, index) => renderProjectCard(project, index))}
+              </div>
+            )}
 
-                return (
-                  <Link
-                    key={project.id}
-                    to={`/projects/${project.slug}`}
-                    className="block"
-                  >
-                    {cardInner}
-                  </Link>
-                );
-              })}
-            </div>
-
-            {filteredProjects.length === 0 && (
+            {filter !== "all" && filteredProjects.length === 0 && (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
