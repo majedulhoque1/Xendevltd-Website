@@ -227,18 +227,22 @@ const HeroSection = (_props: HeroSectionProps) => {
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
+      <div
         aria-hidden
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 text-white/80"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: scrolledPast ? 0 : 1, y: [0, 8, 0] }}
-        transition={{
-          opacity: { duration: 0.6, ease: EASE },
-          y: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
-        }}
+        className="absolute bottom-4 left-0 right-0 z-20 flex justify-center pointer-events-none"
       >
-        <ChevronDown className="w-6 h-6" />
-      </motion.div>
+        <motion.div
+          className="text-white/80"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: scrolledPast ? 0 : 1, y: [0, 8, 0] }}
+          transition={{
+            opacity: { duration: 0.6, ease: EASE },
+            y: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
+          }}
+        >
+          <ChevronDown className="w-6 h-6" />
+        </motion.div>
+      </div>
     </section>
   );
 };
