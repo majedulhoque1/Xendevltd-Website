@@ -6,6 +6,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ChatBotButton from "@/components/WhatsAppButton";
+import CountUp from "@/components/CountUp";
 
 const About = () => {
   const { isDark, toggleTheme } = useTheme();
@@ -144,9 +145,10 @@ const About = () => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="text-center"
                 >
-                  <p className="text-4xl md:text-5xl font-serif font-bold text-primary mb-2">
-                    {stat.value}
-                  </p>
+                  <CountUp
+                    value={stat.value}
+                    className="block text-4xl md:text-5xl font-serif font-bold text-primary mb-2"
+                  />
                   <p className="text-sm text-muted-foreground">{stat.label}</p>
                 </motion.div>
               ))}
