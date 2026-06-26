@@ -325,6 +325,8 @@
     font-size: 9px !important;
     letter-spacing: 0.1em !important;
     color: #fff !important;
+    font-weight: 700 !important;
+    -webkit-text-stroke: 0.3px #FFFFFF !important;
     display: inline-flex !important;
     align-items: center !important;
     gap: 8px !important;
