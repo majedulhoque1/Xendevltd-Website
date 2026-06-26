@@ -114,33 +114,38 @@ const ProjectDetail = () => {
         {/* Breadcrumb */}
         <section className="py-4 bg-secondary/30">
           <div className="container-wide">
-            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs sm:text-sm text-muted-foreground">
-              <Link to="/" className="hover:text-primary transition-colors inline-flex items-center">
+            <div className="text-xs sm:text-sm text-muted-foreground">
+              <Link to="/" className="hover:text-primary transition-colors inline-flex items-center mb-2 sm:mb-0 sm:hidden">
                 <Home className="w-4 h-4" />
               </Link>
-              <span className="opacity-60">/</span>
-              <Link to="/projects" className="hover:text-primary transition-colors whitespace-nowrap">
-                Projects
-              </Link>
-              <span className="opacity-60">/</span>
-              <Link
-                to={`/projects?filter=${
-                  project.status === "On-going"
-                    ? "ongoing"
+              <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                <Link to="/" className="hover:text-primary transition-colors hidden sm:inline-flex items-center">
+                  <Home className="w-4 h-4" />
+                </Link>
+                <span className="opacity-60 hidden sm:inline">/</span>
+                <Link to="/projects" className="hover:text-primary transition-colors whitespace-nowrap">
+                  Projects
+                </Link>
+                <span className="opacity-60">/</span>
+                <Link
+                  to={`/projects?filter=${
+                    project.status === "On-going"
+                      ? "ongoing"
+                      : project.status === "Up-coming"
+                      ? "upcoming"
+                      : "completed"
+                  }`}
+                  className="hover:text-primary transition-colors whitespace-nowrap"
+                >
+                  {project.status === "On-going"
+                    ? "Ongoing"
                     : project.status === "Up-coming"
-                    ? "upcoming"
-                    : "completed"
-                }`}
-                className="hover:text-primary transition-colors whitespace-nowrap"
-              >
-                {project.status === "On-going"
-                  ? "Ongoing"
-                  : project.status === "Up-coming"
-                  ? "Upcoming"
-                  : "Completed"}
-              </Link>
-              <span className="opacity-60">/</span>
-              <span className="text-foreground truncate max-w-[60vw] sm:max-w-none">{project.name}</span>
+                    ? "Upcoming"
+                    : "Completed"}
+                </Link>
+                <span className="opacity-60">/</span>
+                <span className="text-foreground truncate max-w-[55vw] sm:max-w-none">{project.name}</span>
+              </div>
             </div>
           </div>
         </section>
