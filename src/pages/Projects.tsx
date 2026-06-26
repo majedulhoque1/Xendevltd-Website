@@ -262,6 +262,49 @@ const Projects = () => {
 
   const renderProjectCard = (project: typeof projects[number], index: number) => {
     const isCompleted = project.status === "Completed";
+
+    if (isCompleted) {
+      const card = (
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          className="relative overflow-hidden rounded-lg group aspect-[4/5] shadow-lg h-full"
+        >
+          {project.image ? (
+            <img
+              src={project.image}
+              alt={project.name}
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          ) : (
+            <div className="absolute inset-0 bg-gradient-to-br from-secondary to-muted flex items-center justify-center">
+              <span className="text-muted-foreground text-sm">Image Coming Soon</span>
+            </div>
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+            <h3 className="text-xl font-serif font-medium mb-1">{project.name}</h3>
+            <p className="text-sm opacity-90">{project.location}</p>
+          </div>
+        </motion.div>
+      );
+
+      if (!project.image) {
+        return <div key={project.id} className="block">{card}</div>;
+      }
+      return (
+        <button
+          key={project.id}
+          type="button"
+          onClick={() => setLightbox({ image: project.image!, name: project.name })}
+          className="block text-left w-full"
+        >
+          {card}
+        </button>
+      );
+    }
+
     const cardInner = (
       <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -351,22 +394,6 @@ const Projects = () => {
         </div>
       </motion.div>
     );
-
-    if (isCompleted) {
-      if (!project.image) {
-        return <div key={project.id} className="block">{cardInner}</div>;
-      }
-      return (
-        <button
-          key={project.id}
-          type="button"
-          onClick={() => setLightbox({ image: project.image!, name: project.name })}
-          className="block text-left w-full"
-        >
-          {cardInner}
-        </button>
-      );
-    }
 
     return (
       <Link key={project.id} to={`/projects/${project.slug}`} className="block">
