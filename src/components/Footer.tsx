@@ -66,7 +66,7 @@ const Footer = () => {
             viewport={VP}
             transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
           >
-            <h4 className="font-semibold mb-6">Quick Links</h4>
+            <h4 className="font-bold mb-6">Quick Links</h4>
             <ul className="space-y-3">
               {quickLinks.map((link, i) => (
                 <motion.li
@@ -94,7 +94,7 @@ const Footer = () => {
             viewport={VP}
             transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
           >
-            <h4 className="font-semibold mb-6">Contact</h4>
+            <h4 className="font-bold mb-6">Contact</h4>
             <ul className="space-y-3 text-background/70">
               <li>Dhaka, Bangladesh</li>
               <li>
