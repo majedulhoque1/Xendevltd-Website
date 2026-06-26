@@ -27,7 +27,7 @@ const HeroImageLayer = ({
 }) => (
   <motion.div
     aria-hidden
-    className="absolute inset-0 bg-cover bg-[position:center_bottom]"
+    className="hero-bg-image absolute inset-0 bg-cover bg-[position:center_bottom]"
     style={{
       backgroundImage: `url(${url})`,
       y: active ? y : 0,
