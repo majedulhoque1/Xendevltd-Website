@@ -1,41 +1,27 @@
-import { ArrowRight, Waves } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import projectLakeside from "@/assets/project-lakeside.jpg";
-import xenLakeviewTasmeeAsset from "@/assets/Xen_Lakeview_Tasmee.jpeg.asset.json";
-import upcomingBananiAsset from "@/assets/Upcoming_Banani.jpeg.asset.json";
 import xenOrionAsset from "@/assets/Xen_Orion_Plot_30__Road_2__DOHS_Chittagong.jpeg.asset.json";
+import xenAndromedaAsset from "@/assets/Xen_Andromeda_Plot_29__Rd_2__DOHS_Chittagong.jpeg.asset.json";
+import xenPegasusAsset from "@/assets/Xen_Pegasus_Plot_1__Road_1__DOHS_Chittagong.jpeg.asset.json";
 
 const projects = [
   {
     id: 1,
-    slug: "xen-lakeview-tasmee",
-    name: "Lakeview Tasmee",
-    status: "On-going",
-    location: "Plot 38, Rd: 504, Sec: 14, Jolshiri Abashon, Dhaka",
-    badge: "Lakeview Project",
-    featured: true,
-    image: xenLakeviewTasmeeAsset.url,
+    name: "Xen Orion",
+    location: "Plot 30, Road 2, DOHS Chittagong",
+    image: xenOrionAsset.url,
   },
   {
     id: 2,
-    slug: "upcoming-banani",
-    name: "Project 21",
-    status: "Up-coming",
-    location: "Block B, Rd 18, Plot 21, Banani, Dhaka",
-    badge: null,
-    featured: false,
-    image: upcomingBananiAsset.url,
+    name: "Xen Andromeda",
+    location: "Plot 29, Road 2, DOHS Chittagong",
+    image: xenAndromedaAsset.url,
   },
   {
     id: 3,
-    slug: "xen-orion",
-    name: "Xen Orion",
-    status: "Completed",
-    location: "Chittagong DOHS",
-    badge: null,
-    featured: false,
-    image: xenOrionAsset.url,
+    name: "Xen Pegasus",
+    location: "Plot 1, Road 1, DOHS Chittagong",
+    image: xenPegasusAsset.url,
   },
 ];
 
@@ -85,71 +71,21 @@ const ProjectsOverview = () => {
               viewport={{ once: true, margin: "0px 0px -50px 0px", amount: 0.15 }}
               transition={{ duration: 1.0, delay: index * 0.2, ease: [0.25, 0.1, 0.25, 1] }}
               whileHover={{ scale: 1.02, transition: { duration: 0.4, ease: "easeOut" } }}
-              className={`card-premium overflow-hidden group ${
-                project.featured ? "ring-2 ring-primary" : ""
-              }`}
+              className="relative overflow-hidden rounded-lg group aspect-[4/5] shadow-lg"
             >
-              {/* Image */}
-              <div
-                className={`relative h-56 overflow-hidden ${
-                  project.image ? "" : "bg-gradient-to-br from-secondary to-muted"
-                } ${project.featured ? "" : "opacity-80"}`}
-              >
-                {project.image && (
-                  <motion.img
-                    src={project.image}
-                    alt={project.name}
-                    className="w-full h-full object-cover"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.6 }}
-                  />
-                )}
-                
-                {/* Status Badge */}
-                <div className="absolute top-4 left-4">
-                  <span
-                    className={`inline-flex items-center px-3 py-1 text-xs uppercase tracking-wider rounded-full ${
-                      project.status === "On-going"
-                        ? "bg-primary text-primary-foreground"
-                        : project.status === "Up-coming"
-                        ? "bg-gold text-charcoal"
-                        : "bg-secondary text-secondary-foreground"
-                    }`}
-                  >
-                    {project.status}
-                  </span>
-                </div>
-
-                {/* Lakeview Badge */}
-                {project.badge && (
-                  <div className="absolute top-4 right-4">
-                    <span className="inline-flex items-center px-3 py-1 text-xs bg-background/90 backdrop-blur-sm rounded-full">
-                      <Waves className="w-3 h-3 mr-1 text-primary" />
-                      {project.badge}
-                    </span>
-                  </div>
-                )}
-
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-300" />
-              </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-serif font-medium mb-2">
+              <motion.img
+                src={project.image}
+                alt={project.name}
+                className="absolute inset-0 w-full h-full object-cover"
+                whileHover={{ scale: 1.08 }}
+                transition={{ duration: 0.6 }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <h3 className="text-xl font-serif font-medium mb-1">
                   {project.name}
                 </h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  {project.location}
-                </p>
-
-                <Link
-                  to={`/projects/${project.slug}`}
-                  className="inline-flex items-center text-sm font-medium text-primary group/link"
-                >
-                  View Details
-                  <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover/link:translate-x-1" />
-                </Link>
+                <p className="text-sm opacity-90">{project.location}</p>
               </div>
             </motion.div>
           ))}
