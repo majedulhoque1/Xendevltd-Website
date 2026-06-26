@@ -339,6 +339,7 @@
     overflow: visible !important;
     word-break: break-word;
     -webkit-text-stroke: 0.5px #FFFFFF !important;
+    font-weight: 900 !important;
   }
   .hero-h1 > span { text-align: center !important; }
   .hero-h2 {
