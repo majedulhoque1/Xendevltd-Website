@@ -420,17 +420,17 @@ const Projects = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4 }}
-                className="flex items-center gap-4"
+                className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4"
               >
-                <Link 
-                  to="/" 
-                  className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
+                <Link
+                  to="/"
+                  className="inline-flex items-center self-start text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   <ArrowLeft className="w-4 h-4 mr-1" />
                   Home
                 </Link>
-                <div className="h-4 w-px bg-border" />
-                <h1 className="text-2xl md:text-3xl font-gruppo font-semibold">Our Projects</h1>
+                <div className="hidden md:block h-4 w-px bg-border" />
+                <h1 className="text-2xl md:text-3xl font-gruppo font-semibold leading-tight">Our Projects</h1>
               </motion.div>
 
               {/* Filter Tabs */}
