@@ -2,37 +2,40 @@ import { ArrowRight, Waves } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import projectLakeside from "@/assets/project-lakeside.jpg";
+import xenLakeviewTasmeeAsset from "@/assets/Xen_Lakeview_Tasmee.jpeg.asset.json";
+import upcomingBananiAsset from "@/assets/Upcoming_Banani.jpeg.asset.json";
+import xenOrionAsset from "@/assets/Xen_Orion_Plot_30__Road_2__DOHS_Chittagong.jpeg.asset.json";
 
 const projects = [
   {
     id: 1,
-    slug: "jolshiri-lakeview-residence",
-    name: "Jolshiri Lakeview Residence",
+    slug: "xen-lakeview-tasmee",
+    name: "Lakeview Tasmee",
     status: "On-going",
-    location: "Jolshiri Abashon, Dhaka",
+    location: "Plot 38, Rd: 504, Sec: 14, Jolshiri Abashon, Dhaka",
     badge: "Lakeview Project",
     featured: true,
-    image: projectLakeside,
+    image: xenLakeviewTasmeeAsset.url,
   },
   {
     id: 2,
-    slug: "uttara-heights",
-    name: "Uttara Heights",
+    slug: "upcoming-banani",
+    name: "Project 21",
     status: "Up-coming",
-    location: "Uttara, Dhaka",
+    location: "Block B, Rd 18, Plot 21, Banani, Dhaka",
     badge: null,
     featured: false,
-    image: null,
+    image: upcomingBananiAsset.url,
   },
   {
     id: 3,
-    slug: "bashundhara-residence",
-    name: "Bashundhara Residence",
+    slug: "xen-orion",
+    name: "Xen Orion",
     status: "Completed",
-    location: "Bashundhara R/A, Dhaka",
+    location: "Chittagong DOHS",
     badge: null,
     featured: false,
-    image: null,
+    image: xenOrionAsset.url,
   },
 ];
 
