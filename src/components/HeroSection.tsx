@@ -127,7 +127,7 @@ const HeroSection = (_props: HeroSectionProps) => {
             Jolshiri Abashon
           </motion.p>
           <h1
-            className="font-gruppo text-white uppercase leading-tight text-[97px]"
+            className="hero-h1 font-gruppo text-white uppercase leading-tight text-[97px]"
             style={{ WebkitTextStroke: "1px #FFFFFF" }}
           >
             <motion.span
@@ -148,20 +148,20 @@ const HeroSection = (_props: HeroSectionProps) => {
             </motion.span>
           </h1>
           <motion.div
-            className="flex gap-4 mt-8"
+            className="hero-cta-row flex gap-4 mt-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.3, ease: EASE }}
           >
             <Link
               to="/projects/xen-lakeview-tasmee"
-              className="font-sans inline-flex items-center justify-center h-12 px-7 text-sm bg-primary text-primary-foreground font-medium tracking-wide rounded-full transition-all duration-300 hover:bg-primary/90"
+              className="hero-cta font-sans inline-flex items-center justify-center h-12 px-7 text-sm bg-primary text-primary-foreground font-medium tracking-wide rounded-full transition-all duration-300 hover:bg-primary/90"
             >
               Explore Xen Tasmee
             </Link>
             <Link
               to="/contact"
-              className="font-sans inline-flex items-center justify-center h-12 px-7 text-sm bg-black/30 backdrop-blur-md border border-white/30 text-white font-medium tracking-wide rounded-full transition-all duration-300 hover:bg-black/40"
+              className="hero-cta font-sans inline-flex items-center justify-center h-12 px-7 text-sm bg-black/30 backdrop-blur-md border border-white/30 text-white font-medium tracking-wide rounded-full transition-all duration-300 hover:bg-black/40"
             >
               Book A Visit
             </Link>
@@ -170,7 +170,7 @@ const HeroSection = (_props: HeroSectionProps) => {
 
         {/* RIGHT COLUMN */}
         <div className="flex flex-col justify-center items-end text-right">
-          <h2 className="font-gruppo uppercase text-white leading-tight font-bold" style={{ fontSize: "36px" }}>
+          <h2 className="hero-h2 font-gruppo uppercase text-white leading-tight font-bold" style={{ fontSize: "36px" }}>
             <motion.span
               className="block"
               initial={{ opacity: 0, y: 40 }}
@@ -192,7 +192,7 @@ const HeroSection = (_props: HeroSectionProps) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.9, delay: 1.1, ease: EASE }}
-            className="text-white/80 text-sm md:text-base leading-relaxed max-w-md mt-4"
+            className="hero-subtext text-white/80 text-sm md:text-base leading-relaxed max-w-md mt-4"
           >
             A Thoughtfully Designed Lakeside Residence On The Edge Of Jolshiri
             Abashon — Open Horizons, Considered Architecture, And A Calm That
