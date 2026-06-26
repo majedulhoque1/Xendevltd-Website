@@ -292,13 +292,19 @@
 @media (max-width: 768px) {
   .project-breadcrumb .breadcrumb-row {
     display: flex !important;
-    flex-wrap: wrap !important;
+    flex-wrap: nowrap !important;
     align-items: center !important;
-    gap: 4px !important;
-    font-size: 12px !important;
+    gap: 2px !important;
+    font-size: 11px !important;
     padding: 8px 16px !important;
     line-height: 1.4 !important;
-    overflow: visible !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+  .project-breadcrumb .breadcrumb-row::-webkit-scrollbar {
+    display: none !important;
   }
   .project-breadcrumb .breadcrumb-item {
     white-space: nowrap !important;
@@ -309,10 +315,10 @@
   }
   .project-breadcrumb .breadcrumb-current {
     font-weight: 500 !important;
-    white-space: normal !important;
+    white-space: nowrap !important;
     overflow: visible !important;
     text-overflow: clip !important;
-    word-break: break-word !important;
+    flex-shrink: 0 !important;
   }
   .hero-green-shade {
     display: none !important;
