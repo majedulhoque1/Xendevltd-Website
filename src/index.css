@@ -308,6 +308,11 @@
   .project-breadcrumb .breadcrumb-current {
     white-space: nowrap;
   }
+  .project-breadcrumb .breadcrumb-current,
+  .project-breadcrumb .breadcrumb-current * {
+    text-decoration: none !important;
+    font-weight: 500 !important;
+  }
   .hero-green-shade {
     display: none !important;
   }
