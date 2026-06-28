@@ -321,7 +321,7 @@ const Projects = () => {
         }`}
       >
         <div
-          className={`relative h-64 overflow-hidden ${
+          className={`relative h-64 md:h-96 overflow-hidden ${
             project.image ? "" : "bg-gradient-to-br from-secondary to-muted"
           }`}
         >
