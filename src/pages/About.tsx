@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import ChatBotButton from "@/components/WhatsAppButton";
 import CountUp from "@/components/CountUp";
 import xenLogoAsset from "@/assets/Xen_Logo.png.asset.json";
+import aboutDayAsset from "@/assets/About_Day.png.asset.json";
 
 const About = () => {
   const { isDark, toggleTheme } = useTheme();
@@ -121,11 +122,11 @@ const About = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="relative"
               >
-                <div className="aspect-square bg-gradient-to-br from-primary/10 to-secondary rounded-2xl flex items-center justify-center p-12">
+                <div className="aspect-square bg-gradient-to-br from-primary/10 to-secondary rounded-2xl overflow-hidden flex items-center justify-center">
                   <img
-                    src={xenLogoAsset.url}
-                    alt="Xen Developments Logo"
-                    className="w-full h-full object-contain"
+                    src={isDark ? xenLogoAsset.url : aboutDayAsset.url}
+                    alt="Xen Developments"
+                    className={isDark ? "w-full h-full object-contain p-12" : "w-full h-full object-cover"}
                   />
                 </div>
                 <div className="absolute -bottom-6 -right-6 bg-primary text-primary-foreground p-6 rounded-xl shadow-lg">
