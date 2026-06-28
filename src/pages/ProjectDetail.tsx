@@ -225,7 +225,7 @@ const ProjectDetail = () => {
                     </span>
                   )}
                 </div>
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-gruppo font-semibold text-foreground">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-gruppo font-semibold text-white drop-shadow-lg">
                   {project.name}
                 </h1>
               </motion.div>
