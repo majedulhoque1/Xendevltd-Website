@@ -301,13 +301,33 @@
     display: flex !important;
     flex-wrap: nowrap !important;
     white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
     justify-content: flex-start !important;
     align-items: center !important;
     text-align: left !important;
     gap: 4px !important;
     padding: 8px 16px !important;
-    font-size: 12px !important;
+    font-size: 11px !important;
     line-height: 1.4 !important;
+  }
+  .project-breadcrumb .breadcrumb-row > * {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+  .project-breadcrumb .breadcrumb-row > li:last-child {
+    flex-shrink: 1 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 120px !important;
+  }
+  .project-breadcrumb .breadcrumb-row > li:last-child > * {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    max-width: 100% !important;
   }
   .project-breadcrumb .breadcrumb-hide-mobile {
     display: none !important;
