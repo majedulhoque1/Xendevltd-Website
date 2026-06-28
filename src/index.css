@@ -295,6 +295,19 @@
     width: 100% !important;
     display: block !important;
     text-align: left !important;
+    border: none !important;
+    border-left: none !important;
+    outline: none !important;
+    padding-left: 16px !important;
+    margin-left: 0 !important;
+  }
+  .project-breadcrumb,
+  section:has(.project-breadcrumb) .container-wide {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+    width: 100% !important;
+    border-left: none !important;
+    border: none !important;
   }
   .project-breadcrumb .breadcrumb-row {
     width: 100% !important;
@@ -305,9 +318,12 @@
     align-items: center !important;
     text-align: left !important;
     gap: 4px !important;
-    padding: 8px 16px !important;
+    padding: 8px 0 !important;
+    margin: 0 !important;
     font-size: 12px !important;
     line-height: 1.4 !important;
+    border: none !important;
+    border-left: none !important;
   }
   .project-breadcrumb .breadcrumb-hide-mobile {
     display: none !important;
@@ -319,6 +335,10 @@
     margin: 0 !important;
     padding: 0 !important;
     text-align: left !important;
+    border: none !important;
+  }
+  .project-breadcrumb .breadcrumb-row > li[role="presentation"] {
+    margin: 0 2px !important;
   }
   .project-breadcrumb .breadcrumb-item,
   .project-breadcrumb .breadcrumb-current {
