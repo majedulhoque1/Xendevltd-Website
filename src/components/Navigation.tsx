@@ -10,11 +10,11 @@ interface NavigationProps {
 }
 
 const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
-  const [!overHero, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === "/";
-  const overHero = isHome && !!overHero;
+  const overHero = isHome && !isScrolled;
 
   useEffect(() => {
     const handleScroll = () => {
