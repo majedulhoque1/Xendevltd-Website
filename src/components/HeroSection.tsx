@@ -117,7 +117,7 @@ const HeroSection = (_props: HeroSectionProps) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
-            className="hero-eyebrow font-gruppo text-white/90 text-xs uppercase tracking-widest mb-4 inline-flex w-fit max-w-fit items-center gap-2 self-start px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/25 whitespace-nowrap"
+            className="hero-eyebrow font-cormorant text-white/90 text-xs uppercase tracking-widest mb-4 inline-flex w-fit max-w-fit items-center gap-2 self-start px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/25 whitespace-nowrap"
           >
             Featured Development
             <span
@@ -127,7 +127,7 @@ const HeroSection = (_props: HeroSectionProps) => {
             Jolshiri Abashon
           </motion.p>
           <h1
-            className="hero-h1 font-gruppo text-white uppercase leading-tight text-[97px]"
+            className="hero-h1 font-cormorant text-white uppercase leading-tight text-[97px]"
             style={{ WebkitTextStroke: "1px #FFFFFF" }}
           >
             <motion.span
@@ -170,7 +170,7 @@ const HeroSection = (_props: HeroSectionProps) => {
 
         {/* RIGHT COLUMN */}
         <div className="flex flex-col justify-center items-end text-right">
-          <h2 className="hero-h2 font-gruppo uppercase text-white leading-tight font-bold" style={{ fontSize: "36px" }}>
+          <h2 className="hero-h2 font-cormorant uppercase text-white leading-tight font-bold" style={{ fontSize: "36px" }}>
             <motion.span
               className="block"
               initial={{ opacity: 0, y: 40 }}
