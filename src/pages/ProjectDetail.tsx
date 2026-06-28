@@ -9,6 +9,7 @@ import ChatBotButton from "@/components/WhatsAppButton";
 import xenLakeviewTasmeeAsset from "@/assets/Xen_Lakeview_Tasmee.jpeg.asset.json";
 import upcomingBananiAsset from "@/assets/Upcoming_Banani.jpeg.asset.json";
 import upcomingJolshiriAsset from "@/assets/Upcoming_Jolshiri.jpeg.asset.json";
+import project07DesktopAsset from "@/assets/Project_07_Desktop.png.asset.json";
 import project41Asset from "@/assets/Completed_DOHS_Chittagong.jpeg.asset.json";
 
 const projects = [
@@ -65,6 +66,7 @@ const projects = [
     amenities: ["TBD"],
     expectedCompletion: "TBD",
     image: upcomingJolshiriAsset.url,
+    desktopImage: project07DesktopAsset.url,
     gallery: [],
     buildingType: "—",
     totalFloors: "—",
@@ -166,11 +168,22 @@ const ProjectDetail = () => {
             }`}
           >
             {project.image ? (
-              <img
-                src={project.image}
-                alt={project.name}
-                className="w-full h-full object-cover object-center"
-              />
+              <>
+                <img
+                  src={project.image}
+                  alt={project.name}
+                  className={`w-full h-full object-cover object-center ${
+                    (project as any).desktopImage ? "md:hidden" : ""
+                  }`}
+                />
+                {(project as any).desktopImage && (
+                  <img
+                    src={(project as any).desktopImage}
+                    alt={project.name}
+                    className="hidden md:block w-full h-full object-cover object-center"
+                  />
+                )}
+              </>
             ) : (
               <div className="w-full h-full flex items-center justify-center">
                 <span className="text-muted-foreground">Image Coming Soon</span>
