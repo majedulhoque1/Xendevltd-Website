@@ -66,7 +66,7 @@ export default {
       fontFamily: {
         serif: ["'Playfair Display'", "serif"],
         sans: ["'Montserrat'", "sans-serif"],
-        cormorant: ["'Cormorant Garamond'", "serif"],
+        jakarta: ["'Plus Jakarta Sans'", "serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
