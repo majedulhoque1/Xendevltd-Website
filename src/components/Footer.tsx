@@ -16,7 +16,7 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
+    { icon: Facebook, href: "https://www.facebook.com/XenDevLtd", label: "Facebook" },
     { icon: Instagram, href: "#", label: "Instagram" },
     { icon: Linkedin, href: "#", label: "LinkedIn" },
     { icon: Youtube, href: "#", label: "YouTube" },
@@ -51,6 +51,8 @@ const Footer = () => {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 border border-background/20 rounded-full flex items-center justify-center hover:bg-background/10 transition-colors"
                 >
                   <social.icon className="w-4 h-4" />
@@ -107,10 +109,10 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="mailto:info@xendev.com"
+                  href="mailto:xendevltd@gmail.com"
                   className="hover:text-background transition-colors"
                 >
-                  info@xendev.com
+                  xendevltd@gmail.com
                 </a>
               </li>
             </ul>
