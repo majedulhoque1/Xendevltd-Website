@@ -116,16 +116,21 @@ const ProjectDetail = () => {
           <div className="container-wide">
             <nav className="w-full px-4 py-2 project-breadcrumb">
               <ol className="breadcrumb-row flex flex-wrap items-center gap-x-1 gap-y-1 text-xs text-left w-full">
-                <li className="flex items-center">
+                <li className="flex items-center breadcrumb-mobile-back">
+                  <Link to="/projects" aria-label="Back to Projects" className="text-muted-foreground hover:text-foreground" style={{ fontSize: "14px", marginRight: "6px", color: "inherit" }}>
+                    ←
+                  </Link>
+                </li>
+                <li className="flex items-center breadcrumb-hide-mobile">
                   <Link to="/" className="text-muted-foreground hover:text-foreground">
                     <Home className="h-3 w-3" />
                   </Link>
                 </li>
-                <li className="text-muted-foreground">/</li>
-                <li className="flex items-center">
+                <li className="text-muted-foreground breadcrumb-hide-mobile">/</li>
+                <li className="flex items-center breadcrumb-hide-mobile">
                   <Link to="/projects" className="text-muted-foreground hover:text-foreground">Projects</Link>
                 </li>
-                <li className="text-muted-foreground">/</li>
+                <li className="text-muted-foreground breadcrumb-hide-mobile">/</li>
                 <li className="flex items-center">
                   <Link
                     to={`/projects?filter=${
