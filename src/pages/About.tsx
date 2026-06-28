@@ -103,7 +103,7 @@ const About = () => {
                   Xen Developments Limited entered the real estate sector as a building construction company — with a little difference. Our motto is simple: "Quality is our Priority."
                 </p>
                 <p className="text-muted-foreground mb-6">
-                  We are organised with a group of professionals, managed by a Brigadier General (retired), whose engineering consultancy and technical management are handled by highly qualified BUET civil engineers with long-time experience in building construction and project management. Each project is supervised full time by dedicated site engineers, supported by our administrative staff.
+                  We are organised with a group of professionals, managed by a Major General (retired), whose engineering consultancy and technical management are handled by highly qualified BUET civil engineers with long-time experience in building construction and project management. Each project is supervised full time by dedicated site engineers, supported by our administrative staff.
                 </p>
                 <p className="text-muted-foreground mb-6">
                   Our architectural designs are crafted by very experienced architects, and structural designs are executed by highly experienced civil engineers — ensuring aestheticism, optimum space management, and full compliance with safety standards.
