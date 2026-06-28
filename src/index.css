@@ -298,16 +298,9 @@
     border: none !important;
     border-left: none !important;
     outline: none !important;
-    padding-left: 16px !important;
-    margin-left: 0 !important;
-  }
-  .project-breadcrumb,
-  section:has(.project-breadcrumb) .container-wide {
     padding-left: 0 !important;
+    padding-right: 0 !important;
     margin-left: 0 !important;
-    width: 100% !important;
-    border-left: none !important;
-    border: none !important;
   }
   .project-breadcrumb .breadcrumb-row {
     width: 100% !important;
