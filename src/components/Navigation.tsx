@@ -12,6 +12,7 @@ interface NavigationProps {
 const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [contactInView, setContactInView] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === "/";
   const overHero = isHome && !isScrolled;
@@ -23,6 +24,44 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Scrollspy for the #contact section on the home page
+  useEffect(() => {
+    if (!isHome) {
+      setContactInView(false);
+      return;
+    }
+    const el = document.getElementById("contact");
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setContactInView(entry.isIntersecting),
+      { rootMargin: "-40% 0px -40% 0px", threshold: 0 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [isHome, location.pathname]);
+
+  const isProjectsActive = location.pathname.startsWith("/projects");
+  const isAboutActive = location.pathname.startsWith("/about");
+  const isContactActive = isHome && contactInView;
+
+  const linkClass = (active: boolean) =>
+    `relative text-sm font-medium transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-primary after:transition-all after:duration-300 ${
+      active ? "after:w-full" : "after:w-0 hover:after:w-full"
+    } ${
+      active
+        ? overHero
+          ? "text-white"
+          : "text-primary"
+        : overHero
+        ? "text-white/90 hover:text-white"
+        : "text-foreground/80 hover:text-primary"
+    }`;
+
+  const mobileLinkClass = (active: boolean) =>
+    `block py-2 text-lg font-medium transition-colors ${
+      active ? "text-primary" : "text-foreground hover:text-primary"
+    }`;
 
   return (
     <nav
@@ -51,34 +90,13 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
                 : "bg-white/5 border-white/10"
             }`}
           >
-            <Link
-              to="/projects"
-              className={`text-sm font-medium transition-colors ${
-                !overHero
-                  ? "text-foreground/80 hover:text-primary"
-                  : "text-white/90 hover:text-white"
-              }`}
-            >
+            <Link to="/projects" className={linkClass(isProjectsActive)}>
               Projects
             </Link>
-            <Link
-              to="/about"
-              className={`text-sm font-medium transition-colors ${
-                !overHero
-                  ? "text-foreground/80 hover:text-primary"
-                  : "text-white/90 hover:text-white"
-              }`}
-            >
+            <Link to="/about" className={linkClass(isAboutActive)}>
               About
             </Link>
-            <Link
-              to="/#contact"
-              className={`text-sm font-medium transition-colors ${
-                !overHero
-                  ? "text-foreground/80 hover:text-primary"
-                  : "text-white/90 hover:text-white"
-              }`}
-            >
+            <Link to="/#contact" className={linkClass(isContactActive)}>
               Contact
             </Link>
           </div>
@@ -124,21 +142,21 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
           <div className="max-w-7xl mx-auto px-4 md:px-8 py-6 space-y-4">
             <Link
               to="/projects"
-              className="block py-2 text-lg font-medium"
+              className={mobileLinkClass(isProjectsActive)}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Projects
             </Link>
             <Link
               to="/about"
-              className="block py-2 text-lg font-medium"
+              className={mobileLinkClass(isAboutActive)}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               About
             </Link>
             <Link
               to="/#contact"
-              className="block py-2 text-lg font-medium"
+              className={mobileLinkClass(isContactActive)}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Contact
