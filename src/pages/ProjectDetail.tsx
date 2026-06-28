@@ -195,7 +195,7 @@ const ProjectDetail = () => {
                 <span className="text-muted-foreground">Image Coming Soon</span>
               </div>
             )}
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
           </div>
 
           {/* Project Title Overlay */}
@@ -225,7 +225,7 @@ const ProjectDetail = () => {
                     </span>
                   )}
                 </div>
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-gruppo font-semibold text-foreground">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-gruppo font-semibold text-white drop-shadow-lg">
                   {project.name}
                 </h1>
               </motion.div>
