@@ -9,6 +9,7 @@ import ChatBotButton from "@/components/WhatsAppButton";
 import xenLakeviewTasmeeAsset from "@/assets/Xen_Lakeview_Tasmee.jpeg.asset.json";
 import upcomingBananiAsset from "@/assets/Upcoming_Banani.jpeg.asset.json";
 import upcomingJolshiriAsset from "@/assets/Upcoming_Jolshiri.jpeg.asset.json";
+import project07DesktopAsset from "@/assets/Project_07_Desktop.png.asset.json";
 import project41Asset from "@/assets/Completed_DOHS_Chittagong.jpeg.asset.json";
 
 const projects = [
