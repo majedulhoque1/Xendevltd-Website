@@ -290,19 +290,27 @@
 }
 
 @media (max-width: 768px) {
+  .project-breadcrumb {
+    width: 100% !important;
+    display: block !important;
+    text-align: left !important;
+  }
   .project-breadcrumb .breadcrumb-row {
+    width: 100% !important;
     display: flex !important;
     flex-wrap: wrap !important;
     justify-content: flex-start !important;
     align-items: center !important;
     text-align: left !important;
-    gap: 4px 8px !important;
-    padding: 0 !important;
+    gap: 4px !important;
+    padding-left: 16px !important;
     font-size: 12px !important;
     line-height: 1.4 !important;
   }
-  .project-breadcrumb .breadcrumb-sep {
+  .project-breadcrumb .breadcrumb-row > * {
     margin: 0 !important;
+    padding: 0 !important;
+    text-align: left !important;
   }
   .project-breadcrumb .breadcrumb-item,
   .project-breadcrumb .breadcrumb-current {
