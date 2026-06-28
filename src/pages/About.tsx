@@ -7,6 +7,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ChatBotButton from "@/components/WhatsAppButton";
 import CountUp from "@/components/CountUp";
+import xenLogoAsset from "@/assets/Xen_Logo.png.asset.json";
 
 const About = () => {
   const { isDark, toggleTheme } = useTheme();
@@ -120,8 +121,12 @@ const About = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="relative"
               >
-                <div className="aspect-square bg-gradient-to-br from-primary/10 to-secondary rounded-2xl flex items-center justify-center">
-                  <Building2 className="w-32 h-32 text-primary/30" />
+                <div className="aspect-square bg-gradient-to-br from-primary/10 to-secondary rounded-2xl flex items-center justify-center p-12">
+                  <img
+                    src={xenLogoAsset.url}
+                    alt="Xen Developments Logo"
+                    className="w-full h-full object-contain"
+                  />
                 </div>
                 <div className="absolute -bottom-6 -right-6 bg-primary text-primary-foreground p-6 rounded-xl shadow-lg">
                   <p className="text-3xl font-serif font-bold">10+</p>
