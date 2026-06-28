@@ -7,8 +7,8 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ChatBotButton from "@/components/WhatsAppButton";
 import CountUp from "@/components/CountUp";
-import xenLogoAsset from "@/assets/Xen_Logo.png.asset.json";
 import aboutDayAsset from "@/assets/About_Day.png.asset.json";
+import aboutNightAsset from "@/assets/About_Night.png.asset.json";
 
 const About = () => {
   const { isDark, toggleTheme } = useTheme();
@@ -124,9 +124,9 @@ const About = () => {
               >
                 <div className="aspect-square bg-gradient-to-br from-primary/10 to-secondary rounded-2xl overflow-hidden flex items-center justify-center">
                   <img
-                    src={isDark ? xenLogoAsset.url : aboutDayAsset.url}
+                    src={isDark ? aboutNightAsset.url : aboutDayAsset.url}
                     alt="Xen Developments"
-                    className={isDark ? "w-full h-full object-contain p-12" : "w-full h-full object-cover"}
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="absolute -bottom-6 -right-6 bg-primary text-primary-foreground p-6 rounded-xl shadow-lg">
