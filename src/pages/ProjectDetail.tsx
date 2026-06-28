@@ -212,7 +212,7 @@ const ProjectDetail = () => {
                       project.status === "On-going"
                         ? "bg-primary text-primary-foreground"
                         : project.status === "Up-coming"
-                        ? "bg-gold text-charcoal"
+                        ? "bg-gold text-white"
                         : "bg-secondary text-secondary-foreground"
                     }`}
                   >
