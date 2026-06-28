@@ -66,7 +66,7 @@ export default {
       fontFamily: {
         serif: ["'Playfair Display'", "serif"],
         sans: ["'Montserrat'", "sans-serif"],
-        gruppo: ["'Gruppo'", "sans-serif"],
+        cormorant: ["'Cormorant Garamond'", "serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
