@@ -16,7 +16,7 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
+    { icon: Facebook, href: "https://www.facebook.com/XenDevLtd", label: "Facebook" },
     { icon: Instagram, href: "#", label: "Instagram" },
     { icon: Linkedin, href: "#", label: "LinkedIn" },
     { icon: Youtube, href: "#", label: "YouTube" },
@@ -107,10 +107,10 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="mailto:info@xendev.com"
+                  href="mailto:xendevltd@gmail.com"
                   className="hover:text-background transition-colors"
                 >
-                  info@xendev.com
+                  xendevltd@gmail.com
                 </a>
               </li>
             </ul>
