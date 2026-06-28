@@ -66,6 +66,7 @@ const projects = [
     amenities: ["TBD"],
     expectedCompletion: "TBD",
     image: upcomingJolshiriAsset.url,
+    desktopImage: project07DesktopAsset.url,
     gallery: [],
     buildingType: "—",
     totalFloors: "—",
@@ -167,11 +168,22 @@ const ProjectDetail = () => {
             }`}
           >
             {project.image ? (
-              <img
-                src={project.image}
-                alt={project.name}
-                className="w-full h-full object-cover object-center"
-              />
+              <>
+                <img
+                  src={project.image}
+                  alt={project.name}
+                  className={`w-full h-full object-cover object-center ${
+                    (project as any).desktopImage ? "md:hidden" : ""
+                  }`}
+                />
+                {(project as any).desktopImage && (
+                  <img
+                    src={(project as any).desktopImage}
+                    alt={project.name}
+                    className="hidden md:block w-full h-full object-cover object-center"
+                  />
+                )}
+              </>
             ) : (
               <div className="w-full h-full flex items-center justify-center">
                 <span className="text-muted-foreground">Image Coming Soon</span>
