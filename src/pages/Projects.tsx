@@ -118,7 +118,7 @@ const projects = [
     description: "A successfully completed residential project showcasing our commitment to quality construction and timely delivery.",
     features: ["Quality Construction", "Timely Delivery", "Premium Location"],
     expectedCompletion: "Completed",
-    image: null,
+    image: xenNirvanaAsset.url,
   },
   {
     id: 12,
