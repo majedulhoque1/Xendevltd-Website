@@ -11,6 +11,7 @@ import upcomingBananiAsset from "@/assets/Upcoming_Banani.jpeg.asset.json";
 import upcomingJolshiriAsset from "@/assets/Upcoming_Jolshiri.jpeg.asset.json";
 import project07DesktopAsset from "@/assets/Project_07_Desktop.png.asset.json";
 import project41DesktopAsset from "@/assets/Project_41_Desktop.png.asset.json";
+import project21DesktopAsset from "@/assets/Project_21_Desktop.png.asset.json";
 import lakeviewTasmeeDesktopAsset from "@/assets/Lakeview_Tasmee_Desktop.png.asset.json";
 import project41Asset from "@/assets/Completed_DOHS_Chittagong.jpeg.asset.json";
 
@@ -50,6 +51,7 @@ const projects = [
     amenities: ["TBD"],
     expectedCompletion: "TBD",
     image: upcomingBananiAsset.url,
+    desktopImage: project21DesktopAsset.url,
     gallery: [],
     buildingType: "—",
     totalFloors: "—",
