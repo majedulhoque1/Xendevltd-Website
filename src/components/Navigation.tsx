@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import xenLogo from "@/assets/xen-logo.png";
 import ThemeToggle from "./ThemeToggle";
 
@@ -12,6 +12,9 @@ interface NavigationProps {
 const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+  const overHero = isHome && !isScrolled;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,9 +27,9 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? "bg-background/95 backdrop-blur-lg border-b border-border/50 py-3"
-          : "bg-transparent pt-6 pb-4"
+        overHero
+          ? "bg-transparent pt-6 pb-4"
+          : "bg-background/95 backdrop-blur-lg border-b border-border/50 py-3"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8">
@@ -43,7 +46,7 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
           {/* Desktop Navigation — Centered Links in Glassmorphic Pill */}
           <div
             className={`hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center gap-8 rounded-full px-8 py-2.5 backdrop-blur-md border transition-all duration-500 ${
-              isScrolled
+              !overHero
                 ? "bg-background/60 border-border/40"
                 : "bg-white/5 border-white/10"
             }`}
@@ -51,7 +54,7 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
             <Link
               to="/projects"
               className={`text-sm font-medium transition-colors ${
-                isScrolled
+                !overHero
                   ? "text-foreground/80 hover:text-primary"
                   : "text-white/90 hover:text-white"
               }`}
@@ -61,7 +64,7 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
             <Link
               to="/about"
               className={`text-sm font-medium transition-colors ${
-                isScrolled
+                !overHero
                   ? "text-foreground/80 hover:text-primary"
                   : "text-white/90 hover:text-white"
               }`}
@@ -71,7 +74,7 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
             <Link
               to="/#contact"
               className={`text-sm font-medium transition-colors ${
-                isScrolled
+                !overHero
                   ? "text-foreground/80 hover:text-primary"
                   : "text-white/90 hover:text-white"
               }`}
@@ -102,7 +105,7 @@ const Navigation = ({ isDark, onThemeToggle }: NavigationProps) => {
             <ThemeToggle isDark={isDark} onToggle={onThemeToggle} />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`p-2 transition-colors ${isScrolled ? "text-foreground" : "text-white"}`}
+              className={`p-2 transition-colors ${!overHero ? "text-foreground" : "text-white"}`}
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
