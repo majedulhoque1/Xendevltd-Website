@@ -114,36 +114,42 @@ const ProjectDetail = () => {
         {/* Breadcrumb */}
         <section className="py-4 bg-secondary/30">
           <div className="container-wide">
-            <div className="text-xs md:text-sm text-left text-muted-foreground project-breadcrumb">
-              <div className="breadcrumb-row flex flex-wrap items-center justify-start gap-x-2 gap-y-1 leading-tight">
-                <Link to="/" className="breadcrumb-item hover:text-primary transition-colors inline-flex items-center justify-center">
-                  <Home className="w-4 h-4" />
-                </Link>
-                <span className="breadcrumb-sep opacity-60 mx-0">/</span>
-                <Link to="/projects" className="breadcrumb-item hover:text-primary transition-colors whitespace-nowrap">
-                  Projects
-                </Link>
-                <span className="breadcrumb-sep opacity-60 mx-0">/</span>
-                <Link
-                  to={`/projects?filter=${
-                    project.status === "On-going"
-                      ? "ongoing"
+            <nav className="w-full px-4 py-2 project-breadcrumb">
+              <ol className="breadcrumb-row flex flex-wrap items-center gap-x-1 gap-y-1 text-xs text-left w-full">
+                <li className="flex items-center">
+                  <Link to="/" className="text-muted-foreground hover:text-foreground">
+                    <Home className="h-3 w-3" />
+                  </Link>
+                </li>
+                <li className="text-muted-foreground">/</li>
+                <li className="flex items-center">
+                  <Link to="/projects" className="text-muted-foreground hover:text-foreground">Projects</Link>
+                </li>
+                <li className="text-muted-foreground">/</li>
+                <li className="flex items-center">
+                  <Link
+                    to={`/projects?filter=${
+                      project.status === "On-going"
+                        ? "ongoing"
+                        : project.status === "Up-coming"
+                        ? "upcoming"
+                        : "completed"
+                    }`}
+                    className="text-muted-foreground hover:text-foreground"
+                  >
+                    {project.status === "On-going"
+                      ? "Ongoing"
                       : project.status === "Up-coming"
-                      ? "upcoming"
-                      : "completed"
-                  }`}
-                  className="breadcrumb-item hover:text-primary transition-colors whitespace-nowrap"
-                >
-                  {project.status === "On-going"
-                    ? "Ongoing"
-                    : project.status === "Up-coming"
-                    ? "Upcoming"
-                    : "Completed"}
-                </Link>
-                <span className="breadcrumb-sep opacity-60 mx-0">/</span>
-                <span className="breadcrumb-current text-foreground">{project.name}</span>
-              </div>
-            </div>
+                      ? "Upcoming"
+                      : "Completed"}
+                  </Link>
+                </li>
+                <li className="text-muted-foreground">/</li>
+                <li className="flex items-center">
+                  <span className="text-foreground font-medium">{project.name}</span>
+                </li>
+              </ol>
+            </nav>
           </div>
         </section>
 
