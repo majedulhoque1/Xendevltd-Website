@@ -14,6 +14,7 @@ import xenPrimaVeraAsset from "@/assets/Xen_Prima_Vera.jpeg.asset.json";
 import project818Asset from "@/assets/Project_818.jpeg.asset.json";
 import project994Asset from "@/assets/Project_994.jpeg.asset.json";
 import project1026Asset from "@/assets/Project_1026.jpeg.asset.json";
+import xenNirvanaAsset from "@/assets/Xen_Nirvana.png.asset.json";
 
 const projects = [
   { id: 1, name: "Xen Orion", location: "Plot 30, Road 2, DOHS Chittagong", image: xenOrionAsset.url },
@@ -27,6 +28,7 @@ const projects = [
   { id: 9, name: "Project 818", location: "Mirpur DOHS, Dhaka", image: project818Asset.url },
   { id: 10, name: "Project 994", location: "Mirpur DOHS, Dhaka", image: project994Asset.url },
   { id: 11, name: "Project 1026", location: "Mirpur DOHS, Dhaka", image: project1026Asset.url },
+  { id: 12, name: "Xen Nirvana", location: "Mirpur DOHS, Dhaka", image: xenNirvanaAsset.url },
 ];
 
 const ProjectsOverview = () => {
